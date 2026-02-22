@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "actions_mcp": {
+      "command": "python",
+      "args": [
+        "mcp_servers/actions_mcp/server.py"
+      ],
+      "cwd": "${workspaceFolder}",
+      "env": {}
+    }
+  }
+}
