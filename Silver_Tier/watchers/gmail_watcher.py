@@ -14,7 +14,7 @@ from googleapiclient.discovery import build
 
 # Configuration
 CHECK_INTERVAL = 300  # seconds
-SCOPES = ['https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/gmail.send']
+SCOPES = ['https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/gmail.modify']
 CREDENTIALS_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'credentials.json')
 TOKEN_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'token.json')
 VAULT_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'Vault')
