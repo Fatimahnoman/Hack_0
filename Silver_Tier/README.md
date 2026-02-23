@@ -1,270 +1,371 @@
-# Silver Tier - AI Employee System
+# Silver Tier AI Employee
 
-## 🎯 Overview
-
-Silver Tier ek automated AI employee system hai jo:
-- **Gmail** messages monitor karta hai
-- **WhatsApp** messages monitor karta hai
-- **Instagram** DMs/posts monitor karta hai
-- Files ko automatically workflow stages mein move karta hai
-- Tasks ko automate karta hai (e.g., Instagram posts)
+Automated workflow system with Gmail, WhatsApp, and Instagram watchers that manage tasks through an intelligent approval pipeline.
 
 ---
 
-## 📁 Folder Structure
+## 📁 Project Structure
 
 ```
 Silver_Tier/
-├── Vault/                          # Saara data yahan store hota hai
-│   ├── Inbox/                      # New incoming files
-│   ├── Needs_Action/               # Files jo action wait kar rahi hain
-│   ├── Pending_Approval/           # Approval pending files
-│   ├── Approved/                   # Approved files
-│   ├── Done/                       # Completed files
-│   ├── Logs/                       # System logs
-│   ├── Plans/                      # Plan.md files
-│   ├── Dashboard.md                # System status
-│   └── Company_Handbook.md         # Rules & guidelines
-│
-├── watchers/                       # Monitoring scripts
-│   ├── gmail_watcher.py            # Gmail monitor
-│   ├── whatsapp_watcher.py         # WhatsApp monitor
-│   └── instagram_watcher.py        # Instagram monitor
-│
-├── sessions/                       # Login sessions (private!)
-│   ├── whatsapp_session/           # WhatsApp login data
-│   └── instagram_session/          # Instagram login data
-│
-├── skills/                         # Automation skills
-│   └── auto_insta_post.py          # Instagram auto-post
-│
-├── mcp_servers/
-│   └── actions_mcp/
-│       ├── server.py               # MCP server
-│       └── README.md
-│
-├── orchestrator.py                 # Main runner (sab control karta hai)
-├── whatsapp_login.py               # WhatsApp login script
-├── instagram_login.py              # Instagram login script
-├── .env                            # Secrets (never commit!)
-└── credentials.json                # Gmail API credentials
+├── watchers/
+│   ├── gmail_watcher.py       # Monitor Gmail for unread+important emails
+│   ├── whatsapp_watcher.py    # Monitor WhatsApp Web for keyword messages
+│   └── instagram_watcher.py   # Monitor Instagram for notifications
+├── Vault/
+│   ├── Needs_Action/          # New tasks (0-2 minutes old)
+│   ├── Pending_Approval/      # Tasks waiting for your action (2+ min)
+│   ├── Approved/              # Tasks marked [APPROVED]
+│   ├── Done/                  # Tasks marked [DONE]
+│   └── Logs/                  # Application logs
+├── skills/
+│   ├── auto_insta_post.py     # Auto-post to Instagram
+│   └── process_needs_action.py # Process pending tasks
+├── mcp_servers/               # MCP server integrations
+├── sessions/                  # Browser sessions (WhatsApp, Instagram)
+├── orchestrator.py            # Main runner - handles all watchers + workflow
+├── workflow_manager.py        # Auto-move files between workflow stages
+├── test_silver_tier.py        # Test script
+├── credentials.json           # Google OAuth credentials
+└── .env                       # Environment variables
 ```
 
 ---
 
 ## 🚀 Quick Start
 
-### Step 1: Pehli Baar Setup
+### **Option 1: Run Everything (Recommended)**
 
-**1. WhatsApp Login:**
 ```bash
-python whatsapp_login.py
-```
-- Chrome khulega
-- QR code scan karo phone se
-- Session save ho jayega
-
-**2. Instagram Login:**
-```bash
-python instagram_login.py
-```
-- Username/password enter karo
-- Session save ho jayega
-
-**3. Gmail Setup:**
-- `credentials.json` already configured hai
-- Pehli baar run pe browser mein authorize karna hoga
-
----
-
-### Step 2: System Run Karo
-
-**Main Command:**
-```bash
+cd E:\Hackathon_Zero\Silver_Tier
 python orchestrator.py
 ```
 
-**Yeh automatically:**
-- ✅ Saare watchers start karega (Gmail, WhatsApp, Instagram)
-- ✅ Har 30 seconds mein workflow process karega
-- ✅ Har 60 seconds mein skills check karega
-- ✅ Har 5 minutes mein Dashboard update karega
+This starts:
+- ✅ Gmail Watcher
+- ✅ WhatsApp Watcher
+- ✅ Instagram Watcher
+- ✅ Workflow Manager (auto-moves files every 60 seconds)
+- ✅ Dashboard Updater
 
 ---
 
-## 🔄 Workflow System
+### **Option 2: Run Individual Watchers**
 
-### File Flow
+| Watcher | Command |
+|---------|---------|
+| Gmail Only | `python watchers/gmail_watcher.py` |
+| WhatsApp Only | `python watchers/whatsapp_watcher.py` |
+| Instagram Only | `python watchers/instagram_watcher.py` |
+| Workflow Manager Only | `python workflow_manager.py` |
+
+> ⚠️ **Note:** Running individual watchers won't auto-move files. Use `orchestrator.py` or run `workflow_manager.py` separately for full workflow automation.
+
+---
+
+### **Option 3: Hybrid Setup**
+
+**Terminal 1:** Run Gmail watcher
+```bash
+python watchers/gmail_watcher.py
 ```
-Inbox → Needs_Action → Pending_Approval → Approved → Done
+
+**Terminal 2:** Run Workflow Manager
+```bash
+python workflow_manager.py
 ```
 
-### Auto-Move Rules
+---
 
-| Stage | Trigger | Time |
-|-------|---------|------|
-| Needs_Action → Pending_Approval | File age > 2 minutes | **AUTO** |
-| Pending_Approval → Approved | `[APPROVED]` marker | **MANUAL** |
-| Approved → Done | `[DONE]` marker | **AUTO** |
+## 🔄 Complete Workflow
 
-### Manual Markers Add Karna
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    WORKFLOW START                                │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│ 1. WATCHER DETECTS (Gmail/WhatsApp/Instagram)                   │
+│    - Gmail: Unread + Important emails                           │
+│    - WhatsApp: Messages with keywords (urgent, invoice, etc.)   │
+│    - Instagram: New notifications                               │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│ 2. CREATE .MD FILE IN Vault/Needs_Action/                       │
+│    Filename: EMAIL_{id}.md / WHATSAPP_{contact}_{time}.md       │
+│    Content: Sender, Subject, Message, Priority, Actions         │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│ 3. MARK AS READ                                                 │
+│    - Gmail: Email marked as read                                │
+│    - WhatsApp: Message tracked as processed                     │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│ 4. WAIT 2 MINUTES (120 seconds)                                 │
+│    - Workflow Manager checks every 60 seconds                   │
+│    - Calculates file age from creation time                     │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│ 5. AUTO-MOVE TO Vault/Pending_Approval/                         │
+│    - File automatically moved by Workflow Manager               │
+│    - Log: "✓ Moved to Pending: FILENAME.md"                     │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│ 6. ADD MARKER (Manual - You do this)                            │
+│    Open the .md file and add ONE of these markers:              │
+│    - [APPROVED]  → File moves to Approved/                      │
+│    - [DONE]      → File moves to Done/                          │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│ 7. FINAL MOVE (Automatic)                                       │
+│    - Next workflow check (within 60 sec) moves the file         │
+│    - Workflow complete!                                         │
+└─────────────────────────────────────────────────────────────────┘
+```
 
-**File kholo aur end mein add karo:**
+---
+
+## 📊 Workflow Stages
+
+| Stage | Location | Duration | Action |
+|-------|----------|----------|--------|
+| **1. New Task** | `Vault/Needs_Action/` | 0-2 min | Wait for auto-move |
+| **2. Pending** | `Vault/Pending_Approval/` | Until you act | Add `[APPROVED]` or `[DONE]` |
+| **3a. Approved** | `Vault/Approved/` | Final | Task approved |
+| **3b. Done** | `Vault/Done/` | Final | Task completed |
+
+---
+
+## 📝 File Format Example
+
+**File:** `Vault/Needs_Action/EMAIL_19c8caa2f5632afc.md`
 
 ```markdown
-From: +92XXX
-Message: Client ne reply manga hai
+# Gmail Email Alert
 
-[APPROVED]  ← Approval ke liye
-[DONE]      ← Completion ke liye
+**From:** client@example.com
+**Subject:** Urgent: Project Deadline
+**Received:** Mon, 24 Feb 2026 10:30:00 +0500
+**Platform:** Gmail
+**Priority:** HIGH
+
+---
+
+## Email Content
+
+Hi, this is urgent. Please submit the project ASAP...
+
+---
+
+## Actions Required
+
+- [ ] Review email
+- [ ] Respond if needed
+- [ ] Add [APPROVED] marker to move to Approved
+- [ ] Add [DONE] marker to move to Done
+
+---
+
+## Workflow
+
+- Current: Needs_Action
+- After 2 min: Auto-move to Pending_Approval
+- Add [APPROVED] marker: Move to Approved
+- Add [DONE] marker: Move to Done
+
+---
+
+## Status
+
+Needs_Action
 ```
 
 ---
 
-## 📊 Watchers Status
+## ✅ Adding Markers
 
-| Watcher | Status | Session Path |
-|---------|--------|--------------|
-| Gmail | ✅ Active | OAuth (no session) |
-| WhatsApp | ✅ Active | `sessions/whatsapp_session/` |
-| Instagram | ✅ Active | `sessions/instagram_session/` |
-
----
-
-## 🛠️ Skills
-
-### Auto Instagram Post
-
-**Trigger:** `INSTA_*.md` file in `Needs_Action/`
-
-**Example File:**
-```markdown
-From: User Request
-Platform: Instagram
-Action: Post
-
-Caption: Amazing sunset! 🌅
-Image: path/to/image.jpg
-
+### To Approve a Task:
+Open the `.md` file and add anywhere:
+```
 [APPROVED]
 ```
 
-**Result:** Auto-post to Instagram!
-
----
-
-## 📋 Commands Reference
-
-| Command | Purpose |
-|---------|---------|
-| `python orchestrator.py` | Start full system |
-| `python whatsapp_login.py` | Login to WhatsApp |
-| `python instagram_login.py` | Login to Instagram |
-| `python watchers/gmail_watcher.py` | Run Gmail only |
-| `python watchers/whatsapp_watcher.py` | Run WhatsApp only |
-| `python watchers/instagram_watcher.py` | Run Instagram only |
-
----
-
-## 🔒 Security
-
-### Never Commit These Files:
-- `.env` - Contains secrets
-- `credentials.json` - API credentials
-- `sessions/` - Login session data
-- `token.json` - OAuth tokens
-
-**`.gitignore` already configured hai!**
-
----
-
-## 📝 File Markers
-
-| Marker | Meaning | Action |
-|--------|---------|--------|
-| `[APPROVED]` | Task approved | Move to Approved |
-| `[DONE]` | Task completed | Move to Done |
-| `[URGENT]` | High priority | Handle first |
-| `[BLOCKED]` | Waiting on something | Add note |
-
----
-
-## 🐛 Troubleshooting
-
-### WhatsApp Login Issue
-```bash
-# Purana session delete karo
-rmdir /s /q sessions\whatsapp_session
-python whatsapp_login.py
+### To Mark as Done:
+Open the `.md` file and add anywhere:
+```
+[DONE]
 ```
 
-### Chrome Crash Error
+The Workflow Manager will automatically move the file within 60 seconds.
+
+---
+
+## ⚙️ Configuration
+
+### Gmail Watcher (`watchers/gmail_watcher.py`)
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `CHECK_INTERVAL` | 300 sec | Check emails every 5 minutes |
+| `SCOPES` | gmail.readonly, gmail.send, gmail.modify | OAuth permissions |
+
+### WhatsApp Watcher (`watchers/whatsapp_watcher.py`)
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `CHECK_INTERVAL` | 60 sec | Check messages every 1 minute |
+| `KEYWORDS` | invoice, payment, urgent, asap, help, price, quote, hello, hi, hey | Trigger words |
+
+### Workflow Manager (`workflow_manager.py`)
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `CHECK_INTERVAL` | 60 sec | Check workflow every 1 minute |
+| `PENDING_DELAY` | 120 sec | Wait 2 minutes before moving to Pending |
+
+### Orchestrator (`orchestrator.py`)
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `GMAIL_CHECK_INTERVAL` | 300 sec | Gmail check frequency |
+| `WHATSAPP_CHECK_INTERVAL` | 60 sec | WhatsApp check frequency |
+| `INSTAGRAM_CHECK_INTERVAL` | 14400 sec | Instagram check every 4 hours |
+| `WORKFLOW_CHECK_INTERVAL` | 60 sec | Workflow manager frequency |
+
+---
+
+## 🔧 Setup Requirements
+
+### 1. Install Dependencies
+
 ```bash
-# Saare Chrome windows band karo
-# Phir run karo
+pip install google-auth google-auth-oauthlib google-api-python-client
+pip install playwright
+playwright install chromium
+pip install apscheduler
+```
+
+### 2. Setup Google OAuth (for Gmail)
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project
+3. Enable Gmail API
+4. Create OAuth 2.0 credentials
+5. Download `credentials.json`
+6. Place in `Silver_Tier/credentials.json`
+
+### 3. First-Time Login
+
+When you run any watcher for the first time:
+- Browser will open automatically
+- Sign in with your Google account
+- Grant permissions
+- Token saved to `token.json` (auto-generated)
+
+---
+
+## 📋 Scheduled Tasks (via Orchestrator)
+
+| Task | Schedule | Description |
+|------|----------|-------------|
+| **Gmail Check** | Every 5 min | Check for new unread+important emails |
+| **WhatsApp Check** | Every 1 min | Check for keyword messages |
+| **Instagram Check** | Every 4 hours | Check for notifications |
+| **Workflow Manager** | Every 1 min | Auto-move files between stages |
+| **Daily Instagram Post** | 9:00 AM UTC | Auto-generate and post |
+| **Dashboard Update** | Every 5 min | Update status dashboard |
+
+---
+
+## 🛠️ Troubleshooting
+
+### Issue: "Insufficient Permission" Error
+
+**Solution:** Delete `token.json` and re-run:
+```bash
+del token.json
+python watchers/gmail_watcher.py
+```
+
+### Issue: Files not moving to Pending_Approval
+
+**Solution:** Ensure Workflow Manager is running:
+```bash
+python workflow_manager.py
+# Or use orchestrator
 python orchestrator.py
 ```
 
-### File Not Moving
+### Issue: WhatsApp QR Code not showing
+
+**Solution:** 
+1. Delete session folder: `del /s sessions\whatsapp_session`
+2. Re-run WhatsApp watcher
+3. Scan QR code within 60 seconds
+
+### Issue: Browser won't open
+
+**Solution:** Install Playwright browsers:
 ```bash
-# Check orchestrator chal raha hai
-# 30 seconds wait karo (workflow interval)
+playwright install chromium
 ```
 
 ---
 
-## 📈 System Status Check
+## 📊 Logs
 
-**Dashboard dekho:**
+All logs are saved to `Vault/Logs/`:
+
+| Log File | Description |
+|----------|-------------|
+| `gmail_watcher.log` | Gmail watcher activity |
+| `whatsapp_watcher.log` | WhatsApp watcher activity |
+| `instagram_watcher.log` | Instagram watcher activity |
+| `workflow_manager.log` | File movement logs |
+| `orchestrator.log` | Main orchestrator logs |
+
+---
+
+## 🎯 Quick Commands Reference
+
 ```bash
-type Vault\Dashboard.md
+# Run everything (BEST)
+python orchestrator.py
+
+# Run specific watcher
+python watchers/gmail_watcher.py
+python watchers/whatsapp_watcher.py
+python watchers/instagram_watcher.py
+
+# Run workflow manager only
+python workflow_manager.py
+
+# Test installation
+python test_silver_tier.py
 ```
 
-**Current files check karo:**
-```bash
-dir Vault\Needs_Action\
-dir Vault\Pending_Approval\
-dir Vault\Approved\
-dir Vault\Done\
-```
+---
+
+## 📞 Support
+
+For issues or questions:
+1. Check logs in `Vault/Logs/`
+2. Review this README
+3. Check individual watcher scripts for detailed comments
 
 ---
 
-## 🎯 Daily Workflow
-
-1. **Morning:** `python orchestrator.py` run karo
-2. **During day:** Files auto-create hongi
-3. **Check:** `Vault/Needs_Action/` for new tasks
-4. **Approve:** Add `[APPROVED]` marker
-5. **Complete:** Add `[DONE]` marker
-6. **Evening:** Check `Vault/Done/` for completed tasks
-
----
-
-## 📞 Support Files
-
-| File | Purpose |
-|------|---------|
-| `Vault/Dashboard.md` | System status |
-| `Vault/Company_Handbook.md` | Rules & guidelines |
-| `Vault/Plans/Plan.md` | Future plans |
-| `Vault/Logs/` | System logs |
-
----
-
-## ✅ Checklist - First Time Setup
-
-- [ ] WhatsApp login complete
-- [ ] Instagram login complete
-- [ ] Gmail credentials configured
-- [ ] Orchestrator run kiya
-- [ ] Test message bheja (WhatsApp/Email)
-- [ ] File create hui check kiya
-- [ ] `[APPROVED]` marker test kiya
-- [ ] `[DONE]` marker test kiya
-
----
-
-**System Ready! 🚀**
-
-For issues, check `Vault/Logs/` folder.
+*Generated by Silver Tier AI Employee - Hackathon Zero*
