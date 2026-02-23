@@ -107,17 +107,18 @@ class WorkflowManager:
         now = datetime.now()
 
         for filepath in self.needs_action_path.glob("*.md"):
-            # Track when file was first seen
-            if filepath.name not in self.file_timestamps:
-                self.file_timestamps[filepath.name] = now
-                logger.info(f"New file tracked: {filepath.name}")
+            # Use file modification time for tracking
+            try:
+                file_mtime = datetime.fromtimestamp(filepath.stat().st_mtime)
+                age = (now - file_mtime).total_seconds()
+                
+                logger.info(f"File: {filepath.name}, Age: {age:.0f}s (need {PENDING_DELAY}s)")
 
-            # Check if file is old enough to move to pending
-            age = (now - self.file_timestamps[filepath.name]).total_seconds()
-            
-            if age >= PENDING_DELAY:
-                if self.move_to_pending(filepath):
-                    moved_count += 1
+                if age >= PENDING_DELAY:
+                    if self.move_to_pending(filepath):
+                        moved_count += 1
+            except Exception as e:
+                logger.error(f"Error processing {filepath.name}: {e}")
 
         return moved_count
 
