@@ -290,7 +290,8 @@ class WhatsAppWatcher:
 
 - [ ] Review message
 - [ ] Respond if needed
-- [ ] Move to Pending_Approval after review
+- [ ] Add [APPROVED] marker to move to Approved
+- [ ] Add [DONE] marker to move to Done
 
 ---
 
@@ -300,6 +301,12 @@ class WhatsAppWatcher:
 - After 2 min: Auto-move to Pending_Approval
 - Add [APPROVED] marker: Move to Approved
 - Add [DONE] marker: Move to Done
+
+---
+
+## Status
+
+Needs_Action
 
 ---
 

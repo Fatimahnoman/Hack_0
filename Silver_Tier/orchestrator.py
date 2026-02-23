@@ -9,6 +9,7 @@ Features:
   - Every 30 min: Check Needs_Action + reasoning loop
 - Live Dashboard.md updates with watcher status
 - Windows Task Scheduler compatible
+- Workflow Manager integration for auto-moving files
 """
 
 import os
@@ -45,6 +46,7 @@ SKILLS_DIR = PROJECT_ROOT / "skills"
 GMAIL_CHECK_INTERVAL = 300      # 5 minutes
 WHATSAPP_CHECK_INTERVAL = 60    # 1 minute
 INSTAGRAM_CHECK_INTERVAL = 14400  # 4 hours
+WORKFLOW_CHECK_INTERVAL = 60    # 1 minute
 
 # Setup logging
 logging.basicConfig(
@@ -318,17 +320,17 @@ class SilverTierOrchestrator:
             
         except Exception as e:
             logger.error(f"Error in Needs_Action check: {e}")
-    
+
     def setup_scheduler(self):
         """Setup APScheduler with all scheduled tasks."""
         if not APSCHEDULER_AVAILABLE:
             logger.warning("APScheduler not available, skipping scheduler setup")
             return
-        
+
         logger.info("=" * 60)
         logger.info("Setting up APScheduler...")
         logger.info("=" * 60)
-        
+
         # Daily Instagram Post at 9:00 AM
         self.scheduler.add_job(
             self.generate_daily_instagram_post,
@@ -338,7 +340,7 @@ class SilverTierOrchestrator:
             replace_existing=True
         )
         logger.info("✓ Scheduled: Daily Instagram Post at 09:00 AM UTC")
-        
+
         # Check Needs_Action every 30 minutes
         self.scheduler.add_job(
             self.check_needs_action_loop,
@@ -348,7 +350,17 @@ class SilverTierOrchestrator:
             replace_existing=True
         )
         logger.info("✓ Scheduled: Needs_Action check every 30 minutes")
-        
+
+        # Workflow Manager - Check every 1 minute
+        self.scheduler.add_job(
+            self.process_workflow,
+            IntervalTrigger(seconds=WORKFLOW_CHECK_INTERVAL),
+            id='workflow_manager',
+            name='Workflow Manager - Auto Move Files',
+            replace_existing=True
+        )
+        logger.info("✓ Scheduled: Workflow Manager every 60 seconds")
+
         # Update Dashboard every 5 minutes
         self.scheduler.add_job(
             lambda: self.update_dashboard(),
@@ -358,6 +370,30 @@ class SilverTierOrchestrator:
             replace_existing=True
         )
         logger.info("✓ Scheduled: Dashboard update every 5 minutes")
+
+    def process_workflow(self):
+        """Process workflow: move files between stages."""
+        try:
+            from workflow_manager import WorkflowManager
+            
+            manager = WorkflowManager()
+            
+            # Process Needs_Action → Pending_Approval
+            moved = manager.process_needs_action()
+            if moved > 0:
+                logger.info(f"✓ Moved {moved} file(s) to Pending_Approval")
+                self.update_dashboard(f"Moved {moved} file(s) to Pending_Approval")
+            
+            # Process Pending_Approval → Approved/Done
+            processed = manager.process_pending_approval()
+            if processed > 0:
+                logger.info(f"✓ Processed {processed} file(s) with markers")
+                self.update_dashboard(f"Processed {processed} file(s)")
+                
+        except ImportError:
+            logger.error("Workflow Manager not found")
+        except Exception as e:
+            logger.error(f"Error in Workflow Manager: {e}")
     
     def run(self):
         """Main orchestrator run method."""
