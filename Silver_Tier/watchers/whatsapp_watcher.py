@@ -84,27 +84,31 @@ class WhatsAppWatcher:
     def start_browser(self) -> None:
         """Start Playwright with persistent context."""
         logger.info("Starting Playwright browser...")
-        
+
         self.playwright = sync_playwright().start()
-        
-        # Launch browser with persistent context
-        self.browser = self.playwright.chromium.launch(
+
+        # Launch browser with persistent context using launch_persistent_context
+        self.context = self.playwright.chromium.launch_persistent_context(
+            user_data_dir=str(self.session_path),
             headless=False,  # Keep visible for QR code login
+            viewport={"width": 1920, "height": 1080},
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
             args=[
                 "--disable-gpu",
                 "--no-sandbox",
                 "--disable-dev-shm-usage",
             ]
         )
+
+        # Get the browser instance from context
+        self.browser = self.context.browser
+
+        # Get the first page or create a new one
+        if self.context.pages:
+            self.page = self.context.pages[0]
+        else:
+            self.page = self.context.new_page()
         
-        # Create persistent context
-        self.context = self.browser.new_context(
-            user_data_dir=str(self.session_path),
-            viewport={"width": 1920, "height": 1080},
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-        )
-        
-        self.page = self.context.new_page()
         logger.info("Browser started successfully")
     
     def navigate_to_whatsapp(self) -> bool:
