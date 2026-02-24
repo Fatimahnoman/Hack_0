@@ -174,12 +174,36 @@ def post_to_instagram(image_path, caption):
             print("[ERROR] Could not click Share")
             return False
         
-        # Wait for post
-        print("[INFO] Waiting for post...")
-        page.wait_for_timeout(5000)
-        print("[OK] Post successful!")
+        # Wait for post confirmation
+        print("[INFO] Waiting for post confirmation...")
+        page.wait_for_timeout(8000)  # 8 seconds wait
         
-        return True
+        # Check if post actually succeeded (look for "Your post has been shared" or similar)
+        try:
+            # Try to find success indicator
+            success_indicators = [
+                "Your post has been shared",
+                "Post shared",
+                "Upload complete",
+            ]
+            
+            page_content = page.content().lower()
+            if any(indicator.lower() in page_content for indicator in success_indicators):
+                print("[OK] Post confirmed successful!")
+                return True
+            else:
+                # Check if we're still on post creation page
+                current_url = page.url
+                if "instagram.com" in current_url and "create" not in current_url.lower():
+                    print("[OK] Post likely successful (navigated away from create)")
+                    return True
+                else:
+                    print("[WARN] Post may not have succeeded - still on create page")
+                    return False
+        except Exception as ex:
+            print(f"[WARN] Could not verify post: {ex}")
+            # Assume success if no error occurred
+            return True
         
     except Exception as ex:
         print(f"[ERROR] {ex}")
