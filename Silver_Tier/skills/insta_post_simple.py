@@ -124,10 +124,13 @@ def post_to_instagram(image_path, caption):
         for i in range(2):
             try:
                 page.click('button:has-text("Next")', timeout=5000)
-                page.wait_for_timeout(2000)
+                page.wait_for_timeout(3000)  # More wait time
                 print(f"[OK] Next {i+1}")
             except:
                 print(f"[INFO] No Next {i+1}")
+        
+        # More wait for UI to stabilize
+        page.wait_for_timeout(3000)
         
         # Add caption
         print("[INFO] Adding caption...")
@@ -139,21 +142,37 @@ def post_to_instagram(image_path, caption):
         
         page.wait_for_timeout(2000)
         
-        # Click Share
+        # Click Share - try multiple methods
         print("[INFO] Clicking Share...")
+        shared = False
+        
+        # Method 1: Direct click
         try:
             page.click('button:has-text("Share")', timeout=5000)
             print("[OK] Share clicked")
+            shared = True
         except Exception as ex:
             print(f"[WARN] Share click: {ex}")
-            # Try Enter key
+            # Method 2: Try div button
             try:
-                page.keyboard.press('Enter')
-                page.wait_for_timeout(2000)
-                print("[OK] Share via Enter")
+                page.click('div[tabindex="0"]:has-text("Share")', timeout=5000)
+                print("[OK] Share via div")
+                shared = True
             except:
-                print("[ERROR] Share failed")
-                return False
+                # Method 3: Keyboard Tab + Enter
+                try:
+                    page.keyboard.press('Tab')
+                    page.keyboard.press('Tab')
+                    page.keyboard.press('Enter')
+                    page.wait_for_timeout(3000)
+                    print("[OK] Share via keyboard")
+                    shared = True
+                except:
+                    print("[ERROR] Share failed")
+        
+        if not shared:
+            print("[ERROR] Could not click Share")
+            return False
         
         # Wait for post
         print("[INFO] Waiting for post...")
