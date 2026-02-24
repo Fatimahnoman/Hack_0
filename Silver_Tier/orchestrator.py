@@ -408,43 +408,54 @@ class SilverTierOrchestrator:
     def process_instagram_approved_posts(self):
         """Check Approved/ folder for Instagram posts to publish."""
         try:
-            from watchers.instagram_watcher import InstagramWatcher
+            # Run in separate thread to avoid asyncio conflicts
+            import threading
+            
+            def post_thread():
+                from watchers.instagram_watcher import InstagramWatcher
 
-            approved_path = self.approved_path
-            if not approved_path.exists():
-                return
+                approved_path = self.approved_path
+                if not approved_path.exists():
+                    return
 
-            post_files = list(approved_path.glob("INSTA_POST_REQUEST_*.md"))
-            if not post_files:
-                return
+                post_files = list(approved_path.glob("INSTA_POST_REQUEST_*.md"))
+                if not post_files:
+                    return
 
-            # Start Instagram watcher to post
-            watcher = InstagramWatcher()
-            watcher.start_browser()
+                # Start Instagram watcher to post
+                watcher = InstagramWatcher()
+                
+                try:
+                    watcher.start_browser()
 
-            if watcher.navigate_to_instagram():
-                for filepath in post_files:
-                    try:
-                        content = filepath.read_text(encoding='utf-8')
-                        caption = watcher.extract_caption(content)
-                        image_path = watcher.extract_image_path(content)
+                    if watcher.navigate_to_instagram():
+                        for filepath in post_files:
+                            try:
+                                content = filepath.read_text(encoding='utf-8')
+                                caption = watcher.extract_caption(content)
+                                image_path = watcher.extract_image_path(content)
 
-                        logger.info(f"Posting to Instagram: {filepath.name}")
-                        success = watcher.upload_post(image_path, caption)
+                                logger.info(f"Posting to Instagram: {filepath.name}")
+                                success = watcher.upload_post(image_path, caption)
 
-                        if success:
-                            # Move to Done/
-                            dest = self.done_path / filepath.name
-                            filepath.rename(dest)
-                            logger.info(f"✓ Posted and moved to Done: {filepath.name}")
-                            self.update_dashboard(f"Posted: {filepath.name}")
-                        else:
-                            logger.error(f"✗ Post failed: {filepath.name}")
+                                if success:
+                                    # Move to Done/
+                                    dest = self.done_path / filepath.name
+                                    filepath.rename(dest)
+                                    logger.info(f"✓ Posted and moved to Done: {filepath.name}")
+                                    self.update_dashboard(f"Posted: {filepath.name}")
+                                else:
+                                    logger.error(f"✗ Post failed: {filepath.name}")
 
-                    except Exception as e:
-                        logger.error(f"Error processing {filepath.name}: {e}")
+                            except Exception as e:
+                                logger.error(f"Error processing {filepath.name}: {e}")
+                finally:
+                    watcher.close()
 
-            watcher.close()
+            # Start thread
+            thread = threading.Thread(target=post_thread)
+            thread.start()
+            # Don't wait for completion (non-blocking)
 
         except Exception as e:
             logger.error(f"Error processing Instagram posts: {e}")
