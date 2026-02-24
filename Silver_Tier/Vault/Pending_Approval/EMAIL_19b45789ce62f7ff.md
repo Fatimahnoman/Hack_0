@@ -1,3 +1,10 @@
+---
+**ROUTING NOTE:** This action requires human approval.
+**Reason:** Sensitive action detected (email_response)
+**Moved by:** Process_Needs_Action Skill
+**Time:** 2026-02-24 05:13:12
+---
+
 From: Quotex <noreply@qxbroker.com>
 Subject: Email verification
 Received: Mon, 22 Dec 2025 09:51:30 +0000

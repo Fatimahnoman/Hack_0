@@ -1,3 +1,10 @@
+---
+**ROUTING NOTE:** This action requires human approval.
+**Reason:** Sensitive action detected (instagram_post)
+**Moved by:** Process_Needs_Action Skill
+**Time:** 2026-02-24 05:13:13
+---
+
 From: Instagram <security@mail.instagram.com>
 Subject: charming_girl238, we've made it easy to get back on Instagram
 Received: Fri, 26 Dec 2025 21:47:59 -0800

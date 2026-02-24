@@ -88,15 +88,17 @@ class WhatsAppWatcher:
         self.playwright = sync_playwright().start()
 
         # Launch browser with persistent context using launch_persistent_context
+        # headless=False zaroori hai QR code login ke liye
         self.context = self.playwright.chromium.launch_persistent_context(
             user_data_dir=str(self.session_path),
-            headless=False,  # Keep visible for QR code login
-            viewport={"width": 1920, "height": 1080},
+            headless=False,  # Keep visible for QR code login (required for first time)
+            viewport={"width": 1280, "height": 720},  # Smaller window
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
             args=[
                 "--disable-gpu",
                 "--no-sandbox",
                 "--disable-dev-shm-usage",
+                "--start-minimized",  # Start minimized after first login
             ]
         )
 
@@ -109,7 +111,7 @@ class WhatsAppWatcher:
         else:
             self.page = self.context.new_page()
         
-        logger.info("Browser started successfully")
+        logger.info("Browser started successfully (minimized after login)")
     
     def navigate_to_whatsapp(self) -> bool:
         """Navigate to WhatsApp Web and ensure login."""

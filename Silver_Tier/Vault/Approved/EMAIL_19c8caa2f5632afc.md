@@ -1,3 +1,10 @@
+---
+**ROUTING NOTE:** This action requires human approval.
+**Reason:** Sensitive action detected (email_response)
+**Moved by:** Process_Needs_Action Skill
+**Time:** 2026-02-24 05:13:14
+---
+
 # Gmail Email Alert
 
 **From:** Fatimah Noman <fatimahnoman640@gmail.com>
