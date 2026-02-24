@@ -408,55 +408,42 @@ class SilverTierOrchestrator:
     def process_instagram_approved_posts(self):
         """Check Approved/ folder for Instagram posts to publish."""
         try:
-            # Run in separate thread to avoid asyncio conflicts
-            import threading
+            # Run as subprocess to avoid asyncio conflicts
+            post_files = list(self.approved_path.glob("INSTA_POST_REQUEST_*.md"))
             
-            def post_thread():
-                from watchers.instagram_watcher import InstagramWatcher
-
-                approved_path = self.approved_path
-                if not approved_path.exists():
-                    return
-
-                post_files = list(approved_path.glob("INSTA_POST_REQUEST_*.md"))
-                if not post_files:
-                    return
-
-                # Start Instagram watcher to post
-                watcher = InstagramWatcher()
-                
-                try:
-                    watcher.start_browser()
-
-                    if watcher.navigate_to_instagram():
-                        for filepath in post_files:
-                            try:
-                                content = filepath.read_text(encoding='utf-8')
-                                caption = watcher.extract_caption(content)
-                                image_path = watcher.extract_image_path(content)
-
-                                logger.info(f"Posting to Instagram: {filepath.name}")
-                                success = watcher.upload_post(image_path, caption)
-
-                                if success:
-                                    # Move to Done/
-                                    dest = self.done_path / filepath.name
-                                    filepath.rename(dest)
-                                    logger.info(f"✓ Posted and moved to Done: {filepath.name}")
-                                    self.update_dashboard(f"Posted: {filepath.name}")
-                                else:
-                                    logger.error(f"✗ Post failed: {filepath.name}")
-
-                            except Exception as e:
-                                logger.error(f"Error processing {filepath.name}: {e}")
-                finally:
-                    watcher.close()
-
-            # Start thread
-            thread = threading.Thread(target=post_thread)
-            thread.start()
-            # Don't wait for completion (non-blocking)
-
+            if not post_files:
+                return
+            
+            logger.info(f"Found {len(post_files)} Instagram post(s) to process")
+            
+            # Run auto-post script
+            import subprocess
+            
+            result = subprocess.run(
+                [sys.executable, "skills/instagram_auto_post.py"],
+                cwd=str(self.project_root),
+                capture_output=True,
+                text=True,
+                timeout=300  # 5 minute timeout
+            )
+            
+            # Log output
+            if result.stdout:
+                for line in result.stdout.strip().split('\n'):
+                    logger.info(f"Instagram: {line}")
+            
+            if result.stderr:
+                for line in result.stderr.strip().split('\n'):
+                    logger.warning(f"Instagram: {line}")
+            
+            if result.returncode == 0:
+                logger.info("✓ Instagram auto-post completed")
+                self.update_dashboard("Instagram post(s) published")
+            else:
+                logger.warning(f"Instagram auto-post failed (code {result.returncode})")
+            
+        except subprocess.TimeoutExpired:
+            logger.error("Instagram auto-post timeout (5 min)")
         except Exception as e:
             logger.error(f"Error processing Instagram posts: {e}")
     
