@@ -148,18 +148,53 @@ class InstagramWatcher:
         notifications = []
 
         try:
-            # Go to notifications
-            self.page.goto("https://www.instagram.com/accounts/activity/", wait_until="networkidle")
-            self.page.wait_for_timeout(3000)
+            # Go to notifications page
+            logger.info("Checking Instagram notifications...")
+            self.page.goto("https://www.instagram.com/accounts/activity/", wait_until="domcontentloaded")
+            self.page.wait_for_timeout(5000)
 
-            # Get notification elements
-            notif_elements = self.page.query_selector_all('div[role="listitem"]')
+            # Take screenshot for debugging
+            try:
+                self.page.screenshot(path=str(self.logs_path / "instagram_notifications.png"))
+                logger.info("Screenshot saved to logs folder")
+            except:
+                pass
+
+            # Get notification elements - try multiple selectors
+            notif_selectors = [
+                'div[role="listitem"]',
+                'article',
+                'div[class*="x1lliihq"]',
+                'a[href*="/accounts/activity/"] + div',
+            ]
+
+            notif_elements = []
+            for selector in notif_selectors:
+                try:
+                    elements = self.page.query_selector_all(selector)
+                    if elements:
+                        logger.info(f"Found {len(elements)} notifications with selector: {selector}")
+                        notif_elements = elements
+                        break
+                except:
+                    continue
+
+            if not notif_elements:
+                logger.warning("No notification elements found - Instagram may have changed their UI")
+                # Generate a test post request instead
+                logger.info("Generating daily post request instead...")
+                self.create_daily_post_request()
+                return notifications
 
             for elem in notif_elements[:10]:  # Last 10 notifications
                 try:
                     text = elem.inner_text()
-                    timestamp_elem = elem.query_selector('time')
-                    timestamp = timestamp_elem.get_attribute('datetime') if timestamp_elem else 'Unknown'
+                    
+                    if not text or len(text.strip()) < 5:
+                        continue
+
+                    timestamp_elem = elem.query_selector('time, span[datetime]')
+                    timestamp = timestamp_elem.get_attribute('datetime') if timestamp_elem else datetime.now().strftime("%Y-%m-%d")
 
                     # Create unique ID
                     notif_id = f"{text[:50]}_{timestamp}"
@@ -172,12 +207,23 @@ class InstagramWatcher:
                             'type': self.classify_notification(text)
                         })
                         self.processed_notifications.add(notif_id)
+                        logger.info(f"New notification: {text[:50]}...")
 
-                except:
+                except Exception as e:
+                    logger.debug(f"Error processing notification element: {e}")
                     continue
+
+            if not notifications:
+                logger.info("No new notifications found")
+                # Still generate post request for testing
+                logger.info("Creating post request for testing...")
+                self.create_daily_post_request()
 
         except Exception as e:
             logger.error(f"Error checking notifications: {e}")
+            # Fallback: generate post request
+            logger.info("Creating post request as fallback...")
+            self.create_daily_post_request()
 
         return notifications
 
