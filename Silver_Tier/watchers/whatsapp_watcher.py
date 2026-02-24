@@ -93,12 +93,13 @@ class WhatsAppWatcher:
             user_data_dir=str(self.session_path),
             headless=False,  # Keep visible for QR code login (required for first time)
             viewport={"width": 1280, "height": 720},  # Smaller window
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             args=[
                 "--disable-gpu",
                 "--no-sandbox",
                 "--disable-dev-shm-usage",
-                "--start-minimized",  # Start minimized after first login
+                "--disable-features=TranslateUI",
+                "--disable-features=ChromeWhatsNewUI",
             ]
         )
 
@@ -116,30 +117,56 @@ class WhatsAppWatcher:
     def navigate_to_whatsapp(self) -> bool:
         """Navigate to WhatsApp Web and ensure login."""
         logger.info("Navigating to WhatsApp Web...")
-        
+
         try:
-            self.page.goto("https://web.whatsapp.com/", wait_until="networkidle")
-            self.page.wait_for_timeout(3000)
+            # Navigate to WhatsApp Web
+            self.page.goto("https://web.whatsapp.com/", wait_until="domcontentloaded", timeout=60000)
             
+            # Wait for page to fully load
+            self.page.wait_for_timeout(5000)
+            
+            # Take screenshot for debugging
+            try:
+                self.page.screenshot(path=str(self.session_path / "debug_whatsapp.png"))
+                logger.info("Debug screenshot saved to session folder")
+            except:
+                pass
+
             # Check if already logged in
             if self.is_logged_in():
                 logger.info("✓ Already logged in to WhatsApp")
                 return True
-            
+
+            # Wait for QR code to appear
+            logger.info("Waiting for QR code to load...")
+            try:
+                # Wait for QR code element
+                self.page.wait_for_selector('[data-testid="qr-code"]', timeout=10000)
+                logger.info("QR code loaded successfully!")
+            except:
+                logger.info("QR code element not found, but continuing...")
+
             # Wait for QR code login
-            logger.info("Waiting for QR code login (60 seconds max)...")
-            logger.info("Scan QR code with WhatsApp on your phone")
-            
+            logger.info("Waiting for QR code login (120 seconds max)...")
+            logger.info("Scan QR code with WhatsApp on your phone:")
+            logger.info("1. Open WhatsApp on phone")
+            logger.info("2. Settings > Linked Devices")
+            logger.info("3. Tap 'Link a Device'")
+            logger.info("4. Scan the QR code in browser")
+
             try:
                 # Wait for main chat pane (logged in indicator)
-                self.page.wait_for_selector('div[role="main"]', timeout=60000)
+                self.page.wait_for_selector('div[role="main"]', timeout=120000)
                 logger.info("✓ WhatsApp login successful!")
+                
+                # Save session
+                self.page.wait_for_timeout(3000)
                 return True
             except Exception as e:
                 logger.warning(f"QR login timeout: {e}")
                 logger.warning("You can manually login in the browser window")
                 return False
-                
+
         except Exception as e:
             logger.error(f"Navigation error: {e}")
             return False
