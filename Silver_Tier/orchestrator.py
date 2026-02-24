@@ -420,7 +420,7 @@ class SilverTierOrchestrator:
             import subprocess
             
             result = subprocess.run(
-                [sys.executable, "skills/instagram_auto_post.py"],
+                [sys.executable, "skills/insta_post_simple.py"],
                 cwd=str(self.project_root),
                 capture_output=True,
                 text=True,
