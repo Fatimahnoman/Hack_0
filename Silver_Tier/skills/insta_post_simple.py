@@ -83,11 +83,35 @@ def post_to_instagram(image_path, caption):
             print("[WARN] Not logged in - waiting 60s...")
             page.wait_for_timeout(60000)
         
-        # Click Create
+        # Click Create - try multiple selectors
         print("[INFO] Clicking Create...")
-        page.click('[aria-label="Create"]', timeout=5000)
-        page.wait_for_timeout(3000)
-        print("[OK] Create clicked")
+        create_clicked = False
+        
+        create_selectors = [
+            'svg[aria-label="New post"]',
+            '[aria-label="Create"]',
+            'div[role="button"]:has-text("Create")',
+            'button:has-text("New")',
+            'a[href="/create/"]',
+        ]
+        
+        for selector in create_selectors:
+            try:
+                page.click(selector, timeout=3000)
+                page.wait_for_timeout(2000)
+                print(f"[OK] Create clicked ({selector})")
+                create_clicked = True
+                break
+            except:
+                continue
+        
+        if not create_clicked:
+            # Try keyboard navigation
+            print("[INFO] Trying keyboard navigation...")
+            page.keyboard.press('Tab')
+            page.keyboard.press('Tab')
+            page.keyboard.press('Enter')
+            page.wait_for_timeout(2000)
         
         # Upload image
         if image_path:
