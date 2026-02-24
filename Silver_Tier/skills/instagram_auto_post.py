@@ -80,7 +80,7 @@ def main():
             except Exception as e:
                 print(f"[WARN] Could not move file: {e}")
         else:
-            print(f"[ERROR] ✗ Post failed")
+            print("[ERROR] X Post failed")
     
     print("\n" + "=" * 60)
     print(f"Result: {success_count}/{len(post_files)} posts successful")
@@ -190,7 +190,7 @@ try:
         except:
             # Method 3: Evaluate
             try:
-                page.evaluate('document.querySelector(\'button:contains("Share")\').click()')
+                page.evaluate("document.querySelector('button:contains(\"Share\")').click()")
                 shared = True
                 print("[OK] Share via JS (method 3)")
             except:
