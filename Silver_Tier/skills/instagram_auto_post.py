@@ -181,20 +181,14 @@ try:
         shared = True
         print("[OK] Share clicked (method 1)")
     except:
-        # Method 2: Keyboard
+        # Method 2: Keyboard Enter
         try:
             page.keyboard.press('Enter')
             page.wait_for_timeout(2000)
             shared = True
             print("[OK] Share via Enter (method 2)")
-        except:
-            # Method 3: Evaluate
-            try:
-                page.evaluate("document.querySelector('button:contains(\"Share\")').click()")
-                shared = True
-                print("[OK] Share via JS (method 3)")
-            except:
-                print("[ERROR] Share failed")
+        except Exception as e:
+            print(f"[ERROR] Share failed: {e}")
     
     if shared:
         print("[OK] Waiting for post...")
