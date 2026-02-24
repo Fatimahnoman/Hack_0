@@ -274,44 +274,45 @@ class SilverTierOrchestrator:
         self.update_dashboard("All watchers started")
     
     def generate_daily_instagram_post(self):
-        """Scheduled task: Generate Instagram post every day at 9:00 AM."""
+        """Scheduled task: Generate Instagram post request every day at 9:00 AM."""
         logger.info("=" * 50)
-        logger.info("Running scheduled task: Generate Instagram Post")
+        logger.info("Running scheduled task: Generate Instagram Post Request")
         logger.info("=" * 50)
-        
+
         try:
-            from skills.auto_insta_post import Generate_Instagram_Post
-            
-            result = Generate_Instagram_Post()
-            
+            from watchers.instagram_watcher import InstagramWatcher
+
+            watcher = InstagramWatcher()
+            result = watcher.create_daily_post_request()
+
             if result:
-                logger.info(f"✓ Instagram post generated: {result}")
+                logger.info(f"✓ Instagram post request generated: {result}")
                 self.status.last_instagram_post = datetime.now()
-                self.update_dashboard("Daily Instagram post generated")
+                self.update_dashboard("Daily Instagram post request generated")
             else:
-                logger.warning("Failed to generate Instagram post")
-                
+                logger.warning("Failed to generate Instagram post request")
+
         except Exception as e:
             logger.error(f"Error generating Instagram post: {e}")
     
     def check_needs_action_loop(self):
         """Scheduled task: Check Needs_Action every 30 minutes."""
         logger.info("Running scheduled task: Check Needs_Action")
-        
+
         try:
             from skills.process_needs_action import ProcessNeedsAction
-            
+
             skill = ProcessNeedsAction()
-            
+
             # Check for new files
             if self.needs_action_path.exists():
                 files = list(self.needs_action_path.glob("*.md"))
-                
+
                 for filepath in files:
-                    # Skip INSTA_POST_REQUEST
-                    if filepath.name == "INSTA_POST_REQUEST.md":
+                    # Skip INSTA_POST_REQUEST files (handled by Instagram watcher)
+                    if filepath.name.startswith("INSTA_POST_REQUEST"):
                         continue
-                    
+
                     logger.info(f"Processing: {filepath.name}")
                     skill.process_file(filepath)
             
@@ -336,10 +337,10 @@ class SilverTierOrchestrator:
             self.generate_daily_instagram_post,
             CronTrigger(hour=9, minute=0),  # 9:00 AM UTC
             id='daily_instagram_post',
-            name='Generate Daily Instagram Post',
+            name='Generate Daily Instagram Post Request',
             replace_existing=True
         )
-        logger.info("✓ Scheduled: Daily Instagram Post at 09:00 AM UTC")
+        logger.info("✓ Scheduled: Daily Instagram Post Request at 09:00 AM UTC")
 
         # Check Needs_Action every 30 minutes
         self.scheduler.add_job(
@@ -375,25 +376,72 @@ class SilverTierOrchestrator:
         """Process workflow: move files between stages."""
         try:
             from workflow_manager import WorkflowManager
-            
+
             manager = WorkflowManager()
-            
+
             # Process Needs_Action → Pending_Approval
             moved = manager.process_needs_action()
             if moved > 0:
                 logger.info(f"✓ Moved {moved} file(s) to Pending_Approval")
                 self.update_dashboard(f"Moved {moved} file(s) to Pending_Approval")
-            
+
             # Process Pending_Approval → Approved/Done
             processed = manager.process_pending_approval()
             if processed > 0:
                 logger.info(f"✓ Processed {processed} file(s) with markers")
                 self.update_dashboard(f"Processed {processed} file(s)")
-                
+
+            # Check Instagram approved posts and auto-post
+            self.process_instagram_approved_posts()
+
         except ImportError:
             logger.error("Workflow Manager not found")
         except Exception as e:
             logger.error(f"Error in Workflow Manager: {e}")
+
+    def process_instagram_approved_posts(self):
+        """Check Approved/ folder for Instagram posts to publish."""
+        try:
+            from watchers.instagram_watcher import InstagramWatcher
+
+            approved_path = self.approved_path
+            if not approved_path.exists():
+                return
+
+            post_files = list(approved_path.glob("INSTA_POST_REQUEST_*.md"))
+            if not post_files:
+                return
+
+            # Start Instagram watcher to post
+            watcher = InstagramWatcher()
+            watcher.start_browser()
+
+            if watcher.navigate_to_instagram():
+                for filepath in post_files:
+                    try:
+                        content = filepath.read_text(encoding='utf-8')
+                        caption = watcher.extract_caption(content)
+                        image_path = watcher.extract_image_path(content)
+
+                        logger.info(f"Posting to Instagram: {filepath.name}")
+                        success = watcher.upload_post(image_path, caption)
+
+                        if success:
+                            # Move to Done/
+                            dest = self.done_path / filepath.name
+                            filepath.rename(dest)
+                            logger.info(f"✓ Posted and moved to Done: {filepath.name}")
+                            self.update_dashboard(f"Posted: {filepath.name}")
+                        else:
+                            logger.error(f"✗ Post failed: {filepath.name}")
+
+                    except Exception as e:
+                        logger.error(f"Error processing {filepath.name}: {e}")
+
+            watcher.close()
+
+        except Exception as e:
+            logger.error(f"Error processing Instagram posts: {e}")
     
     def run(self):
         """Main orchestrator run method."""
