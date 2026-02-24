@@ -82,7 +82,7 @@ class WatcherStatus:
 
 class SilverTierOrchestrator:
     """Main orchestrator for Silver Tier AI Employee."""
-    
+
     def __init__(self):
         self.project_root = PROJECT_ROOT
         self.vault_path = VAULT_PATH
@@ -92,10 +92,16 @@ class SilverTierOrchestrator:
         self.watchers_dir = WATCHERS_DIR
         self.skills_dir = SKILLS_DIR
         
+        # Workflow paths
+        self.pending_approval_path = VAULT_PATH / "Pending_Approval"
+        self.approved_path = VAULT_PATH / "Approved"
+        self.done_path = VAULT_PATH / "Done"
+
         # Ensure directories exist
-        for path in [self.vault_path, self.needs_action_path, self.logs_path]:
+        for path in [self.vault_path, self.needs_action_path, self.logs_path,
+                     self.pending_approval_path, self.approved_path, self.done_path]:
             path.mkdir(parents=True, exist_ok=True)
-        
+
         # Watcher status
         self.status = WatcherStatus()
         
