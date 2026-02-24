@@ -190,9 +190,7 @@ try:
         except:
             # Method 3: Evaluate
             try:
-                page.evaluate('''
-                    document.querySelector('button:contains("Share")').click()
-                ''')
+                page.evaluate('document.querySelector(\'button:contains("Share")\').click()')
                 shared = True
                 print("[OK] Share via JS (method 3)")
             except:
