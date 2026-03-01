@@ -496,6 +496,12 @@ class SilverTierOrchestrator:
                 logger.info(f"✓ Processed {processed} file(s) with markers")
                 self.update_dashboard(f"Processed {processed} file(s)")
 
+            # Process Approved → Done (if [DONE] marker)
+            done_count = manager.process_approved()
+            if done_count > 0:
+                logger.info(f"✓ Moved {done_count} file(s) to Done")
+                self.update_dashboard(f"Moved {done_count} file(s) to Done")
+
             # Check Instagram approved posts and auto-post
             self.process_instagram_approved_posts()
 
