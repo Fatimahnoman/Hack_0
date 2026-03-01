@@ -241,43 +241,142 @@ class SilverTierOrchestrator:
             logger.error(f"Instagram watcher error: {e}")
             self.status.instagram_active = False
     
-    def start_all_watchers(self):
-        """Start all watchers in background threads."""
+    def start_all_watchers_sequential(self):
+        """
+        Start all watchers in SEQUENTIAL order:
+        1. WhatsApp - Check important messages first
+        2. Gmail - Check emails second
+        3. Instagram - Post to social media last
+        
+        Each watcher completes before the next one starts.
+        """
         logger.info("=" * 60)
-        logger.info("Starting all watchers...")
+        logger.info("Starting watchers in SEQUENTIAL order...")
+        logger.info("=" * 60)
+        logger.info("Order: WhatsApp → Gmail → Instagram")
         logger.info("=" * 60)
         
-        # Gmail Watcher
-        gmail_thread = threading.Thread(
-            target=self.run_gmail_watcher,
-            name="GmailWatcher",
-            daemon=True
-        )
-        gmail_thread.start()
-        self.watcher_threads['gmail'] = gmail_thread
-        time.sleep(2)  # Stagger startup
+        # ========== STEP 1: WhatsApp Watcher (Priority 1) ==========
+        logger.info("\n[STEP 1/3] Starting WhatsApp Watcher...")
+        logger.info("Purpose: Check for important messages")
+        logger.info("-" * 60)
         
-        # WhatsApp Watcher
-        whatsapp_thread = threading.Thread(
-            target=self.run_whatsapp_watcher,
-            name="WhatsAppWatcher",
-            daemon=True
-        )
-        whatsapp_thread.start()
-        self.watcher_threads['whatsapp'] = whatsapp_thread
-        time.sleep(2)  # Stagger startup
+        try:
+            from watchers.whatsapp_watcher import main as whatsapp_main
+            self.status.whatsapp_active = True
+            self.update_dashboard("WhatsApp watcher running...")
+            
+            # Run WhatsApp watcher (it will run its loop)
+            whatsapp_thread = threading.Thread(
+                target=whatsapp_main,
+                name="WhatsAppWatcher",
+                daemon=True
+            )
+            whatsapp_thread.start()
+            self.watcher_threads['whatsapp'] = whatsapp_thread
+            
+            # Wait for WhatsApp to initialize (30 seconds for QR login)
+            logger.info("Waiting 30 seconds for WhatsApp to initialize...")
+            time.sleep(30)
+            
+            if self.status.whatsapp_active:
+                logger.info("✓ WhatsApp Watcher started successfully")
+            else:
+                logger.warning("⚠ WhatsApp Watcher failed to start")
+                
+        except ImportError:
+            logger.warning("WhatsApp watcher not available")
+            self.status.whatsapp_active = False
+        except Exception as e:
+            logger.error(f"WhatsApp watcher error: {e}")
+            self.status.whatsapp_active = False
         
-        # Instagram Watcher
-        instagram_thread = threading.Thread(
-            target=self.run_instagram_watcher,
-            name="InstagramWatcher",
-            daemon=True
-        )
-        instagram_thread.start()
-        self.watcher_threads['instagram'] = instagram_thread
+        self.update_dashboard("WhatsApp watcher active")
         
-        logger.info("All watchers started")
-        self.update_dashboard("All watchers started")
+        # ========== STEP 2: Gmail Watcher (Priority 2) ==========
+        logger.info("\n[STEP 2/3] Starting Gmail Watcher...")
+        logger.info("Purpose: Check for important emails")
+        logger.info("-" * 60)
+        
+        try:
+            from watchers.gmail_watcher import main as gmail_main
+            self.status.gmail_active = True
+            self.update_dashboard("Gmail watcher running...")
+            
+            # Run Gmail watcher (it will run its loop)
+            gmail_thread = threading.Thread(
+                target=gmail_main,
+                name="GmailWatcher",
+                daemon=True
+            )
+            gmail_thread.start()
+            self.watcher_threads['gmail'] = gmail_thread
+            
+            # Wait for Gmail to initialize
+            logger.info("Waiting 10 seconds for Gmail to initialize...")
+            time.sleep(10)
+            
+            if self.status.gmail_active:
+                logger.info("✓ Gmail Watcher started successfully")
+            else:
+                logger.warning("⚠ Gmail Watcher failed to start")
+                
+        except ImportError:
+            logger.warning("Gmail watcher not available")
+            self.status.gmail_active = False
+        except Exception as e:
+            logger.error(f"Gmail watcher error: {e}")
+            self.status.gmail_active = False
+        
+        self.update_dashboard("Gmail watcher active")
+        
+        # ========== STEP 3: Instagram Watcher (Priority 3) ==========
+        logger.info("\n[STEP 3/3] Starting Instagram Watcher...")
+        logger.info("Purpose: Auto-post to Instagram")
+        logger.info("-" * 60)
+        
+        try:
+            from watchers.instagram_watcher import main as instagram_main
+            self.status.instagram_active = True
+            self.update_dashboard("Instagram watcher running...")
+            
+            # Run Instagram watcher (it will run its loop)
+            instagram_thread = threading.Thread(
+                target=instagram_main,
+                name="InstagramWatcher",
+                daemon=True
+            )
+            instagram_thread.start()
+            self.watcher_threads['instagram'] = instagram_thread
+            
+            # Wait for Instagram to initialize
+            logger.info("Waiting 10 seconds for Instagram to initialize...")
+            time.sleep(10)
+            
+            if self.status.instagram_active:
+                logger.info("✓ Instagram Watcher started successfully")
+            else:
+                logger.warning("⚠ Instagram Watcher failed to start")
+                
+        except ImportError:
+            logger.warning("Instagram watcher not available")
+            self.status.instagram_active = False
+        except Exception as e:
+            logger.error(f"Instagram watcher error: {e}")
+            self.status.instagram_active = False
+        
+        self.update_dashboard("Instagram watcher active")
+        
+        # ========== All Watchers Started ==========
+        logger.info("\n" + "=" * 60)
+        logger.info("All watchers started in sequence!")
+        logger.info("=" * 60)
+        logger.info(f"WhatsApp: {'✅' if self.status.whatsapp_active else '❌'}")
+        logger.info(f"Gmail: {'✅' if self.status.gmail_active else '❌'}")
+        logger.info(f"Instagram: {'✅' if self.status.instagram_active else '❌'}")
+        logger.info("=" * 60)
+        
+        self.update_dashboard("All watchers started sequentially")
     
     def generate_daily_instagram_post(self):
         """Scheduled task: Generate Instagram post request every day at 9:00 AM."""
@@ -410,38 +509,38 @@ class SilverTierOrchestrator:
         try:
             # Run as subprocess to avoid asyncio conflicts
             post_files = list(self.approved_path.glob("INSTA_POST_REQUEST_*.md"))
-            
+
             if not post_files:
                 return
-            
+
             logger.info(f"Found {len(post_files)} Instagram post(s) to process")
-            
-            # Run auto-post script
+
+            # Run auto-post script (using the new instagram_watcher.py)
             import subprocess
-            
+
             result = subprocess.run(
-                [sys.executable, "skills/insta_post_simple.py"],
+                [sys.executable, "instagram_watcher.py"],
                 cwd=str(self.project_root),
                 capture_output=True,
                 text=True,
                 timeout=300  # 5 minute timeout
             )
-            
+
             # Log output
             if result.stdout:
                 for line in result.stdout.strip().split('\n'):
                     logger.info(f"Instagram: {line}")
-            
+
             if result.stderr:
                 for line in result.stderr.strip().split('\n'):
                     logger.warning(f"Instagram: {line}")
-            
+
             if result.returncode == 0:
                 logger.info("✓ Instagram auto-post completed")
                 self.update_dashboard("Instagram post(s) published")
             else:
                 logger.warning(f"Instagram auto-post failed (code {result.returncode})")
-            
+
         except subprocess.TimeoutExpired:
             logger.error("Instagram auto-post timeout (5 min)")
         except Exception as e:
@@ -455,27 +554,33 @@ class SilverTierOrchestrator:
         logger.info(f"Project Root: {self.project_root}")
         logger.info(f"Vault Path: {self.vault_path}")
         logger.info("=" * 60)
-        
+        logger.info("")
+        logger.info("Watcher Start Order:")
+        logger.info("  1. WhatsApp (Priority 1 - Important Messages)")
+        logger.info("  2. Gmail (Priority 2 - Emails)")
+        logger.info("  3. Instagram (Priority 3 - Social Media Posts)")
+        logger.info("=" * 60)
+
         self.running = True
-        
-        # Start all watchers
-        self.start_all_watchers()
-        
+
+        # Start all watchers in SEQUENTIAL order
+        self.start_all_watchers_sequential()
+
         # Setup scheduler
         if APSCHEDULER_AVAILABLE:
             self.setup_scheduler()
-            
+
             # Run initial checks
             logger.info("Running initial checks...")
             self.check_needs_action_loop()
             self.update_dashboard("Orchestrator started")
-            
+
             # Start scheduler
             logger.info("=" * 60)
             logger.info("Starting APScheduler...")
             logger.info("Press Ctrl+C to stop")
             logger.info("=" * 60)
-            
+
             try:
                 self.scheduler.start()
             except KeyboardInterrupt:
@@ -487,19 +592,19 @@ class SilverTierOrchestrator:
             logger.info("Running in fallback mode (no APScheduler)")
             logger.info("Press Ctrl+C to stop")
             logger.info("=" * 60)
-            
+
             last_check_time = time.time()
             CHECK_INTERVAL = 1800  # 30 minutes
-            
+
             while self.running:
                 try:
                     time.sleep(60)
-                    
+
                     # Check Needs_Action every 30 minutes
                     if time.time() - last_check_time > CHECK_INTERVAL:
                         self.check_needs_action_loop()
                         last_check_time = time.time()
-                    
+
                 except KeyboardInterrupt:
                     logger.info("\nOrchestrator stopped by user")
                     self.running = False
