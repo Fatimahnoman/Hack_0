@@ -70,8 +70,9 @@ class WorkflowManager:
         """Check if file has [APPROVED] marker and move to Approved."""
         try:
             content = filepath.read_text(encoding='utf-8')
-            
-            if "[APPROVED]" in content or "## Status\n\nApproved" in content:
+
+            # Only move if [APPROVED] marker is present
+            if "[APPROVED]" in content:
                 dest = self.approved_path / filepath.name
                 shutil.move(str(filepath), str(dest))
                 if filepath.name in self.file_timestamps:
@@ -86,8 +87,9 @@ class WorkflowManager:
         """Check if file has [DONE] marker and move to Done."""
         try:
             content = filepath.read_text(encoding='utf-8')
-            
-            if "[DONE]" in content or "## Status\n\nDone" in content:
+
+            # Only move if [DONE] marker is present
+            if "[DONE]" in content:
                 dest = self.done_path / filepath.name
                 shutil.move(str(filepath), str(dest))
                 if filepath.name in self.file_timestamps:
@@ -122,6 +124,22 @@ class WorkflowManager:
 
         return moved_count
 
+    def process_approved(self):
+        """Check Approved files for [DONE] marker and move to Done."""
+        if not self.approved_path.exists():
+            return 0
+
+        processed = 0
+        for filepath in self.approved_path.glob("*.md"):
+            # Skip Instagram post requests (already in Done after posting)
+            if filepath.name.startswith("INSTA_POST_REQUEST"):
+                continue
+
+            if self.check_and_move_done(filepath):
+                processed += 1
+
+        return processed
+
     def process_pending_approval(self):
         """Check Pending_Approval files for markers."""
         if not self.pending_approval_path.exists():
@@ -129,12 +147,37 @@ class WorkflowManager:
 
         processed = 0
         for filepath in self.pending_approval_path.glob("*.md"):
+            # Skip Instagram post requests (handled by instagram_watcher)
+            if filepath.name.startswith("INSTA_POST_REQUEST"):
+                continue
+
             if self.check_and_move_approved(filepath):
                 processed += 1
             elif self.check_and_move_done(filepath):
                 processed += 1
 
         return processed
+
+    def process_instagram_posts(self):
+        """Move Instagram posts from Pending_Approval to Approved if they have [APPROVED] marker."""
+        if not self.pending_approval_path.exists():
+            return 0
+
+        moved = 0
+        for filepath in self.pending_approval_path.glob("INSTA_POST_REQUEST_*.md"):
+            try:
+                content = filepath.read_text(encoding='utf-8')
+                
+                # Check if file has [APPROVED] marker
+                if "[APPROVED]" in content:
+                    dest = self.approved_path / filepath.name
+                    shutil.move(str(filepath), str(dest))
+                    logger.info(f"✓ Instagram post approved: {filepath.name}")
+                    moved += 1
+            except Exception as e:
+                logger.error(f"Error processing Instagram post: {e}")
+
+        return moved
 
     def run(self):
         """Main workflow loop."""
@@ -158,10 +201,20 @@ class WorkflowManager:
                 if moved > 0:
                     logger.info(f"Moved {moved} file(s) to Pending_Approval")
 
-                # Process Pending_Approval → Approved/Done
+                # Process Pending_Approval → Approved (for non-Instagram files with [APPROVED])
                 processed = self.process_pending_approval()
                 if processed > 0:
                     logger.info(f"Processed {processed} file(s) with markers")
+
+                # Process Instagram posts: Pending_Approval → Approved (if [APPROVED])
+                insta_moved = self.process_instagram_posts()
+                if insta_moved > 0:
+                    logger.info(f"Moved {insta_moved} Instagram post(s) to Approved")
+
+                # Process Approved → Done (if [DONE] marker)
+                done_count = self.process_approved()
+                if done_count > 0:
+                    logger.info(f"Moved {done_count} file(s) to Done")
 
                 logger.info(f"Next check in {CHECK_INTERVAL} seconds...")
                 time.sleep(CHECK_INTERVAL)
