@@ -4,21 +4,21 @@ __pycache__/
 *$py.class
 *.so
 .Python
-venv/
 env/
-ENV/
+venv/
+*.egg-info/
 
-# Environment & Secrets
+# Playwright
 .env
-credentials.json
-token.json
 
-# Sessions (contains login data)
+# Instagram Session (sensitive data)
+instagram_session/
 sessions/
 
-# Logs
+# Debug files
+debug_screenshots/
 *.log
-Logs/
+Vault/Logs/
 
 # IDE
 .vscode/
@@ -29,3 +29,7 @@ Logs/
 # OS
 .DS_Store
 Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
