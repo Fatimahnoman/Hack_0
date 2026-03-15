@@ -1,0 +1,13 @@
+node_modules/
+__pycache__/
+*.pyc
+.env
+credentials.json
+token.json
+session/
+auth/
+debug_li/
+debug_linkedin/
+*.png
+Logs/
+.claude/
