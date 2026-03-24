@@ -1,0 +1,23 @@
+{
+  "name": "email-mcp-server",
+  "version": "1.0.0",
+  "description": "Email MCP Server for Silver Tier - Draft and send emails via Gmail API with HITL approval",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Email MCP Server - Run with: node index.js\""
+  },
+  "keywords": [
+    "mcp",
+    "email",
+    "gmail",
+    "silver-tier"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@google-cloud/local-auth": "^3.0.0",
+    "googleapis": "^140.0.0"
+  }
+}
