@@ -4,3 +4,1370 @@
 - **Pending Messages:** 0
 - **Active Tasks:** None
 - **LinkedIn Posts Pending:** 19
+
+## Recent Activity
+- 2026-03-31 21:19:45: Processed: WHATSAPP_196_unread_messages__20260331_211944.md ✓
+- 2026-03-31 21:19:15: Processed: WHATSAPP_195_unread_messages__20260331_211913.md ✓
+- 2026-03-31 21:18:14: Processed: WHATSAPP_194_unread_messages__20260331_211813.md ✓
+- 2026-03-31 21:16:43: Processed: WHATSAPP_Fatimah_Noman_9_16_P_20260331_211642.md ✓
+- 2026-03-31 21:13:10: Processed: WHATSAPP_45_unread_messages_R_20260331_211308.md ✓
+- 2026-03-31 21:06:04: Processed: WHATSAPP_1_unread_message_Fat_20260331_210603.md ✓
+- 2026-03-31 21:05:34: Processed: WHATSAPP_Fatimah_Noman_9_05_P_20260331_210533.md ✓
+- 2026-03-31 21:04:34: Processed: WHATSAPP_23_unread_messages_H_20260331_210432.md ✓
+- 2026-03-31 20:59:58: Processed: WHATSAPP_GIAIC_02_AI_Spec_Dri_20260331_205956.md ✓
+- 2026-03-31 20:59:28: Processed: WHATSAPP_GIAIC_02_AI_Spec_Dri_20260331_205926.md ✓
+- 2026-03-31 20:55:56: Processed: WHATSAPP_Fatimah_Noman_8_55_P_20260331_205554.md ✓
+- 2026-03-31 20:45:19: Processed: WHATSAPP_Recovery_Group_8_44__20260331_204518.md ✓
+- 2026-03-31 20:43:19: Processed: WHATSAPP_44_unread_messages_R_20260331_204317.md ✓
+- 2026-03-31 20:37:44: Processed: WHATSAPP_Hisabkitab_Software__20260331_203742.md ✓
+- 2026-03-31 20:37:43: Processed: WHATSAPP_Recovery_Group_8_31__20260331_203742.md ✓
+- 2026-03-31 20:37:23: Processed: WHATSAPP_Gym_Payment_6_13_PM__20260331_203711.md ✓
+- 2026-03-31 20:37:22: Processed: WHATSAPP_1_326_unread_message_20260331_203711.md ✓
+- 2026-03-31 20:37:21: Processed: WHATSAPP_RIDERZ_SMCHS_PAYMENT_20260331_203711.md ✓
+- 2026-03-31 20:37:19: Processed: WHATSAPP_617_unread_messages__20260331_203711.md ✓
+- 2026-03-31 20:37:18: Processed: WHATSAPP_243_unread_messages__20260331_203711.md ✓
+- 2026-03-31 20:37:17: Processed: WHATSAPP_3_unread_messages_Hi_20260331_203711.md ✓
+- 2026-03-31 20:37:16: Processed: WHATSAPP_43_unread_messages_R_20260331_203711.md ✓
+- 2026-03-31 20:37:14: Processed: WHATSAPP_1_unread_message_Rec_20260331_203711.md ✓
+- 2026-03-31 20:18:56: Processed: WHATSAPP_Hisabkitab_Software__20260331_201855.md ✓
+- 2026-03-31 20:18:56: Processed: WHATSAPP_Hisabkitab_Software__20260331_201855.md ✓
+- 2026-03-31 20:18:26: Processed: WHATSAPP_Hisabkitab_Software__20260331_201824.md ✓
+- 2026-03-31 20:17:56: Processed: WHATSAPP_Hisabkitab_Software__20260331_201754.md ✓
+- 2026-03-31 20:17:55: Processed: WHATSAPP_Hisabkitab_Software__20260331_201754.md ✓
+- 2026-03-31 20:17:25: Processed: WHATSAPP_1_unread_message_His_20260331_201724.md ✓
+- 2026-03-31 20:16:25: Processed: WHATSAPP_Hisabkitab_Software__20260331_201623.md ✓
+- 2026-03-31 20:14:54: Processed: WHATSAPP_Hisabkitab_Software__20260331_201453.md ✓
+- 2026-03-31 20:13:53: Processed: WHATSAPP_Hisabkitab_Software__20260331_201352.md ✓
+- 2026-03-31 20:13:53: Processed: WHATSAPP_Hisabkitab_Software__20260331_201352.md ✓
+- 2026-03-31 20:13:23: Processed: WHATSAPP_Hisabkitab_Software__20260331_201322.md ✓
+- 2026-03-31 20:10:15: Processed: WHATSAPP_Recovery_Group_8_09__20260331_200949.md ✓
+- 2026-03-31 20:09:51: Processed: WHATSAPP_Recovery_Group_8_09__20260331_200949.md ✓
+- 2026-03-31 20:07:50: Processed: WHATSAPP_41_unread_messages_R_20260331_200748.md ✓
+- 2026-03-31 20:07:13: Processed: WHATSAPP_RIDERZ_SMCHS_PAYMENT_20260331_200011.md ✓
+- 2026-03-31 20:07:12: Processed: WHATSAPP_Recovery_Group_7_08__20260331_200011.md ✓
+- 2026-03-31 20:07:12: Processed: WHATSAPP_Nazim_6_40_PM_I_d_12_20260331_200012.md ✓
+- 2026-03-31 20:07:11: Processed: WHATSAPP_Hisabkitab_Software__20260331_200011.md ✓
+- 2026-03-31 20:07:11: Processed: WHATSAPP_Gym_Payment_6_13_PM__20260331_200012.md ✓
+- 2026-03-31 20:07:10: Processed: WHATSAPP_GIAIC_02_AI_Spec_Dri_20260331_200012.md ✓
+- 2026-03-31 20:06:22: Processed: WHATSAPP_617_unread_messages__20260331_200011.md ✓
+- 2026-03-31 20:05:59: Processed: WHATSAPP_40_unread_messages_R_20260331_200012.md ✓
+- 2026-03-31 20:05:37: Processed: WHATSAPP_Nazim_6_40_PM_I_d_12_20260331_195347.md ✓
+- 2026-03-31 20:05:37: Processed: WHATSAPP_Gym_Payment_6_13_PM__20260331_195348.md ✓
+- 2026-03-31 20:05:36: Processed: WHATSAPP_GIAIC_02_AI_Spec_Dri_20260331_195348.md ✓
+- 2026-03-31 20:05:36: Processed: WHATSAPP_40_unread_messages_R_20260331_195346.md ✓
+- 2026-03-31 20:05:36: Processed: WHATSAPP_40_unread_messages_R_20260331_195346.md ✓
+- 2026-03-31 20:05:14: Processed: WHATSAPP_243_unread_messages__20260331_200011.md ✓
+- 2026-03-31 20:04:18: Processed: WHATSAPP_1_326_unread_message_20260331_200012.md ✓
+- 2026-03-31 20:03:27: Processed: WHATSAPP_243_unread_messages__20260331_195521.md ✓
+- 2026-03-31 20:01:57: Processed: WHATSAPP_242_unread_messages__20260331_195347.md ✓
+- 2026-03-31 20:00:17: Processed: WHATSAPP_1_326_unread_message_20260331_195347.md ✓
+- 2026-03-31 19:58:30: Processed: WHATSAPP_Recovery_Group_7_08__20260331_195346.md ✓
+- 2026-03-31 19:57:13: Processed: WHATSAPP_Hisabkitab_Software__20260331_195345.md ✓
+- 2026-03-31 19:57:02: Processed: WHATSAPP_RIDERZ_SMCHS_PAYMENT_20260331_195345.md ✓
+- 2026-03-31 19:54:33: Processed: WHATSAPP_617_unread_messages__20260331_195345.md ✓
+- 2026-03-31 04:47:05: Processed: WHATSAPP_5_unread_messages_Hi_20260331_044658.md ✓
+- 2026-03-31 04:47:04: Processed: WHATSAPP_5_unread_messages_RI_20260331_044658.md ✓
+- 2026-03-31 04:47:03: Processed: WHATSAPP_Dr_Ibrahim_Mandokhai_20260331_044657.md ✓
+- 2026-03-31 04:47:01: Processed: WHATSAPP_103_unread_messages__20260331_044657.md ✓
+- 2026-03-31 04:47:00: Processed: WHATSAPP_Recovery_Group_12_07_20260331_044657.md ✓
+- 2026-03-31 04:46:59: Processed: WHATSAPP_34_unread_messages_R_20260331_044656.md ✓
+- 2026-03-31 04:46:57: Processed: WHATSAPP_612_unread_messages__20260331_044656.md ✓
+- 2026-03-31 04:46:56: Processed: WHATSAPP_232_unread_messages__20260331_044654.md ✓
+- 2026-03-31 04:46:29: Processed: TWITTER_TWITTER_test.md_20260331_044626.md ✓
+- 2026-03-31 04:20:00: Processed: WHATSAPP_NAHEED_Yesterday_Ord_20260331_041949.md ✓
+- 2026-03-31 04:19:59: Processed: WHATSAPP_5_unread_messages_Hi_20260331_041949.md ✓
+- 2026-03-31 04:19:57: Processed: WHATSAPP_5_unread_messages_RI_20260331_041949.md ✓
+- 2026-03-31 04:19:56: Processed: WHATSAPP_Dr_Ibrahim_Mandokhai_20260331_041948.md ✓
+- 2026-03-31 04:19:54: Processed: WHATSAPP_103_unread_messages__20260331_041948.md ✓
+- 2026-03-31 04:19:53: Processed: WHATSAPP_Recovery_Group_12_07_20260331_041948.md ✓
+- 2026-03-31 04:19:52: Processed: WHATSAPP_34_unread_messages_R_20260331_041948.md ✓
+- 2026-03-31 04:19:50: Processed: WHATSAPP_612_unread_messages__20260331_041947.md ✓
+- 2026-03-31 04:19:49: Processed: WHATSAPP_232_unread_messages__20260331_041947.md ✓
+- 2026-03-31 04:19:23: Processed: TWITTER_TWITTER_test.md_20260331_041920.md ✓
+- 2026-03-31 04:05:35: Processed: WHATSAPP_NAHEED_Yesterday_Ord_20260331_040519.md ✓
+- 2026-03-31 04:05:34: Processed: WHATSAPP_5_unread_messages_Hi_20260331_040519.md ✓
+- 2026-03-31 04:05:33: Processed: WHATSAPP_5_unread_messages_RI_20260331_040519.md ✓
+- 2026-03-31 04:05:31: Processed: WHATSAPP_Dr_Ibrahim_Mandokhai_20260331_040518.md ✓
+- 2026-03-31 04:05:23: Processed: WHATSAPP_103_unread_messages__20260331_040518.md ✓
+- 2026-03-31 04:05:22: Processed: WHATSAPP_Recovery_Group_12_07_20260331_040518.md ✓
+- 2026-03-31 04:05:21: Processed: WHATSAPP_34_unread_messages_R_20260331_040517.md ✓
+- 2026-03-31 04:05:19: Processed: WHATSAPP_612_unread_messages__20260331_040517.md ✓
+- 2026-03-31 04:05:18: Processed: WHATSAPP_232_unread_messages__20260331_040516.md ✓
+- 2026-03-31 04:04:51: Processed: TWITTER_TWITTER_test.md_20260331_040447.md ✓
+- 2026-03-31 03:52:45: Processed: TWITTER_TWITTER_test.md_20260331_035243.md ✓
+- 2026-03-31 03:52:44: Processed: TWITTER_TWITTER_test.md_20260331_035243.md ✓
+- 2026-03-31 03:49:47: Processed: WHATSAPP_NAHEED_Yesterday_Ord_20260331_034938.md ✓
+- 2026-03-31 03:49:46: Processed: WHATSAPP_5_unread_messages_Hi_20260331_034938.md ✓
+- 2026-03-31 03:49:44: Processed: WHATSAPP_5_unread_messages_RI_20260331_034937.md ✓
+- 2026-03-31 03:49:43: Processed: WHATSAPP_Dr_Ibrahim_Mandokhai_20260331_034937.md ✓
+- 2026-03-31 03:49:41: Processed: WHATSAPP_103_unread_messages__20260331_034936.md ✓
+- 2026-03-31 03:49:40: Processed: WHATSAPP_Recovery_Group_12_07_20260331_034936.md ✓
+- 2026-03-31 03:49:39: Processed: WHATSAPP_34_unread_messages_R_20260331_034936.md ✓
+- 2026-03-31 03:49:37: Processed: WHATSAPP_612_unread_messages__20260331_034935.md ✓
+- 2026-03-31 03:49:35: Processed: WHATSAPP_232_unread_messages__20260331_034934.md ✓
+- 2026-03-31 03:49:22: Processed: TWITTER_TWITTER_test.md_20260331_034900.md ✓
+- 2026-03-31 03:32:38: linkedin_post_draft execution - ✗ Failed
+- 2026-03-31 03:19:45: Processed: WHATSAPP_NAHEED_Yesterday_Ord_20260331_031934.md ✓
+- 2026-03-31 03:19:43: Processed: WHATSAPP_5_unread_messages_Hi_20260331_031934.md ✓
+- 2026-03-31 03:19:42: Processed: WHATSAPP_5_unread_messages_RI_20260331_031934.md ✓
+- 2026-03-31 03:19:41: Processed: WHATSAPP_Dr_Ibrahim_Mandokhai_20260331_031934.md ✓
+- 2026-03-31 03:19:39: Processed: WHATSAPP_103_unread_messages__20260331_031934.md ✓
+- 2026-03-31 03:19:38: Processed: WHATSAPP_Recovery_Group_12_07_20260331_031934.md ✓
+- 2026-03-31 03:19:37: Processed: WHATSAPP_34_unread_messages_R_20260331_031934.md ✓
+- 2026-03-31 03:19:36: Processed: WHATSAPP_612_unread_messages__20260331_031933.md ✓
+- 2026-03-31 03:19:34: Processed: WHATSAPP_232_unread_messages__20260331_031933.md ✓
+- 2026-03-31 03:18:58: Processed: TWITTER_TWITTER_test.md_20260331_031850.md ✓
+- 2026-03-31 03:18:57: Processed: TEST_LINKEDIN_LEAD_20260331_031331.md ✓
+- 2026-03-31 02:39:28: Processed: WHATSAPP_GIAIC_02_AI_Spec_Dri_20260331_023926.md ✓
+- 2026-03-31 02:36:56: Processed: WHATSAPP_GIAIC_02_AI_Spec_Dri_20260331_023655.md ✓
+- 2026-03-31 02:34:25: Processed: WHATSAPP_GIAIC_02_AI_Spec_Dri_20260331_023423.md ✓
+- 2026-03-31 02:33:24: Processed: WHATSAPP_GIAIC_02_AI_Spec_Dri_20260331_023323.md ✓
+- 2026-03-31 02:32:23: Processed: WHATSAPP_GIAIC_02_AI_Spec_Dri_20260331_023222.md ✓
+- 2026-03-31 02:29:51: Processed: WHATSAPP_GIAIC_02_AI_Spec_Dri_20260331_022950.md ✓
+- 2026-03-31 02:28:59: Processed: WHATSAPP_NAHEED_Yesterday_Ord_20260331_022849.md ✓
+- 2026-03-31 02:28:58: Processed: WHATSAPP_5_unread_messages_Hi_20260331_022849.md ✓
+- 2026-03-31 02:28:56: Processed: WHATSAPP_5_unread_messages_RI_20260331_022849.md ✓
+- 2026-03-31 02:28:55: Processed: WHATSAPP_Dr_Ibrahim_Mandokhai_20260331_022849.md ✓
+- 2026-03-31 02:28:54: Processed: WHATSAPP_103_unread_messages__20260331_022848.md ✓
+- 2026-03-31 02:28:52: Processed: WHATSAPP_Recovery_Group_12_07_20260331_022848.md ✓
+- 2026-03-31 02:28:51: Processed: WHATSAPP_34_unread_messages_R_20260331_022847.md ✓
+- 2026-03-31 02:28:50: Processed: WHATSAPP_612_unread_messages__20260331_022846.md ✓
+- 2026-03-31 02:28:48: Processed: WHATSAPP_232_unread_messages__20260331_022845.md ✓
+- 2026-03-31 02:28:46: Processed: WHATSAPP_GIAIC_02_AI_Spec_Dri_20260331_022845.md ✓
+- 2026-03-31 02:28:20: Processed: TWITTER_TWITTER_test.md_20260331_022817.md ✓
+- 2026-03-31 02:20:43: Processed: WHATSAPP_GIAIC_02_AI_Spec_Dri_20260331_022042.md ✓
+- 2026-03-31 02:19:43: Processed: WHATSAPP_GIAIC_02_AI_Spec_Dri_20260331_021941.md ✓
+- 2026-03-31 02:10:06: Processed: WHATSAPP_GIAIC_02_AI_Spec_Dri_20260331_021004.md ✓
+- 2026-03-31 02:05:02: linkedin_post_draft execution - ✓ Success
+- 2026-03-31 02:04:06: Processed: WHATSAPP_GIAIC_02_AI_Spec_Dri_20260331_020400.md ✓
+- 2026-03-31 02:00:04: whatsapp_message execution - ✗ Failed
+- 2026-03-31 01:58:41: Processed: WHATSAPP_232_unread_messages__20260331_015744.md ✓
+- 2026-03-31 01:58:38: Processed: WHATSAPP_3_unread_messages____20260331_015711.md ✓
+- 2026-03-31 01:58:37: Processed: WHATSAPP_NAHEED_Yesterday_Ord_20260331_015711.md ✓
+- 2026-03-31 01:58:35: Processed: WHATSAPP_5_unread_messages_Hi_20260331_015711.md ✓
+- 2026-03-31 01:58:34: Processed: WHATSAPP_5_unread_messages_RI_20260331_015711.md ✓
+- 2026-03-31 01:58:32: Processed: WHATSAPP_Dr_Ibrahim_Mandokhai_20260331_015711.md ✓
+- 2026-03-31 01:58:25: Processed: WHATSAPP_103_unread_messages__20260331_015710.md ✓
+- 2026-03-31 01:58:05: Processed: WHATSAPP_Recovery_Group_12_07_20260331_015710.md ✓
+- 2026-03-31 01:57:56: Processed: WHATSAPP_34_unread_messages_R_20260331_015709.md ✓
+- 2026-03-31 01:57:37: Processed: WHATSAPP_612_unread_messages__20260331_015709.md ✓
+- 2026-03-31 01:57:28: Processed: WHATSAPP_230_unread_messages__20260331_015707.md ✓
+- 2026-03-31 01:57:05: Processed: TWITTER_TWITTER_test.md_20260331_015634.md ✓
+- 2026-03-31 00:48:57: Processed: WHATSAPP_NAHEED_Yesterday_Ord_20260331_004703.md ✓
+- 2026-03-31 00:48:56: Processed: WHATSAPP_GIAIC_02_AI_Spec_Dri_20260331_004703.md ✓
+- 2026-03-31 00:48:55: Processed: WHATSAPP_GIAIC_02_AI_Spec_Dri_20260331_004632.md ✓
+- 2026-03-31 00:48:47: Processed: WHATSAPP_Kami_Riderz_Yesterda_20260331_004602.md ✓
+- 2026-03-31 00:48:38: Processed: WHATSAPP_HS_923_Yesterday_Ap__20260331_004602.md ✓
+- 2026-03-31 00:48:32: Processed: WHATSAPP_3_unread_messages____20260331_004602.md ✓
+- 2026-03-31 00:48:25: Processed: WHATSAPP__92_21_111_624_333_Y_20260331_004602.md ✓
+- 2026-03-31 00:48:16: Processed: WHATSAPP_5_unread_messages_Hi_20260331_004602.md ✓
+- 2026-03-31 00:48:08: Processed: WHATSAPP_5_unread_messages_RI_20260331_004602.md ✓
+- 2026-03-31 00:48:01: Processed: WHATSAPP_Dr_Ibrahim_Mandokhai_20260331_004602.md ✓
+- 2026-03-31 00:47:46: Processed: WHATSAPP_103_unread_messages__20260331_004602.md ✓
+- 2026-03-31 00:47:37: Processed: WHATSAPP_230_unread_messages__20260331_004602.md ✓
+- 2026-03-31 00:46:53: Processed: WHATSAPP_Recovery_Group_12_07_20260331_004601.md ✓
+- 2026-03-31 00:46:44: Processed: WHATSAPP_34_unread_messages_R_20260331_004601.md ✓
+- 2026-03-31 00:46:17: Processed: WHATSAPP_612_unread_messages__20260331_004601.md ✓
+- 2026-03-31 00:46:08: Processed: WHATSAPP_277_unread_messages__20260331_004601.md ✓
+- 2026-03-31 00:44:49: Processed: TWITTER_TWITTER_test.md_20260331_004357.md ✓
+- 2026-03-30 10:37:15: linkedin_post_draft execution - ✓ Success
+- 2026-03-30 10:36:52: Processed: TWITTER_TWITTER_test.md_20260330_103612.md ✓
+- 2026-03-30 10:35:22: Processed: TWITTER_TWITTER_test.md_20260330_103423.md ✓
+- 2026-03-30 10:34:27: linkedin_post_draft execution - ✗ Failed
+- 2026-03-30 10:21:30: linkedin_post_draft execution - ✓ Success
+- 2026-03-30 10:20:55: Processed: TWITTER_TWITTER_test.md_20260330_101947.md ✓
+- 2026-03-30 10:19:25: linkedin_post_draft execution - ✓ Success
+- 2026-03-30 10:18:20: Processed: TWITTER_TWITTER_test.md_20260330_101743.md ✓
+- 2026-03-30 10:17:15: Processed: TWITTER_TWITTER_test.md_20260330_101620.md ✓
+- 2026-03-30 10:17:08: linkedin_post_draft execution - ✗ Failed
+- 2026-03-30 10:07:57: Processed: TWITTER_TWITTER_test.md_20260330_100704.md ✓
+- 2026-03-30 10:01:33: Processed: TASK_LINKEDIN_FUTURE_AI_v3.md ✓
+- 2026-03-30 09:59:29: Processed: TASK_LINKEDIN_FUTURE_AI_v2.md ✓
+- 2026-03-30 09:58:26: Processed: TWITTER_TWITTER_test.md_20260330_095824.md ✓
+- 2026-03-30 09:56:31: Processed: TASK_LINKEDIN_FUTURE_AI.md ✓
+- 2026-03-30 09:51:49: linkedin_post execution - ✗ Failed
+- 2026-03-30 09:51:43: linkedin_post execution - ✓ Success
+- 2026-03-30 09:49:37: linkedin_post execution - ✗ Failed
+- 2026-03-30 09:45:45: linkedin_post execution - ✗ Failed
+- 2026-03-30 09:45:30: linkedin_post execution - ✗ Failed
+- 2026-03-30 09:44:47: linkedin_post execution - ✗ Failed
+- 2026-03-30 09:44:11: linkedin_post execution - ✗ Failed
+- 2026-03-30 09:35:25: linkedin_post execution - ✓ Success
+- 2026-03-30 09:34:31: linkedin_post execution - ✗ Failed
+- 2026-03-30 09:33:43: Processed: WHATSAPP_Recovery_Group_12_07_20260330_093334.md ✓
+- 2026-03-30 09:33:42: Processed: WHATSAPP_27_unread_messages_R_20260330_093334.md ✓
+- 2026-03-30 09:33:41: Processed: WHATSAPP_2_unread_messages_UN_20260330_093334.md ✓
+- 2026-03-30 09:33:39: Processed: WHATSAPP_599_unread_messages__20260330_093333.md ✓
+- 2026-03-30 09:33:36: Processed: WHATSAPP_219_unread_messages__20260330_093333.md ✓
+- 2026-03-30 09:33:35: Processed: WHATSAPP_163_unread_messages__20260330_093332.md ✓
+- 2026-03-30 09:33:33: Processed: WHATSAPP_MeeVicky__You__8_51__20260330_093332.md ✓
+- 2026-03-30 09:33:10: Processed: TWITTER_TWITTER_test.md_20260330_093306.md ✓
+- 2026-03-30 09:26:43: linkedin_post execution - ✗ Failed
+- 2026-03-30 09:26:38: linkedin_post execution - ✗ Failed
+- 2026-03-30 09:25:57: linkedin_post execution - ✗ Failed
+- 2026-03-30 09:21:55: linkedin_post execution - ✗ Failed
+- 2026-03-30 09:21:05: linkedin_post execution - ✗ Failed
+- 2026-03-30 09:20:35: linkedin_post execution - ✗ Failed
+- 2026-03-30 09:19:45: linkedin_post execution - ✗ Failed
+- 2026-03-30 09:18:05: linkedin_post execution - ✗ Failed
+- 2026-03-30 09:17:07: whatsapp_message execution - ✗ Failed
+- 2026-03-30 09:17:07: whatsapp_message execution - ✗ Failed
+- 2026-03-30 09:13:23: Processed: WHATSAPP_RNB_PAYMENTS_TARIQ_R_20260330_091314.md ✓
+- 2026-03-30 09:13:21: Processed: WHATSAPP_Recovery_Group_12_07_20260330_091313.md ✓
+- 2026-03-30 09:13:20: Processed: WHATSAPP_27_unread_messages_R_20260330_091312.md ✓
+- 2026-03-30 09:13:18: Processed: WHATSAPP_2_unread_messages_UN_20260330_091311.md ✓
+- 2026-03-30 09:13:15: Processed: WHATSAPP_599_unread_messages__20260330_091309.md ✓
+- 2026-03-30 09:13:13: Processed: WHATSAPP_219_unread_messages__20260330_091306.md ✓
+- 2026-03-30 09:13:09: Processed: WHATSAPP_163_unread_messages__20260330_091304.md ✓
+- 2026-03-30 09:13:06: Processed: WHATSAPP_MeeVicky__You__8_51__20260330_091304.md ✓
+- 2026-03-30 09:12:40: Processed: TWITTER_TWITTER_test.md_20260330_091238.md ✓
+- 2026-03-30 09:08:38: Processed: WHATSAPP_163_unread_messages__20260330_090836.md ✓
+- 2026-03-30 08:51:23: Processed: WHATSAPP_MeeVicky__You__8_51__20260330_085121.md ✓
+- 2026-03-30 08:47:03: Processed: WHATSAPP_MeeVicky__You__8_46__20260330_084702.md ✓
+- 2026-03-30 08:45:03: Processed: WHATSAPP_MeeVicky__You__8_36__20260330_084501.md ✓
+- 2026-03-30 08:33:54: Processed: WHATSAPP_RNB_PAYMENTS_TARIQ_R_20260330_083346.md ✓
+- 2026-03-30 08:33:53: Processed: WHATSAPP_Recovery_Group_12_07_20260330_083345.md ✓
+- 2026-03-30 08:33:52: Processed: WHATSAPP_27_unread_messages_R_20260330_083345.md ✓
+- 2026-03-30 08:33:50: Processed: WHATSAPP_2_unread_messages_UN_20260330_083345.md ✓
+- 2026-03-30 08:33:49: Processed: WHATSAPP_599_unread_messages__20260330_083345.md ✓
+- 2026-03-30 08:33:47: Processed: WHATSAPP_219_unread_messages__20260330_083345.md ✓
+- 2026-03-30 08:33:45: Processed: WHATSAPP_163_unread_messages__20260330_083344.md ✓
+- 2026-03-30 08:33:22: Processed: TWITTER_TWITTER_test.md_20260330_083319.md ✓
+- 2026-03-30 08:14:01: Processed: WHATSAPP_RNB_PAYMENTS_TARIQ_R_20260330_081354.md ✓
+- 2026-03-30 08:14:00: Processed: WHATSAPP_Recovery_Group_12_07_20260330_081353.md ✓
+- 2026-03-30 08:13:58: Processed: WHATSAPP_27_unread_messages_R_20260330_081352.md ✓
+- 2026-03-30 08:13:57: Processed: WHATSAPP_2_unread_messages_UN_20260330_081352.md ✓
+- 2026-03-30 08:13:56: Processed: WHATSAPP_599_unread_messages__20260330_081352.md ✓
+- 2026-03-30 08:13:53: Processed: WHATSAPP_219_unread_messages__20260330_081351.md ✓
+- 2026-03-30 08:13:51: Processed: WHATSAPP_163_unread_messages__20260330_081350.md ✓
+- 2026-03-30 08:13:02: Processed: TWITTER_TWITTER_test.md_20260330_081257.md ✓
+- 2026-03-30 08:10:06: Processed: WHATSAPP_163_unread_messages__20260330_081004.md ✓
+- 2026-03-30 07:45:57: Processed: WHATSAPP_RNB_PAYMENTS_TARIQ_R_20260330_074550.md ✓
+- 2026-03-30 07:45:56: Processed: WHATSAPP_Recovery_Group_12_07_20260330_074550.md ✓
+- 2026-03-30 07:45:54: Processed: WHATSAPP_27_unread_messages_R_20260330_074550.md ✓
+- 2026-03-30 07:45:53: Processed: WHATSAPP_2_unread_messages_UN_20260330_074550.md ✓
+- 2026-03-30 07:45:51: Processed: WHATSAPP_599_unread_messages__20260330_074549.md ✓
+- 2026-03-30 07:45:50: Processed: WHATSAPP_219_unread_messages__20260330_074548.md ✓
+- 2026-03-30 07:45:48: Processed: WHATSAPP_MeeVicky__You__6_25__20260330_074547.md ✓
+- 2026-03-30 07:45:23: Processed: TWITTER_TWITTER_test.md_20260330_074519.md ✓
+- 2026-03-30 07:28:36: Processed: WHATSAPP_RNB_PAYMENTS_TARIQ_R_20260330_072828.md ✓
+- 2026-03-30 07:28:35: Processed: WHATSAPP_Recovery_Group_12_07_20260330_072828.md ✓
+- 2026-03-30 07:28:33: Processed: WHATSAPP_27_unread_messages_R_20260330_072828.md ✓
+- 2026-03-30 07:28:32: Processed: WHATSAPP_2_unread_messages_UN_20260330_072828.md ✓
+- 2026-03-30 07:28:30: Processed: WHATSAPP_599_unread_messages__20260330_072827.md ✓
+- 2026-03-30 07:28:28: Processed: WHATSAPP_219_unread_messages__20260330_072826.md ✓
+- 2026-03-30 07:28:26: Processed: WHATSAPP_MeeVicky__You__6_25__20260330_072824.md ✓
+- 2026-03-30 07:28:00: Processed: TWITTER_TWITTER_test.md_20260330_072756.md ✓
+- 2026-03-30 07:15:51: Processed: TWITTER_TWITTER_test.md_20260330_071548.md ✓
+- 2026-03-30 07:09:42: Processed: WHATSAPP_Ramz_20260329_235626.md ✓
+- 2026-03-30 06:59:56: Processed: WHATSAPP_RNB_PAYMENTS_TARIQ_R_20260330_065953.md ✓
+- 2026-03-30 06:59:19: Processed: WHATSAPP_UNPAID_RECHARGE_IDS_20260330_065909.md ✓
+- 2026-03-30 06:59:16: Processed: WHATSAPP_KING_PAYMENT_20260330_065908.md ✓
+- 2026-03-30 06:59:12: Processed: WHATSAPP__C___________________20260330_065907.md ✓
+- 2026-03-30 06:57:22: Processed: TWITTER_TWITTER_test.md_20260330_065715.md ✓
+- 2026-03-30 06:46:09: Processed: TWITTER_TWITTER_test.md_20260330_064604.md ✓
+- 2026-03-30 06:26:32: Processed: TWITTER_TWITTER_test.md_20260330_062628.md ✓
+- 2026-03-30 06:13:44: Processed: TWITTER_TWITTER_test.md_20260330_061341.md ✓
+- 2026-03-30 06:11:59: Processed: TWITTER_TWITTER_test.md_20260330_061155.md ✓
+- 2026-03-30 05:00:23: Processed: WHATSAPP_Test_Customer_20260330_053001.md ✓
+- 2026-03-30 04:52:33: Processed: LINKEDIN_Sarah_Manager_20260330_050002.md ✓
+- 2026-03-30 04:52:29: Processed: GMAIL_John_Client_20260330_050001.md ✓
+- 2026-03-30 04:52:25: Processed: WHATSAPP_Test_Contact_20260330_050000.md ✓
+- 2026-03-30 02:27:16: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:26:59: gmail execution - ✓ Success
+- 2026-03-30 02:26:59: email execution - ✓ Success
+- 2026-03-30 02:26:48: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:26:31: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:25:53: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:25:09: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:24:41: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:24:41: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:24:28: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:24:01: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:24:01: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:23:40: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:23:10: gmail execution - ✓ Success
+- 2026-03-30 02:23:10: email execution - ✓ Success
+- 2026-03-30 02:22:58: gmail execution - ✓ Success
+- 2026-03-30 02:22:58: email execution - ✓ Success
+- 2026-03-30 02:22:55: gmail execution - ✓ Success
+- 2026-03-30 02:22:55: email execution - ✓ Success
+- 2026-03-30 02:22:09: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:22:02: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:21:57: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:21:48: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:21:31: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:21:19: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:21:19: gmail execution - ✓ Success
+- 2026-03-30 02:21:19: email execution - ✓ Success
+- 2026-03-30 02:21:09: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:20:35: gmail execution - ✓ Success
+- 2026-03-30 02:20:35: email execution - ✓ Success
+- 2026-03-30 02:20:18: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:20:04: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:19:42: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:19:20: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:19:17: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:19:07: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:18:45: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:17:54: gmail execution - ✓ Success
+- 2026-03-30 02:17:53: email execution - ✓ Success
+- 2026-03-30 02:17:35: gmail execution - ✓ Success
+- 2026-03-30 02:17:35: email execution - ✓ Success
+- 2026-03-30 02:17:14: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:16:36: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:16:26: gmail execution - ✓ Success
+- 2026-03-30 02:16:26: email execution - ✓ Success
+- 2026-03-30 02:16:22: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:15:21: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:15:09: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:14:34: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:14:34: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:14:15: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:13:26: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:13:24: gmail execution - ✓ Success
+- 2026-03-30 02:13:24: email execution - ✓ Success
+- 2026-03-30 02:12:31: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:12:12: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:12:02: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:11:52: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:11:21: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:11:01: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:10:41: gmail execution - ✓ Success
+- 2026-03-30 02:10:41: email execution - ✓ Success
+- 2026-03-30 02:10:30: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:09:42: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:09:35: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:09:33: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:08:28: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:08:22: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:07:52: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:07:45: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:07:40: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:06:48: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:06:44: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:06:44: gmail execution - ✓ Success
+- 2026-03-30 02:06:44: email execution - ✓ Success
+- 2026-03-30 02:06:10: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:05:36: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:05:34: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:05:31: gmail execution - ✓ Success
+- 2026-03-30 02:05:31: email execution - ✓ Success
+- 2026-03-30 02:04:53: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:04:40: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:04:22: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:04:12: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:03:48: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:03:42: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:03:41: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:02:59: gmail execution - ✓ Success
+- 2026-03-30 02:02:59: email execution - ✓ Success
+- 2026-03-30 02:02:59: gmail execution - ✓ Success
+- 2026-03-30 02:02:59: email execution - ✓ Success
+- 2026-03-30 02:02:58: gmail execution - ✓ Success
+- 2026-03-30 02:02:58: email execution - ✓ Success
+- 2026-03-30 02:02:57: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:01:28: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:01:26: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:01:25: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:01:18: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:00:46: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:00:39: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:00:37: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:00:17: whatsapp_message execution - ✗ Failed
+- 2026-03-30 02:00:01: gmail execution - ✓ Success
+- 2026-03-30 02:00:01: email execution - ✓ Success
+- 2026-03-30 01:59:51: gmail execution - ✓ Success
+- 2026-03-30 01:59:51: email execution - ✓ Success
+- 2026-03-30 01:59:49: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:58:57: gmail execution - ✓ Success
+- 2026-03-30 01:58:57: email execution - ✓ Success
+- 2026-03-30 01:58:56: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:57:48: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:57:47: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:57:00: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:56:40: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:56:21: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:55:34: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:55:22: gmail execution - ✓ Success
+- 2026-03-30 01:55:22: email execution - ✓ Success
+- 2026-03-30 01:54:29: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:54:17: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:53:36: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:52:57: gmail execution - ✓ Success
+- 2026-03-30 01:52:57: email execution - ✓ Success
+- 2026-03-30 01:52:52: gmail execution - ✓ Success
+- 2026-03-30 01:52:52: email execution - ✓ Success
+- 2026-03-30 01:23:35: gmail execution - ✓ Success
+- 2026-03-30 01:23:35: email execution - ✓ Success
+- 2026-03-30 01:22:26: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:22:12: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:22:09: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:21:32: gmail execution - ✓ Success
+- 2026-03-30 01:21:32: email execution - ✓ Success
+- 2026-03-30 01:20:58: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:20:26: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:19:38: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:19:10: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:18:29: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:18:15: gmail execution - ✓ Success
+- 2026-03-30 01:18:15: email execution - ✓ Success
+- 2026-03-30 01:17:02: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:16:19: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:15:50: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:15:34: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:14:44: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:14:41: gmail execution - ✓ Success
+- 2026-03-30 01:14:41: email execution - ✓ Success
+- 2026-03-30 01:13:36: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:13:11: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:12:28: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:12:22: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:11:42: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:10:58: gmail execution - ✓ Success
+- 2026-03-30 01:10:58: email execution - ✓ Success
+- 2026-03-30 01:10:52: gmail execution - ✓ Success
+- 2026-03-30 01:10:52: email execution - ✓ Success
+- 2026-03-30 01:09:35: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:09:01: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:08:58: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:08:22: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:08:09: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:07:44: gmail execution - ✓ Success
+- 2026-03-30 01:07:44: email execution - ✓ Success
+- 2026-03-30 01:07:32: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:06:42: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:06:37: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:06:02: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:05:54: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:05:22: gmail execution - ✓ Success
+- 2026-03-30 01:05:22: email execution - ✓ Success
+- 2026-03-30 01:05:10: gmail execution - ✓ Success
+- 2026-03-30 01:05:10: email execution - ✓ Success
+- 2026-03-30 01:03:15: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:02:46: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:02:39: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:02:07: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:01:51: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:01:30: gmail execution - ✓ Success
+- 2026-03-30 01:01:30: email execution - ✓ Success
+- 2026-03-30 01:01:09: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:00:22: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:00:20: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:00:18: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:00:16: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:00:13: gmail execution - ✓ Success
+- 2026-03-30 01:00:13: email execution - ✓ Success
+- 2026-03-30 01:00:07: whatsapp_message execution - ✗ Failed
+- 2026-03-30 01:00:00: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:59:45: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:59:42: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:59:30: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:59:25: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:59:22: gmail execution - ✓ Success
+- 2026-03-30 00:59:22: email execution - ✓ Success
+- 2026-03-30 00:31:55: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:31:39: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:31:36: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:31:33: gmail execution - ✓ Success
+- 2026-03-30 00:31:33: email execution - ✓ Success
+- 2026-03-30 00:31:02: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:30:27: email execution - ✓ Success
+- 2026-03-30 00:30:16: email execution - ✓ Success
+- 2026-03-30 00:30:03: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:29:59: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:29:41: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:29:37: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:29:25: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:29:22: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:29:09: email execution - ✓ Success
+- 2026-03-30 00:28:58: email execution - ✓ Success
+- 2026-03-30 00:28:46: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:28:44: gmail execution - ✓ Success
+- 2026-03-30 00:28:44: email execution - ✓ Success
+- 2026-03-30 00:27:39: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:27:36: email execution - ✓ Success
+- 2026-03-30 00:27:30: email execution - ✓ Success
+- 2026-03-30 00:27:23: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:27:17: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:27:07: gmail execution - ✓ Success
+- 2026-03-30 00:27:07: email execution - ✓ Success
+- 2026-03-30 00:26:24: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:26:01: email execution - ✓ Success
+- 2026-03-30 00:25:49: email execution - ✓ Success
+- 2026-03-30 00:25:40: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:25:33: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:25:29: gmail execution - ✓ Success
+- 2026-03-30 00:25:29: email execution - ✓ Success
+- 2026-03-30 00:25:17: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:24:18: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:24:09: whatsapp_message execution - ✗ Failed
+- 2026-03-30 00:24:02: gmail execution - ✓ Success
+- 2026-03-30 00:24:02: email execution - ✓ Success
+- 2026-03-30 00:23:59: gmail execution - ✓ Success
+- 2026-03-30 00:23:59: email execution - ✓ Success
+- 2026-03-30 00:23:45: Processed WHATSAPP_RNB_PANEL_ALERT_20260329_234919.md - ✓
+- 2026-03-30 00:23:24: Processed WHATSAPP_RIDERZ_SMCHS_PAYMENT_20260329_234946.md - ✓
+- 2026-03-28 01:39:06: email execution - ✓ Success
+- 2026-03-28 01:37:52: email execution - ✓ Success
+- 2026-03-28 01:37:36: email execution - ✓ Success
+- 2026-03-28 01:37:19: email execution - ✓ Success
+- 2026-03-28 01:37:15: email execution - ✓ Success
+- 2026-03-28 01:37:08: gmail execution - ✓ Success
+- 2026-03-28 01:36:58: email execution - ✓ Success
+- 2026-03-28 01:36:39: Processed GMAIL_Unknown_Re__GMAIL_Unknown_Re__WHATSAPP_20260328_013628.md - ✓
+- 2026-03-28 01:36:10: Processed GMAIL_Unknown_Re__GMAIL_Unknown_Re__GMAIL_Sa_20260328_013555.md - ✓
+- 2026-03-28 01:36:05: Processed GMAIL_Unknown_Re__GMAIL_Unknown_Re__GMAIL_Sa_20260328_013554.md - ✓
+- 2026-03-28 01:36:02: unknown execution - ✓ Success
+- 2026-03-28 01:36:02: unknown execution - ✗ Failed
+- 2026-03-28 01:36:02: unknown execution - ✓ Success
+- 2026-03-28 01:36:02: unknown execution - ✓ Success
+- 2026-03-28 01:36:02: unknown execution - ✓ Success
+- 2026-03-28 01:36:02: unknown execution - ✗ Failed
+- 2026-03-28 01:36:02: unknown execution - ✗ Failed
+- 2026-03-28 01:36:02: email execution - ✓ Success
+- 2026-03-28 01:36:00: Processed GMAIL_Unknown_Re__GMAIL_Unknown_Re__WHATSAPP_20260328_013554.md - ✓
+- 2026-03-28 01:35:50: email execution - ✓ Success
+- 2026-03-28 01:35:50: email execution - ✓ Success
+- 2026-03-28 01:35:43: Processed GMAIL_Unknown_Re__GMAIL_Unknown_PAYMENT_PEND_20260328_013523.md - ✓
+- 2026-03-28 01:35:42: email execution - ✗ Failed
+- 2026-03-28 01:35:42: email execution - ✓ Success
+- 2026-03-28 01:35:41: email execution - ✓ Success
+- 2026-03-28 01:35:35: Processed GMAIL_Unknown_Re__GMAIL_Unknown_Re__GMAIL_Sa_20260328_013523.md - ✓
+- 2026-03-28 01:35:28: email execution - ✓ Success
+- 2026-03-28 01:35:28: email execution - ✓ Success
+- 2026-03-28 01:35:27: Processed GMAIL_Unknown_Re__GMAIL_Unknown_PAYMENT_2026_20260328_013523.md - ✓
+- 2026-03-28 01:35:20: email execution - ✓ Success
+- 2026-03-28 01:35:20: email execution - ✓ Success
+- 2026-03-28 01:35:13: email execution - ✓ Success
+- 2026-03-28 01:35:13: email execution - ✓ Success
+- 2026-03-28 01:35:06: email execution - ✓ Success
+- 2026-03-28 01:35:06: email execution - ✓ Success
+- 2026-03-28 01:34:59: gmail execution - ✓ Success
+- 2026-03-28 01:34:59: email execution - ✓ Success
+- 2026-03-28 01:34:56: Processed GMAIL_Unknown_Re__GMAIL_Unknown_PAYMENT_2026_20260328_013452.md - ✓
+- 2026-03-28 01:34:42: email execution - ✓ Success
+- 2026-03-28 01:33:59: gmail execution - ✓ Success
+- 2026-03-28 01:33:59: Processed TEST_WHATSAPP_20260328_004146.md - ✓
+- 2026-03-28 01:33:56: Processed TEST_TWITTER_20260328_004152.md - ✓
+- 2026-03-28 01:33:54: Processed TEST_LINKEDIN_20260328_004150.md - ✓
+- 2026-03-28 01:33:52: Processed GMAIL_Unknown__no_subject__20260328_012354.md - ✓
+- 2026-03-28 01:33:50: Processed GMAIL_Unknown_Re__WHATSAPP_RIDERZ_SMCHS_PAYM_20260328_011820.md - ✓
+- 2026-03-28 01:33:48: gmail execution - ✓ Success
+- 2026-03-28 01:33:47: Processed GMAIL_Unknown_Re__WHATSAPP_client_meeting_md_20260328_011821.md - ✓
+- 2026-03-28 01:33:44: Processed GMAIL_Unknown_Re__WHATSAPP_client_meeting_md_20260328_011820.md - ✓
+- 2026-03-28 01:33:42: Processed GMAIL_Unknown_Re__WHATSAPP_CHAPTER_3_PAYMENT_20260328_011821.md - ✓
+- 2026-03-28 01:33:40: Processed GMAIL_Unknown_Re__GMAIL_Sales_20260326_07172_20260328_011819.md - ✓
+- 2026-03-28 01:33:37: Processed GMAIL_Unknown_Re__GMAIL_Sales_20260326_06164_20260328_011820.md - ✓
+- 2026-03-28 01:33:35: Processed GMAIL_Unknown_Re__GMAIL_Sales_20260326_05505_20260328_011820.md - ✓
+- 2026-03-28 01:33:33: Processed GMAIL_Unknown_PAYMENT_PENDING_20260328_012819.md - ✓
+- 2026-03-28 01:33:30: Processed GMAIL_Unknown_PAYMENT_20260328_012052.md - ✓
+- 2026-03-28 01:33:28: Processed GMAIL_Unknown_PAYMENT_20260328_011819.md - ✓
+- 2026-03-28 00:52:25: gmail execution - ✓ Success
+- 2026-03-27 22:59:13: Processed WHATSAPP_RNB_PANEL_ALERT_20260327_225903.md - ✓
+- 2026-03-27 22:58:53: Processed WHATSAPP_New_Connections_deta_20260327_225820.md - ✓
+- 2026-03-27 22:58:40: Processed WHATSAPP_CHAPTER_3_PAYMENTS_O_20260327_225819.md - ✓
+- 2026-03-27 22:58:29: Processed WHATSAPP_Kamboh_Riderz_Team_20260327_225812.md - ✓
+- 2026-03-27 22:58:19: Processed WHATSAPP_RNB_PANEL_ALERT_20260327_225754.md - ✓
+- 2026-03-27 22:35:35: Processed WHATSAPP_RNB_PANEL_ALERT_20260327_223530.md - ✓
+- 2026-03-27 22:34:55: Processed WHATSAPP_RNB_PANEL_ALERT_20260327_223448.md - ✓
+- 2026-03-27 22:34:25: Processed WHATSAPP_New_Connections_deta_20260327_223408.md - ✓
+- 2026-03-27 22:34:20: Processed WHATSAPP_CHAPTER_3_PAYMENTS_O_20260327_223408.md - ✓
+- 2026-03-27 22:34:16: Processed WHATSAPP_Kamboh_Riderz_Team_20260327_223406.md - ✓
+- 2026-03-27 22:34:08: Processed WHATSAPP_UNPAID_RECHARGE_IDS_20260327_223401.md - ✓
+- 2026-03-27 22:19:14: Processed WHATSAPP_UNPAID_RECHARGE_IDS_20260327_221859.md - ✓
+- 2026-03-27 22:19:07: Processed WHATSAPP_RNB_PANEL_ALERT_20260327_221859.md - ✓
+- 2026-03-27 22:18:31: Processed WHATSAPP_New_Connections_deta_20260327_221823.md - ✓
+- 2026-03-27 22:18:28: Processed WHATSAPP_CHAPTER_3_PAYMENTS_O_20260327_221823.md - ✓
+- 2026-03-27 22:18:18: Processed WHATSAPP_Kamboh_Riderz_Team_20260327_221808.md - ✓
+- 2026-03-27 22:18:00: Processed GMAIL_PAYMENT_20260327_221724.md - ✓
+- 2026-03-27 22:17:45: Processed GMAIL_Maryam_Arif_posted__Today__I_h_20260327_221724.md - ✓
+- 2026-03-27 21:09:23: Processed WHATSAPP_RNB_PANEL_ALERT_20260327_210915.md - ✓
+- 2026-03-27 21:08:14: Processed WHATSAPP_New_Connections_deta_20260327_210728.md - ✓
+- 2026-03-27 21:08:01: Processed WHATSAPP_CHAPTER_3_PAYMENTS_O_20260327_210727.md - ✓
+- 2026-03-27 21:07:40: Processed WHATSAPP_RNB_PANEL_ALERT_20260327_210717.md - ✓
+- 2026-03-27 21:07:25: Processed WHATSAPP_Kamboh_Riderz_Team_20260327_210711.md - ✓
+- 2026-03-27 21:03:45: Processed GMAIL_PAYMENT_20260327_210326.md - ✓
+- 2026-03-27 21:03:34: Processed GMAIL_Maryam_Arif_posted__Today__I_h_20260327_210326.md - ✓
+- 2026-03-26 22:38:47: email execution - ✓ Success
+- 2026-03-26 22:38:42: email execution - ✓ Success
+- 2026-03-26 22:38:36: email execution - ✓ Success
+- 2026-03-26 22:38:31: email execution - ✓ Success
+- 2026-03-26 22:37:23: test_post execution - ✓ Success
+- 2026-03-26 22:37:23: linkedin_post_draft execution - ✓ Success
+- 2026-03-26 22:36:16: linkedin_post_draft execution - ✓ Success
+- 2026-03-26 22:34:39: linkedin_post_draft execution - ✓ Success
+- 2026-03-26 22:32:59: linkedin_post_draft execution - ✓ Success
+- 2026-03-26 22:31:32: email execution - ✗ Failed
+- 2026-03-26 22:31:32: email execution - ✗ Failed
+- 2026-03-26 22:31:32: email execution - ✓ Success
+- 2026-03-26 22:31:27: email execution - ✓ Success
+- 2026-03-26 22:31:22: email execution - ✓ Success
+- 2026-03-26 22:31:17: email execution - ✓ Success
+- 2026-03-26 22:31:12: email execution - ✓ Success
+- 2026-03-26 22:31:07: email execution - ✓ Success
+- 2026-03-26 22:31:02: email execution - ✓ Success
+- 2026-03-26 22:30:57: email execution - ✓ Success
+- 2026-03-26 22:30:52: email execution - ✓ Success
+- 2026-03-26 22:30:47: email execution - ✓ Success
+- 2026-03-26 22:30:42: email execution - ✓ Success
+- 2026-03-26 22:30:37: email execution - ✓ Success
+- 2026-03-26 22:30:32: email execution - ✓ Success
+- 2026-03-26 22:30:27: email execution - ✓ Success
+- 2026-03-26 22:30:22: email execution - ✓ Success
+- 2026-03-26 22:30:17: email execution - ✓ Success
+- 2026-03-26 22:30:13: email execution - ✓ Success
+- 2026-03-26 22:30:08: email execution - ✓ Success
+- 2026-03-26 22:29:58: email execution - ✓ Success
+- 2026-03-26 22:28:52: test_post execution - ✓ Success
+- 2026-03-26 22:28:52: linkedin_post_draft execution - ✓ Success
+- 2026-03-26 22:27:52: linkedin_post_draft execution - ✓ Success
+- 2026-03-26 22:26:26: linkedin_post_draft execution - ✓ Success
+- 2026-03-26 22:25:50: test_post execution - ✓ Success
+- 2026-03-26 22:25:50: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 22:25:44: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 22:25:40: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 22:25:35: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 22:25:27: email execution - ✗ Failed
+- 2026-03-26 22:25:27: email execution - ✗ Failed
+- 2026-03-26 22:25:27: email execution - ✓ Success
+- 2026-03-26 22:25:17: email execution - ✓ Success
+- 2026-03-26 22:25:00: email execution - ✓ Success
+- 2026-03-26 22:24:52: linkedin_post_draft execution - ✓ Success
+- 2026-03-26 22:24:51: email execution - ✓ Success
+- 2026-03-26 22:24:44: email execution - ✓ Success
+- 2026-03-26 22:24:37: email execution - ✓ Success
+- 2026-03-26 22:24:28: email execution - ✓ Success
+- 2026-03-26 22:24:19: email execution - ✓ Success
+- 2026-03-26 22:24:09: email execution - ✓ Success
+- 2026-03-26 22:24:01: email execution - ✓ Success
+- 2026-03-26 22:23:53: email execution - ✓ Success
+- 2026-03-26 22:23:43: email execution - ✓ Success
+- 2026-03-26 22:23:23: email execution - ✓ Success
+- 2026-03-26 22:23:12: email execution - ✓ Success
+- 2026-03-26 22:23:04: email execution - ✓ Success
+- 2026-03-26 22:22:56: email execution - ✓ Success
+- 2026-03-26 22:22:55: email execution - ✗ Failed
+- 2026-03-26 22:22:55: email execution - ✗ Failed
+- 2026-03-26 22:22:55: email execution - ✓ Success
+- 2026-03-26 22:22:49: email execution - ✓ Success
+- 2026-03-26 22:22:48: email execution - ✓ Success
+- 2026-03-26 22:22:43: email execution - ✓ Success
+- 2026-03-26 22:22:42: email execution - ✓ Success
+- 2026-03-26 22:22:36: email execution - ✓ Success
+- 2026-03-26 22:22:36: email execution - ✓ Success
+- 2026-03-26 22:22:29: email execution - ✓ Success
+- 2026-03-26 22:22:23: email execution - ✓ Success
+- 2026-03-26 22:22:18: email execution - ✓ Success
+- 2026-03-26 22:22:13: email execution - ✓ Success
+- 2026-03-26 22:22:08: email execution - ✓ Success
+- 2026-03-26 22:22:03: email execution - ✓ Success
+- 2026-03-26 22:21:57: email execution - ✓ Success
+- 2026-03-26 22:21:52: email execution - ✓ Success
+- 2026-03-26 22:21:47: email execution - ✓ Success
+- 2026-03-26 22:21:42: email execution - ✓ Success
+- 2026-03-26 22:21:37: email execution - ✓ Success
+- 2026-03-26 22:21:32: email execution - ✓ Success
+- 2026-03-26 22:21:27: email execution - ✓ Success
+- 2026-03-26 22:21:22: email execution - ✓ Success
+- 2026-03-26 22:21:08: Processed TWITTER_TWITTER_test_task.txt_20260326_221857.md - ✓
+- 2026-03-26 08:35:00: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:34:54: linkedin_post_draft execution - ✓ Success
+- 2026-03-26 08:34:31: test_post execution - ✓ Success
+- 2026-03-26 08:34:31: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:34:26: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:34:21: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:34:17: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:34:12: email execution - ✗ Failed
+- 2026-03-26 08:34:12: email execution - ✗ Failed
+- 2026-03-26 08:34:12: email execution - ✓ Success
+- 2026-03-26 08:34:04: email execution - ✓ Success
+- 2026-03-26 08:33:58: email execution - ✓ Success
+- 2026-03-26 08:33:51: email execution - ✓ Success
+- 2026-03-26 08:33:42: email execution - ✓ Success
+- 2026-03-26 08:33:24: email execution - ✓ Success
+- 2026-03-26 08:33:18: email execution - ✗ Failed
+- 2026-03-26 08:33:18: email execution - ✗ Failed
+- 2026-03-26 08:33:16: email execution - ✓ Success
+- 2026-03-26 08:33:12: email execution - ✓ Success
+- 2026-03-26 08:33:07: linkedin_post_draft execution - ✓ Success
+- 2026-03-26 08:33:07: email execution - ✓ Success
+- 2026-03-26 08:33:01: email execution - ✓ Success
+- 2026-03-26 08:32:57: email execution - ✓ Success
+- 2026-03-26 08:32:50: email execution - ✓ Success
+- 2026-03-26 08:32:44: email execution - ✓ Success
+- 2026-03-26 08:32:37: email execution - ✓ Success
+- 2026-03-26 08:32:31: email execution - ✓ Success
+- 2026-03-26 08:32:25: email execution - ✓ Success
+- 2026-03-26 08:32:12: email execution - ✓ Success
+- 2026-03-26 08:32:03: email execution - ✓ Success
+- 2026-03-26 08:32:01: linkedin_post_draft execution - ✓ Success
+- 2026-03-26 08:30:54: test_post execution - ✓ Success
+- 2026-03-26 08:30:54: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:30:43: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:30:35: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:30:31: linkedin_post_draft execution - ✓ Success
+- 2026-03-26 08:30:29: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:30:25: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:30:23: email execution - ✗ Failed
+- 2026-03-26 08:30:23: email execution - ✗ Failed
+- 2026-03-26 08:30:13: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:30:10: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:30:06: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:30:03: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:30:00: email execution - ✗ Failed
+- 2026-03-26 08:30:00: email execution - ✗ Failed
+- 2026-03-26 08:29:49: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:29:46: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:29:44: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:29:41: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:29:37: email execution - ✗ Failed
+- 2026-03-26 08:29:37: email execution - ✗ Failed
+- 2026-03-26 08:29:37: email execution - ✓ Success
+- 2026-03-26 08:29:22: test_post execution - ✓ Success
+- 2026-03-26 08:29:22: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:29:16: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:29:09: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:29:04: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 08:29:00: email execution - ✗ Failed
+- 2026-03-26 08:29:00: email execution - ✗ Failed
+- 2026-03-26 08:28:59: email execution - ✓ Success
+- 2026-03-26 08:28:59: email execution - ✗ Failed
+- 2026-03-26 08:28:59: email execution - ✗ Failed
+- 2026-03-26 08:28:59: email execution - ✓ Success
+- 2026-03-26 08:28:55: email execution - ✓ Success
+- 2026-03-26 08:28:54: email execution - ✓ Success
+- 2026-03-26 08:28:49: email execution - ✓ Success
+- 2026-03-26 08:28:49: email execution - ✓ Success
+- 2026-03-26 08:28:44: email execution - ✓ Success
+- 2026-03-26 08:28:44: email execution - ✓ Success
+- 2026-03-26 08:28:40: email execution - ✓ Success
+- 2026-03-26 08:28:39: email execution - ✓ Success
+- 2026-03-26 08:28:34: email execution - ✓ Success
+- 2026-03-26 08:28:34: email execution - ✓ Success
+- 2026-03-26 08:28:30: email execution - ✓ Success
+- 2026-03-26 08:28:30: email execution - ✓ Success
+- 2026-03-26 08:28:25: email execution - ✓ Success
+- 2026-03-26 08:28:25: email execution - ✓ Success
+- 2026-03-26 08:28:21: email execution - ✓ Success
+- 2026-03-26 08:28:21: email execution - ✓ Success
+- 2026-03-26 08:28:16: email execution - ✓ Success
+- 2026-03-26 08:28:16: email execution - ✓ Success
+- 2026-03-26 08:28:12: email execution - ✓ Success
+- 2026-03-26 08:28:12: email execution - ✓ Success
+- 2026-03-26 08:28:08: email execution - ✓ Success
+- 2026-03-26 08:28:08: email execution - ✓ Success
+- 2026-03-26 08:28:03: email execution - ✓ Success
+- 2026-03-26 08:28:03: email execution - ✓ Success
+- 2026-03-26 08:27:59: email execution - ✓ Success
+- 2026-03-26 08:27:59: email execution - ✓ Success
+- 2026-03-26 08:27:55: email execution - ✓ Success
+- 2026-03-26 08:27:54: email execution - ✓ Success
+- 2026-03-26 08:27:50: email execution - ✓ Success
+- 2026-03-26 08:27:50: email execution - ✓ Success
+- 2026-03-26 08:27:49: Processed GMAIL_urgent_20260326_082747.md - ✓
+- 2026-03-26 08:27:45: email execution - ✓ Success
+- 2026-03-26 08:27:45: email execution - ✓ Success
+- 2026-03-26 08:27:40: Processed WHATSAPP_RIDERZ_SMCHS_PAYMENT_20260326_074825.md - ✓
+- 2026-03-26 08:27:40: Processed WHATSAPP_client_meeting.md_20260326_082730.md - ✓
+- 2026-03-26 08:27:39: Processed WHATSAPP_CHAPTER_3_PAYMENTS_O_20260326_074701.md - ✓
+- 2026-03-26 08:27:39: Processed GMAIL_Urgent_20260326_082734.md - ✓
+- 2026-03-26 08:27:39: Processed GMAIL_Sales_20260326_082734.md - ✓
+- 2026-03-26 08:27:38: Processed GMAIL_sales_20260326_082732.md - ✓
+- 2026-03-26 07:27:50: email execution - ✗ Failed
+- 2026-03-26 07:27:46: email execution - ✗ Failed
+- 2026-03-26 07:27:42: email execution - ✗ Failed
+- 2026-03-26 07:27:38: email execution - ✗ Failed
+- 2026-03-26 07:27:23: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:27:22: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:27:21: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:27:21: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:27:20: email execution - ✗ Failed
+- 2026-03-26 07:27:20: email execution - ✗ Failed
+- 2026-03-26 07:27:20: email execution - ✗ Failed
+- 2026-03-26 07:27:17: test_post execution - ✓ Success
+- 2026-03-26 07:27:17: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:27:16: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:27:15: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:27:15: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:27:14: email execution - ✗ Failed
+- 2026-03-26 07:27:14: email execution - ✗ Failed
+- 2026-03-26 07:27:14: email execution - ✗ Failed
+- 2026-03-26 07:27:14: email execution - ✗ Failed
+- 2026-03-26 07:27:10: email execution - ✗ Failed
+- 2026-03-26 07:27:09: email execution - ✗ Failed
+- 2026-03-26 07:27:05: email execution - ✗ Failed
+- 2026-03-26 07:27:04: email execution - ✗ Failed
+- 2026-03-26 07:27:00: email execution - ✗ Failed
+- 2026-03-26 07:26:59: email execution - ✗ Failed
+- 2026-03-26 07:26:54: email execution - ✗ Failed
+- 2026-03-26 07:26:54: email execution - ✗ Failed
+- 2026-03-26 07:26:49: email execution - ✗ Failed
+- 2026-03-26 07:26:49: email execution - ✗ Failed
+- 2026-03-26 07:26:44: email execution - ✗ Failed
+- 2026-03-26 07:26:43: email execution - ✗ Failed
+- 2026-03-26 07:26:39: email execution - ✗ Failed
+- 2026-03-26 07:26:37: email execution - ✗ Failed
+- 2026-03-26 07:26:32: email execution - ✗ Failed
+- 2026-03-26 07:26:32: email execution - ✗ Failed
+- 2026-03-26 07:26:28: email execution - ✗ Failed
+- 2026-03-26 07:26:27: email execution - ✗ Failed
+- 2026-03-26 07:26:23: email execution - ✗ Failed
+- 2026-03-26 07:26:14: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:26:13: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:26:12: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:26:12: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:26:12: email execution - ✗ Failed
+- 2026-03-26 07:26:11: email execution - ✗ Failed
+- 2026-03-26 07:26:11: email execution - ✗ Failed
+- 2026-03-26 07:26:08: email execution - ✗ Failed
+- 2026-03-26 07:26:05: email execution - ✗ Failed
+- 2026-03-26 07:26:01: email execution - ✗ Failed
+- 2026-03-26 07:25:57: email execution - ✗ Failed
+- 2026-03-26 07:25:53: email execution - ✗ Failed
+- 2026-03-26 07:25:49: email execution - ✗ Failed
+- 2026-03-26 07:25:45: email execution - ✗ Failed
+- 2026-03-26 07:25:42: email execution - ✗ Failed
+- 2026-03-26 07:25:37: email execution - ✗ Failed
+- 2026-03-26 07:25:33: email execution - ✗ Failed
+- 2026-03-26 07:25:19: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:25:19: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:25:19: test_post execution - ✓ Success
+- 2026-03-26 07:25:19: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:25:18: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:25:18: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:25:17: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:25:17: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:25:16: email execution - ✗ Failed
+- 2026-03-26 07:25:16: email execution - ✗ Failed
+- 2026-03-26 07:25:16: email execution - ✗ Failed
+- 2026-03-26 07:25:16: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:25:15: email execution - ✗ Failed
+- 2026-03-26 07:25:15: email execution - ✗ Failed
+- 2026-03-26 07:25:15: email execution - ✗ Failed
+- 2026-03-26 07:25:12: email execution - ✗ Failed
+- 2026-03-26 07:25:11: email execution - ✗ Failed
+- 2026-03-26 07:25:06: email execution - ✗ Failed
+- 2026-03-26 07:25:06: email execution - ✗ Failed
+- 2026-03-26 07:25:02: email execution - ✗ Failed
+- 2026-03-26 07:25:01: email execution - ✗ Failed
+- 2026-03-26 07:24:57: email execution - ✗ Failed
+- 2026-03-26 07:24:57: email execution - ✗ Failed
+- 2026-03-26 07:24:52: email execution - ✗ Failed
+- 2026-03-26 07:24:52: email execution - ✗ Failed
+- 2026-03-26 07:24:48: email execution - ✗ Failed
+- 2026-03-26 07:24:47: email execution - ✗ Failed
+- 2026-03-26 07:24:43: email execution - ✗ Failed
+- 2026-03-26 07:24:42: email execution - ✗ Failed
+- 2026-03-26 07:24:37: email execution - ✗ Failed
+- 2026-03-26 07:24:37: email execution - ✗ Failed
+- 2026-03-26 07:24:32: email execution - ✗ Failed
+- 2026-03-26 07:24:31: email execution - ✗ Failed
+- 2026-03-26 07:24:26: email execution - ✗ Failed
+- 2026-03-26 07:24:11: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:24:11: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:24:10: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:24:10: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:24:09: email execution - ✗ Failed
+- 2026-03-26 07:24:09: email execution - ✗ Failed
+- 2026-03-26 07:24:09: email execution - ✗ Failed
+- 2026-03-26 07:24:05: email execution - ✗ Failed
+- 2026-03-26 07:24:02: email execution - ✗ Failed
+- 2026-03-26 07:23:59: email execution - ✗ Failed
+- 2026-03-26 07:23:54: email execution - ✗ Failed
+- 2026-03-26 07:23:50: email execution - ✗ Failed
+- 2026-03-26 07:23:47: email execution - ✗ Failed
+- 2026-03-26 07:23:42: email execution - ✗ Failed
+- 2026-03-26 07:23:39: email execution - ✗ Failed
+- 2026-03-26 07:23:34: email execution - ✗ Failed
+- 2026-03-26 07:23:30: email execution - ✗ Failed
+- 2026-03-26 07:23:21: test_post execution - ✓ Success
+- 2026-03-26 07:23:21: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:23:20: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:23:20: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:23:19: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:23:19: email execution - ✗ Failed
+- 2026-03-26 07:23:19: email execution - ✗ Failed
+- 2026-03-26 07:23:19: email execution - ✗ Failed
+- 2026-03-26 07:23:17: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:23:16: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:23:16: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:23:15: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:23:14: email execution - ✗ Failed
+- 2026-03-26 07:23:14: email execution - ✗ Failed
+- 2026-03-26 07:23:14: email execution - ✗ Failed
+- 2026-03-26 07:23:14: email execution - ✗ Failed
+- 2026-03-26 07:23:14: email execution - ✗ Failed
+- 2026-03-26 07:23:10: email execution - ✗ Failed
+- 2026-03-26 07:23:10: email execution - ✗ Failed
+- 2026-03-26 07:23:05: email execution - ✗ Failed
+- 2026-03-26 07:23:00: email execution - ✗ Failed
+- 2026-03-26 07:23:00: email execution - ✗ Failed
+- 2026-03-26 07:23:00: email execution - ✗ Failed
+- 2026-03-26 07:22:55: email execution - ✗ Failed
+- 2026-03-26 07:22:55: email execution - ✗ Failed
+- 2026-03-26 07:22:52: email execution - ✗ Failed
+- 2026-03-26 07:22:52: email execution - ✗ Failed
+- 2026-03-26 07:22:52: email execution - ✗ Failed
+- 2026-03-26 07:22:48: email execution - ✗ Failed
+- 2026-03-26 07:22:44: email execution - ✗ Failed
+- 2026-03-26 07:22:41: email execution - ✗ Failed
+- 2026-03-26 07:22:37: email execution - ✗ Failed
+- 2026-03-26 07:22:23: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:22:23: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:22:23: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:22:22: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:22:21: email execution - ✗ Failed
+- 2026-03-26 07:22:21: email execution - ✗ Failed
+- 2026-03-26 07:22:21: email execution - ✗ Failed
+- 2026-03-26 07:22:18: email execution - ✗ Failed
+- 2026-03-26 07:22:14: email execution - ✗ Failed
+- 2026-03-26 07:22:11: email execution - ✗ Failed
+- 2026-03-26 07:22:08: email execution n - ✗ Failed
+- 2026-03-26 07:22:08: email execution - ✗ Failed
+- 2026-03-26 07:22:04: email execution - ✗ Failed
+- 2026-03-26 07:22:01: email execution - ✗ Failed
+- 2026-03-26 07:21:58: email execution - ✗ Failed
+- 2026-03-26 07:21:54: email execution - ✗ Failed
+- 2026-03-26 07:21:50: email execution - ✗ Failed
+- 2026-03-26 07:21:47: email execution - ✗ Failed
+- 2026-03-26 07:21:44: test_post execution - ✓ Success
+- 2026-03-26 07:21:44: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:21:43: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:21:43: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:21:42: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:21:42: email execution - ✗ Failed
+- 2026-03-26 07:21:42: email execution - ✗ Failed
+- 2026-03-26 07:21:41: email execution - ✗ Failed
+- 2026-03-26 07:21:38: email execution - ✗ Failed
+- 2026-03-26 07:21:35: email execution - ✗ Failed
+- 2026-03-26 07:21:33: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:21:33: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:21:32: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:21:31: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:21:31: email execution - ✗ Failed
+- 2026-03-26 07:21:30: email execution - ✗ Failed
+- 2026-03-26 07:21:30: email execution - ✗ Failed
+- 2026-03-26 07:21:30: email execution - ✗ Failed
+- 2026-03-26 07:21:27: email execution - ✗ Failed
+- 2026-03-26 07:21:26: email execution - ✗ Failed
+- 2026-03-26 07:21:22: email execution - ✗ Failed
+- 2026-03-26 07:21:21: email execution - ✗ Failed
+- 2026-03-26 07:21:18: email execution - ✗ Failed
+- 2026-03-26 07:21:17: email execution - ✗ Failed
+- 2026-03-26 07:21:14: email execution - ✗ Failed
+- 2026-03-26 07:21:13: email execution - ✗ Failed
+- 2026-03-26 07:21:11: email execution - ✗ Failed
+- 2026-03-26 07:21:10: email execution - ✗ Failed
+- 2026-03-26 07:21:07: email execution - ✗ Failed
+- 2026-03-26 07:21:06: email execution - ✗ Failed
+- 2026-03-26 07:21:03: email execution - ✗ Failed
+- 2026-03-26 07:21:02: email execution - ✗ Failed
+- 2026-03-26 07:20:58: email execution - ✗ Failed
+- 2026-03-26 07:20:55: email execution - ✗ Failed
+- 2026-03-26 07:20:52: email execution - ✗ Failed
+- 2026-03-26 07:20:37: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:20:37: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:20:36: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:20:36: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:20:35: email execution - ✗ Failed
+- 2026-03-26 07:20:35: email execution - ✗ Failed
+- 2026-03-26 07:20:35: email execution - ✗ Failed
+- 2026-03-26 07:20:32: email execution - ✗ Failed
+- 2026-03-26 07:20:28: email execution - ✗ Failed
+- 2026-03-26 07:20:25: email execution - ✗ Failed
+- 2026-03-26 07:20:21: email execution - ✗ Failed
+- 2026-03-26 07:20:18: email execution - ✗ Failed
+- 2026-03-26 07:20:15: email execution - ✗ Failed
+- 2026-03-26 07:20:10: email execution - ✗ Failed
+- 2026-03-26 07:20:05: email execution - ✗ Failed
+- 2026-03-26 07:20:02: email execution - ✗ Failed
+- 2026-03-26 07:19:59: test_post execution - ✓ Success
+- 2026-03-26 07:19:59: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:19:59: email execution - ✗ Failed
+- 2026-03-26 07:19:59: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:19:58: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:19:58: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:19:57: email execution - ✗ Failed
+- 2026-03-26 07:19:57: email execution - ✗ Failed
+- 2026-03-26 07:19:57: email execution - ✗ Failed
+- 2026-03-26 07:19:53: email execution - ✗ Failed
+- 2026-03-26 07:19:50: email execution - ✗ Failed
+- 2026-03-26 07:19:47: email execution - ✗ Failed
+- 2026-03-26 07:19:45: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:19:44: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:19:44: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:19:43: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:19:43: email execution - ✗ Failed
+- 2026-03-26 07:19:43: email execution - ✗ Failed
+- 2026-03-26 07:19:43: email execution - ✗ Failed
+- 2026-03-26 07:19:43: email execution - ✗ Failed
+- 2026-03-26 07:19:39: email execution - ✗ Failed
+- 2026-03-26 07:19:38: email execution - ✗ Failed
+- 2026-03-26 07:19:36: email execution - ✗ Failed
+- 2026-03-26 07:19:34: email execution - ✗ Failed
+- 2026-03-26 07:19:32: email execution - ✗ Failed
+- 2026-03-26 07:19:31: email execution - ✗ Failed
+- 2026-03-26 07:19:28: email execution - ✗ Failed
+- 2026-03-26 07:19:26: email execution - ✗ Failed
+- 2026-03-26 07:19:23: email execution - ✗ Failed
+- 2026-03-26 07:19:21: email execution - ✗ Failed
+- 2026-03-26 07:19:19: email execution - ✗ Failed
+- 2026-03-26 07:19:18: email execution - ✗ Failed
+- 2026-03-26 07:19:14: email execution - ✗ Failed
+- 2026-03-26 07:19:11: email execution - ✗ Failed
+- 2026-03-26 07:19:07: email execution - ✗ Failed
+- 2026-03-26 07:19:04: email execution - ✗ Failed
+- 2026-03-26 07:18:51: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:18:50: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:18:50: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:18:49: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:18:49: email execution - ✗ Failed
+- 2026-03-26 07:18:49: email execution - ✗ Failed
+- 2026-03-26 07:18:49: email execution - ✗ Failed
+- 2026-03-26 07:18:44: email execution - ✗ Failed
+- 2026-03-26 07:18:41: email execution - ✗ Failed
+- 2026-03-26 07:18:38: email execution - ✗ Failed
+- 2026-03-26 07:18:35: email execution - ✗ Failed
+- 2026-03-26 07:18:30: email execution - ✗ Failed
+- 2026-03-26 07:18:27: email execution - ✗ Failed
+- 2026-03-26 07:18:24: email execution - ✗ Failed
+- 2026-03-26 07:18:20: email execution - ✗ Failed
+- 2026-03-26 07:18:17: email execution - ✗ Failed
+- 2026-03-26 07:18:15: test_post execution - ✓ Success
+- 2026-03-26 07:18:15: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:18:15: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:18:14: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:18:13: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:18:13: email execution - ✗ Failed
+- 2026-03-26 07:18:13: email execution - ✗ Failed
+- 2026-03-26 07:18:13: email execution - ✗ Failed
+- 2026-03-26 07:18:12: email execution - ✗ Failed
+- 2026-03-26 07:18:09: email execution - ✗ Failed
+- 2026-03-26 07:18:06: email execution - ✗ Failed
+- 2026-03-26 07:18:02: email execution - ✗ Failed
+- 2026-03-26 07:18:00: test_post execution - ✓ Success
+- 2026-03-26 07:18:00: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:17:59: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:17:58: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:17:58: email execution - ✗ Failed
+- 2026-03-26 07:17:58: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 07:17:57: email execution - ✗ Failed
+- 2026-03-26 07:17:57: email execution - ✗ Failed
+- 2026-03-26 07:17:57: email execution - ✗ Failed
+- 2026-03-26 07:17:54: email execution - ✗ Failed
+- 2026-03-26 07:17:53: email execution - ✗ Failed
+- 2026-03-26 07:17:51: email execution - ✗ Failed
+- 2026-03-26 07:17:49: email execution - ✗ Failed
+- 2026-03-26 07:17:46: email execution - ✗ Failed
+- 2026-03-26 07:17:44: email execution - ✗ Failed
+- 2026-03-26 07:17:42: email execution - ✗ Failed
+- 2026-03-26 07:17:41: Processed GMAIL_urgent_20260326_071739.md - ✓
+- 2026-03-26 07:17:41: email execution - ✗ Failed
+- 2026-03-26 07:17:39: email execution - ✗ Failed
+- 2026-03-26 07:17:36: email execution - ✗ Failed
+- 2026-03-26 07:17:34: Processed WHATSAPP_client_meeting.md_20260326_071720.md - ✓
+- 2026-03-26 07:17:33: Processed GMAIL_Urgent_20260326_071725.md - ✓
+- 2026-03-26 07:17:32: Processed GMAIL_urgent_20260326_061658.md - ✓
+- 2026-03-26 07:17:32: Processed GMAIL_Urgent_20260326_061646.md - ✓
+- 2026-03-26 07:17:31: Processed GMAIL_urgent_20260326_055111.md - ✓
+- 2026-03-26 07:17:30: Processed GMAIL_Urgent_20260326_055057.md - ✓
+- 2026-03-26 07:17:30: Processed GMAIL_Sales_20260326_071725.md - ✓
+- 2026-03-26 07:17:30: Processed GMAIL_sales_20260326_071723.md - ✓
+- 2026-03-26 07:17:29: Processed GMAIL_Sales_20260326_061645.md - ✓
+- 2026-03-26 07:17:29: Processed GMAIL_Sales_20260326_055057.md - ✓
+- 2026-03-26 05:58:44: test_post execution - ✓ Success
+- 2026-03-26 05:58:44: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:58:42: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:58:39: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:58:37: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:58:35: email execution - ✗ Failed
+- 2026-03-26 05:58:35: email execution - ✗ Failed
+- 2026-03-26 05:57:57: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:57:35: test_post execution - ✓ Success
+- 2026-03-26 05:57:35: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:57:32: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:57:30: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:57:28: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:57:25: email execution - ✗ Failed
+- 2026-03-26 05:57:25: email execution - ✗ Failed
+- 2026-03-26 05:56:25: test_post execution - ✓ Success
+- 2026-03-26 05:56:25: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:56:23: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:56:21: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:56:19: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:56:17: email execution - ✗ Failed
+- 2026-03-26 05:56:17: email execution - ✗ Failed
+- 2026-03-26 05:55:44: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:55:17: test_post execution - ✓ Success
+- 2026-03-26 05:55:17: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:55:14: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:55:13: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:55:11: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:55:09: email execution - ✗ Failed
+- 2026-03-26 05:55:09: email execution - ✗ Failed
+- 2026-03-26 05:54:08: test_post execution - ✓ Success
+- 2026-03-26 05:54:08: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:54:07: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:54:04: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:54:02: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:54:00: email execution - ✗ Failed
+- 2026-03-26 05:54:00: email execution - ✗ Failed
+- 2026-03-26 05:53:30: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:53:00: test_post execution - ✓ Success
+- 2026-03-26 05:53:00: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:52:57: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:52:55: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:52:53: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:52:49: email execution - ✗ Failed
+- 2026-03-26 05:52:49: email execution - ✗ Failed
+- 2026-03-26 05:51:49: test_post execution - ✓ Success
+- 2026-03-26 05:51:49: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:51:47: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:51:45: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:51:42: linkedin_post_draft execution - ✗ Failed
+- 2026-03-26 05:51:38: email execution - ✗ Failed
+- 2026-03-26 05:51:38: email execution - ✗ Failed
+- 2026-03-26 05:51:38: Processed WHATSAPP_UNPAID_RECHARGE_IDS_20260316_005454.md - ✓
+- 2026-03-26 05:51:36: Processed WHATSAPP_UNPAID_RECHARGE_IDS_20260315_234328.md - ✓
+- 2026-03-26 05:51:33: Processed WHATSAPP_UNPAID_RECHARGE_IDS_20260315_224840.md - ✓
+- 2026-03-26 05:51:32: Processed WHATSAPP_test_lead_20260318_024233.json_20260318_024243.md - ✓
+- 2026-03-26 05:51:31: Processed WHATSAPP_New_Connections_deta_20260307_050323.md - ✓
+- 2026-03-26 05:51:28: Processed WHATSAPP_Muntaha_20260307_050321.md - ✓
+- 2026-03-26 05:51:25: Processed WHATSAPP_John_Client_20260227_090000.md - ✓
+- 2026-03-26 05:51:24: Processed WHATSAPP_client_meeting.md_20260326_055049.md - ✓
+- 2026-03-26 05:51:22: Processed WHATSAPP_client_meeting.md_20260325_191544.md - ✓
+- 2026-03-26 05:51:21: Processed WHATSAPP_client_meeting.md_20260318_023212.md - ✓
+- 2026-03-26 05:51:21: Processed WHATSAPP_client_meeting.md_20260318_021705.md - ✓
+- 2026-03-26 05:51:19: Processed WHATSAPP_client_meeting.md_20260318_014234.md - ✓
+- 2026-03-26 05:51:18: Processed WHATSAPP_client_meeting.md_20260301_014717.md - ✓
+- 2026-03-26 05:51:17: Processed WHATSAPP_client_meeting.md_20260227_211611.md - ✓
+- 2026-03-26 05:51:16: Processed WHATSAPP_client_meeting.md_20260227_211344.md - ✓
+- 2026-03-26 05:51:16: Processed WHATSAPP_client_meeting.md_20260227_205855.md - ✓
+- 2026-03-26 05:51:15: Processed WHATSAPP_CHAPTER_3_PAYMENTS_O_20260316_005453.md - ✓
+- 2026-03-26 05:51:15: Processed WHATSAPP_CHAPTER_3_PAYMENTS_O_20260315_234324.md - ✓
+- 2026-03-26 05:51:14: Processed WHATSAPP_CHAPTER_3_PAYMENTS_O_20260315_224836.md - ✓
+- 2026-03-26 05:51:14: Processed WHATSAPP_CHAPTER_3_PAYMENTS_O_20260310_050323.md - ✓
+- 2026-03-26 05:51:13: Processed WHATSAPP_CHAPTER_3_PAYMENTS_O_20260307_050322.md - ✓
+- 2026-03-26 05:51:12: Processed WHATSAPP_Ali_Riderz_New_20260316_005536.md - ✓
+- 2026-03-26 05:51:12: Processed WHATSAPP_Ali_Riderz_New_20260315_234346.md - ✓
+- 2026-03-26 05:51:11: Processed WHATSAPP_Ali_Riderz_New_20260315_224931.md - ✓
+- 2026-03-26 05:51:10: Processed test_sales_lead_20260307.md - ✓
+- 2026-03-26 05:51:10: Processed GMAIL_urjent_20260325_205247.md - ✓
+- 2026-03-26 05:51:09: Processed GMAIL_urjent_20260325_202524.md - ✓
+- 2026-03-26 05:51:09: Processed GMAIL_urjent_20260316_004907.md - ✓
+- 2026-03-26 05:51:08: Processed GMAIL_urjent_20260315_234223.md - ✓
+- 2026-03-26 05:51:08: Processed GMAIL_urjent_20260310_045742.md - ✓
+- 2026-03-26 05:51:07: Processed GMAIL_urjent_20260310_044701.md - ✓
+- 2026-03-26 05:51:07: Processed GMAIL_urjent_20260310_044501.md - ✓
+- 2026-03-26 05:51:06: Processed GMAIL_urjent_20260310_024750.md - ✓
+- 2026-03-26 05:51:06: Processed GMAIL_urjent_20260305_015109.md - ✓
+- 2026-03-26 05:51:05: Processed GMAIL_urjent_20260303_030224.md - ✓
+- 2026-03-26 05:51:05: Processed GMAIL_urgent_20260325_205242.md - ✓
+- 2026-03-26 05:51:04: Processed GMAIL_Urgent_20260325_205227.md - ✓
+- 2026-03-26 05:51:04: Processed GMAIL_urgent_20260325_202515.md - ✓
+- 2026-03-26 05:51:03: Processed GMAIL_urgent_20260316_004901.md - ✓
+- 2026-03-26 05:51:02: Processed GMAIL_urgent_20260315_234219.md - ✓
+- 2026-03-26 05:51:02: Processed GMAIL_urgent_20260310_045733.md - ✓
+- 2026-03-26 05:51:01: Processed GMAIL_urgent_20260310_044656.md - ✓
+- 2026-03-26 05:51:00: email execution - ✗ Failed
+- 2026-03-26 05:51:00: email execution - ✗ Failed
+- 2026-03-26 05:51:00: Processed GMAIL_urgent_20260310_044450.md - ✓
+- 2026-03-26 05:50:59: Processed GMAIL_urgent_20260310_024745.md - ✓
+- 2026-03-26 05:50:59: Processed GMAIL_Sales_20260325_210650.md - ✓
+- 2026-03-26 05:50:58: Processed FILE_TEST_FILE.md - ✓
+- 2026-03-26 05:50:58: Processed FILE_content.md - ✓
+- 2026-03-25 21:41:55: test_post execution - Success
+- 2026-03-25 21:41:55: linkedin_post_draft execution - Failed
+- 2026-03-25 21:36:53: linkedin_post_draft execution - Failed
+- 2026-03-25 21:31:51: linkedin_post_draft execution - Failed
+- 2026-03-25 21:26:50: linkedin_post_draft execution - Failed
+- 2026-03-25 21:21:49: email execution - Failed
+- 2026-03-25 21:21:49: email execution - Failed
+- 2026-03-25 20:15:34: linkedin_post_draft execution - Failed
+- 2026-03-25 20:15:31: linkedin_post_draft execution - Failed
+- 2026-03-25 20:14:28: test_post execution - Success
+- 2026-03-25 20:14:28: linkedin_post_draft execution - Failed
+- 2026-03-25 20:14:25: linkedin_post_draft execution - Failed
+- 2026-03-25 20:14:22: linkedin_post_draft execution - Failed
+- 2026-03-25 20:14:18: linkedin_post_draft execution - Failed
+- 2026-03-25 20:13:15: test_post execution - Success
+- 2026-03-25 20:13:15: linkedin_post_draft execution - Failed
+- 2026-03-25 20:13:10: linkedin_post_draft execution - Failed
+- 2026-03-25 20:13:06: linkedin_post_draft execution - Failed
+- 2026-03-25 20:13:02: linkedin_post_draft execution - Failed
+- 2026-03-25 20:11:57: test_post execution - Success
+- 2026-03-25 20:11:57: linkedin_post_draft execution - Failed
+- 2026-03-25 20:11:53: linkedin_post_draft execution - Failed
+- 2026-03-25 20:11:48: linkedin_post_draft execution - Failed
+- 2026-03-25 20:11:45: linkedin_post_draft execution - Failed
+- 2026-03-25 20:10:40: test_post execution - Success
+- 2026-03-25 20:10:40: linkedin_post_draft execution - Failed
+- 2026-03-25 20:10:36: linkedin_post_draft execution - Failed
+- 2026-03-25 20:10:32: linkedin_post_draft execution - Failed
+- 2026-03-25 20:10:27: linkedin_post_draft execution - Failed
+- 2026-03-25 20:09:24: test_post execution - Success
+- 2026-03-25 20:09:24: linkedin_post_draft execution - Failed
+- 2026-03-25 20:09:20: linkedin_post_draft execution - Failed
+- 2026-03-25 20:09:17: linkedin_post_draft execution - Failed
+- 2026-03-25 20:09:13: linkedin_post_draft execution - Failed
+- 2026-03-25 20:08:07: test_post execution - Success
+- 2026-03-25 20:08:07: linkedin_post_draft execution - Failed
+- 2026-03-25 20:08:03: linkedin_post_draft execution - Failed
+- 2026-03-25 20:07:58: linkedin_post_draft execution - Failed
+- 2026-03-25 20:07:54: linkedin_post_draft execution - Failed
+- 2026-03-25 20:06:48: test_post execution - Success
+- 2026-03-25 20:06:48: linkedin_post_draft execution - Failed
+- 2026-03-25 20:06:38: linkedin_post_draft execution - Failed
+- 2026-03-25 20:06:33: linkedin_post_draft execution - Failed
+- 2026-03-25 20:06:29: linkedin_post_draft execution - Failed
+- 2026-03-25 20:05:24: test_post execution - Success
+- 2026-03-25 20:05:24: linkedin_post_draft execution - Failed
+- 2026-03-25 20:05:20: linkedin_post_draft execution - Failed
+- 2026-03-25 20:05:16: linkedin_post_draft execution - Failed
+- 2026-03-25 20:05:12: linkedin_post_draft execution - Failed
+- 2026-03-25 20:04:08: test_post execution - Success
+- 2026-03-25 20:04:08: linkedin_post_draft execution - Failed
+- 2026-03-25 20:04:05: linkedin_post_draft execution - Failed
+- 2026-03-25 20:04:02: linkedin_post_draft execution - Failed
+- 2026-03-25 20:04:00: linkedin_post_draft execution - Failed
+- 2026-03-25 20:02:57: test_post execution - Success
+- 2026-03-25 20:02:57: linkedin_post_draft execution - Failed
+- 2026-03-25 20:02:55: linkedin_post_draft execution - Failed
+- 2026-03-25 20:02:53: linkedin_post_draft execution - Failed
+- 2026-03-25 20:02:51: linkedin_post_draft execution - Failed
+- 2026-03-25 20:01:46: test_post execution - Success
+- 2026-03-25 20:01:46: linkedin_post_draft execution - Failed
+- 2026-03-25 20:01:43: linkedin_post_draft execution - Failed
+- 2026-03-25 20:01:41: linkedin_post_draft execution - Failed
+- 2026-03-25 20:01:39: linkedin_post_draft execution - Failed
+- 2026-03-25 20:00:37: test_post execution - Success
+- 2026-03-25 20:00:37: linkedin_post_draft execution - Failed
+- 2026-03-25 20:00:35: linkedin_post_draft execution - Failed
+- 2026-03-25 20:00:32: linkedin_post_draft execution - Failed
+- 2026-03-25 20:00:29: linkedin_post_draft execution - Failed
+- 2026-03-25 19:59:27: test_post execution - Success
+- 2026-03-25 19:59:27: linkedin_post_draft execution - Failed
+- 2026-03-25 19:59:22: linkedin_post_draft execution - Failed
+- 2026-03-25 19:59:20: linkedin_post_draft execution - Failed
+- 2026-03-25 19:59:18: linkedin_post_draft execution - Failed
+- 2026-03-25 19:58:15: test_post execution - Success
+- 2026-03-25 19:58:15: linkedin_post_draft execution - Failed
+- 2026-03-25 19:58:12: linkedin_post_draft execution - Failed
+- 2026-03-25 19:58:10: linkedin_post_draft execution - Failed
+- 2026-03-25 19:58:07: linkedin_post_draft execution - Failed
+- 2026-03-25 19:57:05: test_post execution - Success
+- 2026-03-25 19:57:05: linkedin_post_draft execution - Failed
+- 2026-03-25 19:57:02: linkedin_post_draft execution - Failed
+- 2026-03-25 19:56:57: linkedin_post_draft execution - Failed
+- 2026-03-25 19:56:50: linkedin_post_draft execution - Failed
+- 2026-03-25 19:55:45: test_post execution - Success
+- 2026-03-25 19:55:45: linkedin_post_draft execution - Failed
+- 2026-03-25 19:55:42: linkedin_post_draft execution - Failed
+- 2026-03-25 19:55:40: linkedin_post_draft execution - Failed
+- 2026-03-25 19:55:38: linkedin_post_draft execution - Failed
+- 2026-03-25 19:54:35: test_post execution - Success
+- 2026-03-25 19:54:35: linkedin_post_draft execution - Failed
+- 2026-03-25 19:54:32: linkedin_post_draft execution - Failed
+- 2026-03-25 19:54:27: linkedin_post_draft execution - Failed
+- 2026-03-25 19:54:24: linkedin_post_draft execution - Failed
+- 2026-03-25 19:53:21: test_post execution - Success
+- 2026-03-25 19:53:21: linkedin_post_draft execution - Failed
+- 2026-03-25 19:53:18: linkedin_post_draft execution - Failed
+- 2026-03-25 19:53:14: linkedin_post_draft execution - Failed
+- 2026-03-25 19:53:11: linkedin_post_draft execution - Failed
+- 2026-03-25 19:52:08: test_post execution - Success
+- 2026-03-25 19:52:08: linkedin_post_draft execution - Failed
+- 2026-03-25 19:52:05: linkedin_post_draft execution - Failed
+- 2026-03-25 19:52:02: linkedin_post_draft execution - Failed
+- 2026-03-25 19:51:59: linkedin_post_draft execution - Failed
+- 2026-03-25 19:50:55: test_post execution - Success
+- 2026-03-25 19:50:55: linkedin_post_draft execution - Failed
+- 2026-03-25 19:50:53: linkedin_post_draft execution - Failed
+- 2026-03-25 19:50:50: linkedin_post_draft execution - Failed
+- 2026-03-25 19:50:48: linkedin_post_draft execution - Failed
+- 2026-03-25 19:49:45: test_post execution - Success
+- 2026-03-25 19:49:45: linkedin_post_draft execution - Failed
+- 2026-03-25 19:49:42: linkedin_post_draft execution - Failed
+- 2026-03-25 19:49:40: linkedin_post_draft execution - Failed
+- 2026-03-25 19:49:38: linkedin_post_draft execution - Failed
+- 2026-03-25 19:48:36: test_post execution - Success
+- 2026-03-25 19:48:36: linkedin_post_draft execution - Failed
+- 2026-03-25 19:48:33: linkedin_post_draft execution - Failed
+- 2026-03-25 19:48:31: linkedin_post_draft execution - Failed
+- 2026-03-25 19:48:29: linkedin_post_draft execution - Failed
+- 2026-03-25 19:47:26: test_post execution - Success
+- 2026-03-25 19:47:26: linkedin_post_draft execution - Failed
+- 2026-03-25 19:47:24: linkedin_post_draft execution - Failed
+- 2026-03-25 19:47:22: linkedin_post_draft execution - Failed
+- 2026-03-25 19:47:20: linkedin_post_draft execution - Failed
+- 2026-03-25 19:46:18: test_post execution - Success
+- 2026-03-25 19:46:18: linkedin_post_draft execution - Failed
+- 2026-03-25 19:46:15: linkedin_post_draft execution - Failed
+- 2026-03-25 19:46:13: linkedin_post_draft execution - Failed
+- 2026-03-25 19:46:11: linkedin_post_draft execution - Failed
+- 2026-03-25 19:45:08: test_post execution - Success
+- 2026-03-25 19:45:08: linkedin_post_draft execution - Failed
+- 2026-03-25 19:45:06: linkedin_post_draft execution - Failed
+- 2026-03-25 19:45:04: linkedin_post_draft execution - Failed
+- 2026-03-25 19:45:01: linkedin_post_draft execution - Failed
+- 2026-03-25 19:43:58: test_post execution - Success
+- 2026-03-25 19:43:58: linkedin_post_draft execution - Failed
+- 2026-03-25 19:43:55: linkedin_post_draft execution - Failed
+- 2026-03-25 19:43:53: linkedin_post_draft execution - Failed
+- 2026-03-25 19:43:51: linkedin_post_draft execution - Failed
+- 2026-03-25 19:42:49: test_post execution - Success
+- 2026-03-25 19:42:49: linkedin_post_draft execution - Failed
+- 2026-03-25 19:42:46: linkedin_post_draft execution - Failed
+- 2026-03-25 19:42:44: linkedin_post_draft execution - Failed
+- 2026-03-25 19:42:42: linkedin_post_draft execution - Failed
+- 2026-03-25 19:41:39: test_post execution - Success
+- 2026-03-25 19:41:39: linkedin_post_draft execution - Failed
+- 2026-03-25 19:41:37: linkedin_post_draft execution - Failed
+- 2026-03-25 19:41:35: linkedin_post_draft execution - Failed
+- 2026-03-25 19:41:32: linkedin_post_draft execution - Failed
+- 2026-03-25 19:26:29: test_post execution - Success
+- 2026-03-25 19:26:29: linkedin_post_draft execution - Failed
+- 2026-03-25 19:26:27: linkedin_post_draft execution - Failed
+- 2026-03-25 19:26:24: linkedin_post_draft execution - Failed
+- 2026-03-25 19:26:22: linkedin_post_draft execution - Failed
+- 2026-03-25 19:25:20: test_post execution - Success
+- 2026-03-25 19:25:20: linkedin_post_draft execution - Failed
+- 2026-03-25 19:25:17: linkedin_post_draft execution - Failed
+- 2026-03-25 19:25:16: linkedin_post_draft execution - Failed
+- 2026-03-25 19:25:14: linkedin_post_draft execution - Failed
+- 2026-03-25 19:24:11: test_post execution - Success
+- 2026-03-25 19:24:11: linkedin_post_draft execution - Failed
+- 2026-03-25 19:24:09: linkedin_post_draft execution - Failed
+- 2026-03-25 19:24:07: linkedin_post_draft execution - Failed
+- 2026-03-25 19:24:05: linkedin_post_draft execution - Failed
+- 2026-03-25 19:23:02: test_post execution - Success
+- 2026-03-25 19:23:02: linkedin_post_draft execution - Failed
+- 2026-03-25 19:23:00: linkedin_post_draft execution - Failed
+- 2026-03-25 19:22:58: linkedin_post_draft execution - Failed
+- 2026-03-25 19:22:56: linkedin_post_draft execution - Failed
+- 2026-03-25 19:21:10: test_post execution - Success
+- 2026-03-25 19:21:10: linkedin_post_draft execution - Failed
+- 2026-03-25 19:21:03: linkedin_post_draft execution - Failed
+- 2026-03-25 19:20:59: linkedin_post_draft execution - Failed
+- 2026-03-25 19:20:55: linkedin_post_draft execution - Failed
+- 2026-03-25 19:19:54: test_post execution - Success
+- 2026-03-25 19:19:54: linkedin_post_draft execution - Failed
+- 2026-03-25 19:19:51: linkedin_post_draft execution - Failed
+- 2026-03-25 19:19:49: linkedin_post_draft execution - Failed
+- 2026-03-25 19:19:46: linkedin_post_draft execution - Failed
+- 2026-03-25 19:18:44: test_post execution - Success
+- 2026-03-25 19:18:44: linkedin_post_draft execution - Failed
+- 2026-03-25 19:18:42: linkedin_post_draft execution - Failed
+- 2026-03-25 19:18:40: linkedin_post_draft execution - Failed
+- 2026-03-25 19:18:38: linkedin_post_draft execution - Failed
+- 2026-03-25 19:17:36: test_post execution - Success
+- 2026-03-25 19:17:36: linkedin_post_draft execution - Failed
+- 2026-03-25 19:17:34: linkedin_post_draft execution - Failed
+- 2026-03-25 19:17:31: linkedin_post_draft execution - Failed
+- 2026-03-25 19:17:28: linkedin_post_draft execution - Failed
+- 2026-03-25 19:16:25: test_post execution - Success
+- 2026-03-25 19:16:25: linkedin_post_draft execution - Failed
+- 2026-03-25 19:16:20: linkedin_post_draft execution - Failed
+- 2026-03-25 19:16:14: linkedin_post_draft execution - Failed
+- 2026-03-25 19:16:09: linkedin_post_draft execution - Failed

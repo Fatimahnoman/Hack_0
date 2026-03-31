@@ -36,7 +36,7 @@ module.exports = {
     },
     {
       name: 'filesystem_watcher',
-      script: 'watchers/filesystem_watcher.py',
+      script: 'bronze/watchers/filesystem_watcher.py',
       interpreter: 'python',
       interpreter_args: '-u',
       cwd: __dirname,

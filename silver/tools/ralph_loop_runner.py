@@ -4,8 +4,15 @@ Ralph Wiggum Loop Runner - Silver Tier
 Implements iterative reasoning loop for processing tasks in /Needs_Action.
 Uses Ralph Wiggum pattern: analyze → act → verify → repeat until complete.
 
+DAEMON MODE:
+- Continuously monitors Needs_Action folder
+- Triggers Action Dispatcher for approved files
+- Runs 24/7 with 60-second check interval
+
 Install: pip install watchdog
-Run: python tools/ralph_loop_runner.py "Process Needs_Action" --max-iterations 10
+Run: 
+  python silver/tools/ralph_loop_runner.py --daemon
+  python silver/tools/ralph_loop_runner.py "Process Needs_Action" --max-iterations 10
 """
 
 import os
@@ -13,16 +20,20 @@ import re
 import sys
 import shutil
 import argparse
+import time
+import subprocess
 from datetime import datetime
 from pathlib import Path
 
 # Configuration
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 NEEDS_ACTION_FOLDER = os.path.join(PROJECT_ROOT, "Needs_Action")
 DONE_FOLDER = os.path.join(PROJECT_ROOT, "Done")
 PLANS_FOLDER = os.path.join(PROJECT_ROOT, "Plans")
 PENDING_APPROVAL_FOLDER = os.path.join(PROJECT_ROOT, "Pending_Approval")
+APPROVED_FOLDER = os.path.join(PENDING_APPROVAL_FOLDER, "Approved")
 COMPANY_HANDBOOK = os.path.join(PROJECT_ROOT, "Company_Handbook.md")
+ACTION_DISPATCHER_SCRIPT = os.path.join(PROJECT_ROOT, "silver", "tools", "action_dispatcher.py")
 
 # Task type keywords
 TASK_KEYWORDS = {
@@ -361,16 +372,99 @@ status: pending_approval
         """Check if all tasks are complete."""
         if not os.path.exists(NEEDS_ACTION_FOLDER):
             return True
-        
+
         remaining = [f for f in os.listdir(NEEDS_ACTION_FOLDER)
                      if os.path.isfile(os.path.join(NEEDS_ACTION_FOLDER, f))]
-        
+
         # Filter out already processed
-        unprocessed = [f for f in remaining 
+        unprocessed = [f for f in remaining
                        if os.path.join(NEEDS_ACTION_FOLDER, f) not in self.processed_files]
-        
+
         return len(unprocessed) == 0
-    
+
+    def trigger_action_dispatcher(self):
+        """Trigger Action Dispatcher to process approved files."""
+        try:
+            if not os.path.exists(ACTION_DISPATCHER_SCRIPT):
+                print(f"[WARNING] Action Dispatcher not found: {ACTION_DISPATCHER_SCRIPT}")
+                return False
+
+            # Run action dispatcher once
+            result = subprocess.run(
+                [sys.executable, ACTION_DISPATCHER_SCRIPT, "--once"],
+                cwd=PROJECT_ROOT,
+                capture_output=True,
+                text=True,
+                timeout=60
+            )
+
+            if result.returncode == 0:
+                print("[INFO] Action Dispatcher executed successfully")
+                return True
+            else:
+                print(f"[WARNING] Action Dispatcher returned: {result.stderr}")
+                return False
+
+        except subprocess.TimeoutExpired:
+            print("[WARNING] Action Dispatcher timed out")
+            return False
+        except Exception as e:
+            print(f"[ERROR] Failed to trigger Action Dispatcher: {e}")
+            return False
+
+    def run_daemon(self, check_interval: int = 60):
+        """Run Ralph Wiggum Loop in daemon mode (continuous monitoring)."""
+        print("=" * 70)
+        print("Ralph Wiggum Loop Runner - DAEMON MODE")
+        print("=" * 70)
+        print(f"Monitoring: {NEEDS_ACTION_FOLDER}")
+        print(f"Check interval: {check_interval} seconds")
+        print(f"Action Dispatcher: {ACTION_DISPATCHER_SCRIPT}")
+        print("=" * 70)
+
+        # Ensure directories exist
+        for folder in [PLANS_FOLDER, PENDING_APPROVAL_FOLDER, APPROVED_FOLDER, DONE_FOLDER]:
+            if not os.path.exists(folder):
+                os.makedirs(folder)
+                print(f"[INFO] Created directory: {folder}")
+
+        try:
+            while True:
+                print(f"\n[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Checking for new tasks...")
+
+                # Process Needs_Action folder
+                results = self.process_iteration()
+
+                if results:
+                    for r in results:
+                        print(f"  [PROCESSED] {r['file']} - Type: {r['type']}")
+
+                # Trigger Action Dispatcher to handle approved files
+                print("[INFO] Triggering Action Dispatcher...")
+                self.trigger_action_dispatcher()
+
+                # Check completion
+                if self.check_completion():
+                    print(f"[INFO] All tasks processed. Waiting for new files...")
+
+                # Sleep before next check
+                time.sleep(check_interval)
+
+        except KeyboardInterrupt:
+            print("\n[INFO] Daemon stopped by user")
+        except Exception as e:
+            print(f"[ERROR] Daemon crashed: {e}")
+            raise
+        finally:
+            # Print stats
+            print("\n" + "=" * 70)
+            print("DAEMON STATS")
+            print("=" * 70)
+            print(f"Total files processed: {len(self.processed_files)}")
+            print(f"Moved to Done: {len(self.completed_tasks)}")
+            print(f"Moved to Pending_Approval: {len(self.pending_approval)}")
+            print("=" * 70)
+
     def run(self, description: str = "Process Needs_Action") -> dict:
         """Run the complete Ralph Wiggum loop."""
         print("=" * 60)
@@ -449,18 +543,33 @@ def main():
         default=MAX_ITERATIONS,
         help=f"Maximum number of iterations (default: {MAX_ITERATIONS})"
     )
-    
-    args = parser.parse_args()
-    
-    loop = RalphWiggumLoop(max_iterations=args.max_iterations)
-    result = loop.run(description=args.description)
+    parser.add_argument(
+        "--daemon",
+        action="store_true",
+        help="Run in daemon mode (continuous monitoring, 24/7)"
+    )
+    parser.add_argument(
+        "--interval",
+        type=int,
+        default=60,
+        help="Check interval in seconds for daemon mode (default: 60)"
+    )
 
-    # Output result summary
-    print(f"\n[SUMMARY]:")
-    print(f"   Completion Promise: {result['completion_promise']}")
-    print(f"   Total Files Processed: {result['processed']}")
-    print(f"   Moved to Done: {result['completed']}")
-    print(f"   Moved to Pending_Approval: {result['pending_approval']}")
+    args = parser.parse_args()
+
+    loop = RalphWiggumLoop(max_iterations=args.max_iterations)
+
+    if args.daemon:
+        loop.run_daemon(check_interval=args.interval)
+    else:
+        result = loop.run(description=args.description)
+
+        # Output result summary
+        print(f"\n[SUMMARY]:")
+        print(f"   Completion Promise: {result['completion_promise']}")
+        print(f"   Total Files Processed: {result['processed']}")
+        print(f"   Moved to Done: {result['completed']}")
+        print(f"   Moved to Pending_Approval: {result['pending_approval']}")
 
 
 if __name__ == "__main__":

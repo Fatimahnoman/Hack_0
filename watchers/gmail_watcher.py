@@ -38,15 +38,23 @@ except ImportError as e:
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 CREDENTIALS_FILE = PROJECT_ROOT / "credentials.json"
 TOKEN_FILE = PROJECT_ROOT / "token.json"
-NEEDS_ACTION_FOLDER = PROJECT_ROOT / "Needs_Action"
-LOGS_FOLDER = PROJECT_ROOT / "Logs"
+NEEDS_ACTION_FOLDER = PROJECT_ROOT / "gold" / "needs_action"
+LOGS_FOLDER = PROJECT_ROOT / "gold" / "logs"
 LOG_FILE = LOGS_FOLDER / "watcher.log"
 CHECK_INTERVAL = 120  # seconds
 STATUS_INTERVAL = 30  # seconds
-SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
+SCOPES = [
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/gmail.send",
+    "https://www.googleapis.com/auth/gmail.modify"
+]
 
 # Keywords to monitor (case-insensitive)
-IMPORTANT_KEYWORDS = ["urgent", "invoice", "payment", "sales"]
+IMPORTANT_KEYWORDS = [
+    "urgent", "sales", "payment", "invoice", "deal", "order", 
+    "client", "customer", "quotation", "proposal", "overdue", 
+    "follow up", "meeting", "booking", "asap"
+]
 
 # Retry configuration
 MAX_RETRIES = 3
@@ -192,7 +200,7 @@ def authenticate_gmail():
                 )
             logger.info("Starting OAuth flow...")
             flow = InstalledAppFlow.from_client_secrets_file(CREDENTIALS_FILE, SCOPES)
-            creds = flow.run_local_server(port=0, open_browser=False)
+            creds = flow.run_local_server(port=0, open_browser=True)
 
         # Save token for next run
         with open(TOKEN_FILE, "w", encoding="utf-8") as f:

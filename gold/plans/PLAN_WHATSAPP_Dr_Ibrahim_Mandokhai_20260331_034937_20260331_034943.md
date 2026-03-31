@@ -1,0 +1,6 @@
+# Action Plan for WHATSAPP_Dr_Ibrahim_Mandokhai_20260331_034937.md
+
+1. Review the incoming message
+2. Verify recipient details
+3. Send the drafted response
+4. Follow up if needed

@@ -1,0 +1,90 @@
+{
+  "report_type": "weekly_business_audit",
+  "generated_at": "2026-03-27T14:33:24.180Z",
+  "period": {
+    "start": "2026-03-21",
+    "end": "2026-03-28"
+  },
+  "sections": {
+    "financial": {
+      "revenue": 0,
+      "expenses": 0,
+      "profit": 0,
+      "receivables": 0,
+      "payables": 0,
+      "cash_flow": 0,
+      "invoices_sent": 0,
+      "bills_received": 0,
+      "top_custom": null,
+      "top_expense_category": null,
+      "status": "connected",
+      "currency": "USD",
+      "last_sync": "2026-03-27T14:33:24.181Z"
+    },
+    "social_media": {
+      "facebook": {
+        "posts": 0,
+        "reach": 0,
+        "engagement": 0,
+        "new_followers": 0
+      },
+      "instagram": {
+        "posts": 0,
+        "reach": 0,
+        "engagement": 0,
+        "new_followers": 0
+      },
+      "twitter": {
+        "tweets": 0,
+        "impressions": 0,
+        "engagement": 0,
+        "new_followers": 0
+      },
+      "linkedin": {
+        "posts": 0,
+        "impressions": 0,
+        "engagement": 0,
+        "new_followers": 0
+      },
+      "total": {
+        "posts": 0,
+        "reach": 0,
+        "engagement": 0,
+        "new_followers": 0
+      },
+      "status": "connected"
+    },
+    "operations": {
+      "tasks_completed": 0,
+      "tasks_pending": 0,
+      "tasks_failed": 0,
+      "automation_runs": 0,
+      "errors": 0,
+      "uptime_percentage": 100,
+      "mcp_servers_active": 0,
+      "status": "operational"
+    },
+    "kpi": {
+      "financial_health": 65,
+      "social_growth": 0,
+      "operational_efficiency": 100,
+      "overall_score": 56
+    }
+  },
+  "summary": {
+    "highlights": [
+      "System uptime: 100%"
+    ],
+    "concerns": [],
+    "overall_status": "good"
+  },
+  "recommendations": [
+    {
+      "priority": "medium",
+      "category": "marketing",
+      "title": "Increase social media activity",
+      "description": "Only published few posts this week. Consider increasing posting frequency.",
+      "action": "Schedule at least 3-5 posts per week across all platforms."
+    }
+  ]
+}

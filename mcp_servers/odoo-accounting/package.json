@@ -1,0 +1,13 @@
+{
+  "name": "odoo-accounting-mcp",
+  "version": "1.0.0",
+  "description": "Odoo Accounting MCP Server - JSON-RPC API Integration",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "keywords": ["odoo", "accounting", "mcp", "json-rpc"],
+  "author": "",
+  "license": "MIT"
+}

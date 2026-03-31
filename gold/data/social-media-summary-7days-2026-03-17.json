@@ -1,0 +1,99 @@
+{
+  "report_type": "social_media_summary",
+  "generated_at": "2026-03-17T15:19:03.110Z",
+  "period": {
+    "days": 7,
+    "from": "2026-03-10T15:19:03.117Z",
+    "to": "2026-03-17T15:19:03.117Z"
+  },
+  "platforms": {
+    "facebook": {
+      "posts": 0,
+      "comments": 0,
+      "reactions": 0,
+      "shares": 0,
+      "engagement_rate": 0,
+      "top_posts": [],
+      "sentiment": null
+    },
+    "instagram": {
+      "posts": 0,
+      "comments": 0,
+      "reactions": 0,
+      "shares": 0,
+      "engagement_rate": 0,
+      "top_posts": [],
+      "sentiment": null
+    },
+    "twitter": {
+      "posts": 0,
+      "comments": 0,
+      "reactions": 0,
+      "shares": 0,
+      "engagement_rate": 0,
+      "top_posts": [],
+      "sentiment": null
+    },
+    "linkedin": {
+      "posts": 0,
+      "comments": 0,
+      "reactions": 0,
+      "shares": 0,
+      "engagement_rate": 0,
+      "top_posts": [],
+      "sentiment": null
+    }
+  },
+  "totals": {
+    "posts": 0,
+    "comments": 0,
+    "reactions": 0,
+    "shares": 0,
+    "new_followers": 0
+  },
+  "insights": [
+    {
+      "type": "posting_frequency",
+      "title": "Posting Frequency",
+      "description": "Average 0.0 posts per day across all platforms",
+      "metric": "0.0"
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "high",
+      "category": "content",
+      "title": "Increase Posting Frequency",
+      "description": "Currently posting 0.0 times/day. Recommend at least 1-2 posts/day.",
+      "action": "Create a content calendar and schedule posts in advance."
+    },
+    {
+      "priority": "medium",
+      "category": "platform_presence",
+      "title": "Activate facebook",
+      "description": "No posts on facebook in the last 7 days.",
+      "action": "Start posting on facebook to maintain presence."
+    },
+    {
+      "priority": "medium",
+      "category": "platform_presence",
+      "title": "Activate instagram",
+      "description": "No posts on instagram in the last 7 days.",
+      "action": "Start posting on instagram to maintain presence."
+    },
+    {
+      "priority": "medium",
+      "category": "platform_presence",
+      "title": "Activate twitter",
+      "description": "No posts on twitter in the last 7 days.",
+      "action": "Start posting on twitter to maintain presence."
+    },
+    {
+      "priority": "medium",
+      "category": "platform_presence",
+      "title": "Activate linkedin",
+      "description": "No posts on linkedin in the last 7 days.",
+      "action": "Start posting on linkedin to maintain presence."
+    }
+  ]
+}

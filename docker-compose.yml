@@ -1,0 +1,66 @@
+services:
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: odoo
+      POSTGRES_USER: odoo
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U odoo"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.odoo
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8069:8069"
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+      - ./addons:/mnt/extra-addons
+    entrypoint: >
+      bash -c "
+        echo 'Waiting for database to be ready...';
+        until pg_isready -h db -p 5432 -U odoo; do sleep 1; done;
+        echo 'Database is ready!';
+        sleep 10;
+        
+        # Set password for psql commands
+        export PGPASSWORD=odoo;
+        
+        # Check if database is initialized
+        TABLE_EXISTS=$(psql -h db -U odoo -d odoo -t -c \"SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_name = 'ir_module_module');\" 2>/dev/null | tr -d ' ');
+        echo \"Table exists: $$TABLE_EXISTS\";
+        
+        if [ \"$$TABLE_EXISTS\" != \"t\" ]; then
+          echo 'Database not initialized. Creating database and initializing...';
+          
+          # Create database if it doesn't exist
+          psql -h db -U odoo -d postgres -c 'CREATE DATABASE odoo OWNER odoo;' 2>/dev/null || true;
+          sleep 2;
+          
+          # Run Odoo initialization
+          echo 'Initializing Odoo database...';
+          odoo --db_host=db --db_port=5432 --db_user=odoo --db_password=odoo -d odoo -i base --without-demo --stop-after-init || true;
+          
+          echo 'Initialization complete!';
+        else
+          echo 'Database already initialized.';
+        fi
+        
+        # Start Odoo normally
+        echo 'Starting Odoo server...';
+        exec odoo --db_host=db --db_port=5432 --db_user=odoo --db_password=odoo;
+      "
+
+volumes:
+  odoo-db-data:
+  odoo-web-data:

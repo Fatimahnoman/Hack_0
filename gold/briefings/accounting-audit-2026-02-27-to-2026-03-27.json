@@ -1,0 +1,74 @@
+{
+  "report_type": "accounting_audit",
+  "generated_at": "2026-03-27T14:33:24.269Z",
+  "period": {
+    "start": "2026-02-27",
+    "end": "2026-03-27"
+  },
+  "sections": {
+    "financial_statements": {
+      "revenue": 0,
+      "expenses": 0,
+      "net_income": 0,
+      "gross_margin": 0,
+      "net_margin": 0,
+      "status": "ok",
+      "issues": []
+    },
+    "accounts_receivable": {
+      "total_receivables": 0,
+      "total_outstanding": 0,
+      "overdue_amount": 0,
+      "customer_count": 0,
+      "aging": {
+        "current": 0,
+        "days_30": 0,
+        "days_60": 0,
+        "days_90": 0,
+        "over_90": 0
+      },
+      "top_debtors": [],
+      "status": "ok",
+      "issues": []
+    },
+    "accounts_payable": {
+      "total_payables": 0,
+      "total_outstanding": 0,
+      "overdue_amount": 0,
+      "vendor_count": 0,
+      "aging": {
+        "current": 0,
+        "days_30": 0,
+        "days_60": 0,
+        "days_90": 0,
+        "over_90": 0
+      },
+      "top_vendors": [],
+      "status": "ok",
+      "issues": []
+    },
+    "bank_reconciliation": {
+      "total_balance": 0,
+      "bank_accounts": [],
+      "unreconciled_items": 0,
+      "reconciliation_issues": [],
+      "status": "ok"
+    },
+    "tax_compliance": {
+      "tax_collected": 0,
+      "tax_paid": 0,
+      "tax_payable": 0,
+      "filing_status": "current",
+      "upcoming_deadlines": [],
+      "compliance_issues": [],
+      "status": "ok"
+    }
+  },
+  "anomalies": [],
+  "recommendations": [],
+  "compliance_status": {
+    "status": "compliant",
+    "high_issues": 0,
+    "medium_issues": 0
+  }
+}

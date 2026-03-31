@@ -10,4 +10,12 @@ debug_li/
 debug_linkedin/
 *.png
 Logs/
+gold/logs/
+gold/needs_action/
+gold/done/
+gold/pending_approval/
 .claude/
+.gemini/
+*test*lead*
+*error*button*
+*modal*opened*

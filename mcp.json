@@ -8,6 +8,51 @@
       "cwd": ".",
       "env": {},
       "description": "Email MCP Server - Draft and send emails via Gmail API with HITL approval workflow"
+    },
+    "odoo-accounting": {
+      "command": "node",
+      "args": [
+        "mcp_servers/odoo-accounting/index.js"
+      ],
+      "cwd": ".",
+      "env": {
+        "ODOO_URL": "http://localhost:8069",
+        "ODOO_DB": "odoo",
+        "ODOO_USERNAME": "admin",
+        "ODOO_PASSWORD": "admin"
+      },
+      "description": "Odoo Accounting MCP Server - JSON-RPC API integration for invoices, bills, payments, and financial reports"
+    },
+    "facebook-instagram": {
+      "command": "node",
+      "args": [
+        "mcp_servers/facebook-instagram/index.js"
+      ],
+      "cwd": ".",
+      "env": {
+        "FB_APP_ID": "",
+        "FB_APP_SECRET": "",
+        "FB_ACCESS_TOKEN": "",
+        "FB_PAGE_ID": "",
+        "INSTAGRAM_ACCOUNT_ID": ""
+      },
+      "description": "Facebook & Instagram MCP Server - Meta Graph API integration for posting and analytics"
+    },
+    "twitter": {
+      "command": "node",
+      "args": [
+        "mcp_servers/twitter/index.js"
+      ],
+      "cwd": ".",
+      "env": {
+        "TWITTER_API_KEY": "",
+        "TWITTER_API_SECRET": "",
+        "TWITTER_ACCESS_TOKEN": "",
+        "TWITTER_ACCESS_SECRET": "",
+        "TWITTER_BEARER_TOKEN": "",
+        "TWITTER_USER_ID": ""
+      },
+      "description": "Twitter (X) MCP Server - Twitter API v2 integration for tweets, threads, and analytics"
     }
   }
 }
