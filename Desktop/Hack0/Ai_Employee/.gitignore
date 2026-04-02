@@ -1,14 +1,45 @@
+# Ignore Downloads folder and system files
+Downloads/
+$null
+*.lnk
+*.exe
+*.dll
+*.whl
+*.zip
+*.msi
+
+# Ignore session files (browser data)
+Silver_Tier/sessions/
+*.pma
+*.db
+*.db-journal
+lockfile
+Local State
+
+# Ignore logs
+logs/
+*.log
+
+# Ignore node modules
 node_modules/
+
+# Ignore Python cache
 __pycache__/
 *.pyc
+.pytest_cache/
+
+# Ignore environment files
 .env
-credentials.json
-token.json
-session/
-auth/
-debug_li/
-debug_linkedin/
-*.png
-Logs/
-.claude/
-"Silver_Tier/sessions/"  
+.venv/
+venv/
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+desktop.ini
