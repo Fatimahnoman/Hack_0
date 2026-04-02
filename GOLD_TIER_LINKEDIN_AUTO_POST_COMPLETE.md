@@ -1,4 +1,4 @@
-# Gold Tier LinkedIn Auto-Post Implementation Guide
+﻿# Gold Tier LinkedIn Auto-Post Implementation Guide
 
 ## 📋 Overview
 
@@ -89,7 +89,7 @@ This guide provides complete implementation details for the **Gold Tier LinkedIn
 ## 📁 File Structure
 
 ```
-F:\heckathon\heckathon 0\
+F:\heckathon\heckathon-0\
 ├── watchers/
 │   ├── linkedin_watcher_fixed.py         # Monitors LinkedIn for sales leads
 │   └── linkedin_auto_poster_fixed.py     # Posts to LinkedIn (browser automation)

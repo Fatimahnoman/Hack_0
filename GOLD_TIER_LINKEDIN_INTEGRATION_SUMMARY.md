@@ -1,4 +1,4 @@
-# LinkedIn Auto Post - Gold Tier Integration
+﻿# LinkedIn Auto Post - Gold Tier Integration
 
 ## ✅ COMPLETE - Silver Tier Working Code Now in Gold Tier
 
@@ -17,7 +17,7 @@
    - Status: ✅ Already configured to call Gold Tier poster
 
 4. **Persistent Session Configured**
-   - Path: `F:\heckathon\heckathon 0\session\linkedin`
+   - Path: `F:\heckathon\heckathon-0\session\linkedin`
    - Status: ✅ Same as Silver Tier
 
 5. **Slow Typing + Stable Selectors**

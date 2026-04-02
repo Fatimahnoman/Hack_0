@@ -1,4 +1,4 @@
-# LinkedIn Watcher - Fix Status
+﻿# LinkedIn Watcher - Fix Status
 
 ## ✅ Issue Fixed: LinkedIn Page Not Opening
 
@@ -17,14 +17,14 @@
 Changed docstring from:
 ```python
 """
-✓ Persistent session (F:\heckathon\heckathon 0\session\linkedin)
+✓ Persistent session (F:\heckathon\heckathon-0\session\linkedin)
 """
 ```
 
 To:
 ```python
 r"""
-✓ Persistent session: F:\heckathon\heckathon 0\session\linkedin
+✓ Persistent session: F:\heckathon\heckathon-0\session\linkedin
 """
 ```
 
@@ -90,7 +90,7 @@ When you run `start_gold_tier.bat`:
 
 ### LinkedIn Session Location
 ```
-F:\heckathon\heckathon 0\session\linkedin\
+F:\heckathon\heckathon-0\session\linkedin\
 ```
 
 ### First Run

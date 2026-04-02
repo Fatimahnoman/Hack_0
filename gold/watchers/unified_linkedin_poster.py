@@ -72,10 +72,61 @@ SALES_KEYWORDS = [
 
 # Track processed items
 processed_ids = set()
+# Throttle noisy debug screenshots when feed selectors miss (LinkedIn DOM changes often)
+_scan_empty_streak = 0
 
 # =============================================================================
 # BROWSER UTILITIES
 # =============================================================================
+
+
+def scroll_feed_to_load_posts(page: Page, rounds: int = 4) -> None:
+    """Scroll main feed so lazy-loaded posts render (LinkedIn virtualizes the list)."""
+    try:
+        page.evaluate(
+            """() => {
+                const main = document.querySelector('main.scaffold-layout__main') || document.querySelector('main');
+                if (main) main.scrollTo(0, 0);
+            }"""
+        )
+        time.sleep(0.5)
+        for _ in range(rounds):
+            page.evaluate("window.scrollBy(0, Math.min(900, document.body.scrollHeight / 4))")
+            time.sleep(0.9)
+    except Exception as e:
+        logger.debug(f"scroll_feed_to_load_posts: {e}")
+
+
+def ensure_feed_ready(page: Page) -> bool:
+    """
+    Ensure we are on /feed/ and the main scaffold has loaded.
+    Returns False if URL indicates login/checkpoint (caller should avoid noisy 'no posts' spam).
+    """
+    try:
+        url = (page.url or "").lower()
+        if any(x in url for x in ("login", "checkpoint", "authwall", "challenge")):
+            logger.warning(
+                "LinkedIn is not on the feed (login/checkpoint/challenge). "
+                "Complete sign-in in the browser window, then wait until you see the home feed."
+            )
+            return False
+        if "/feed" not in url:
+            logger.info("Not on /feed/ — navigating...")
+            page.goto(LINKEDIN_URL, wait_until="domcontentloaded", timeout=60000)
+            time.sleep(2)
+        try:
+            page.wait_for_selector(
+                "main, .scaffold-layout__main, [data-scaffold-layout-stack], .scaffold-finite-scroll__content",
+                timeout=25000,
+            )
+        except Exception:
+            logger.debug("Feed scaffold selector wait timed out; continuing with scroll")
+        time.sleep(1)
+        scroll_feed_to_load_posts(page, rounds=3)
+        return True
+    except Exception as e:
+        logger.debug(f"ensure_feed_ready: {e}")
+        return True
 
 def take_debug_screenshot(page: Page, name: str):
     """Save a timestamped screenshot for debugging."""
@@ -203,6 +254,35 @@ def open_compose_modal(page: Page) -> bool:
         
     return False
 
+def force_english_ltr_on_editor(editor):
+    """Prevent mirrored English: force LTR on compose editor + parents."""
+    try:
+        editor.evaluate(
+            """(el) => {
+                const apply = (node) => {
+                    if (!node) return;
+                    if (node.style) {
+                        node.style.direction = 'ltr';
+                        node.style.unicodeBidi = 'normal';
+                        node.style.textAlign = 'left';
+                    }
+                    if (node.setAttribute) {
+                        node.setAttribute('dir', 'ltr');
+                        node.setAttribute('lang', 'en');
+                    }
+                };
+                apply(el);
+                let p = el.parentElement;
+                for (let i = 0; i < 8 && p; i++) {
+                    apply(p);
+                    p = p.parentElement;
+                }
+            }"""
+        )
+    except Exception as e:
+        logger.debug(f"force_english_ltr: {e}")
+
+
 def find_editor(page: Page):
     """Finds the contenteditable editor element."""
     selectors = [
@@ -234,10 +314,12 @@ def post_content(page: Page, content: str) -> bool:
         logger.info("Focusing and typing...")
         editor.focus()
         time.sleep(1)
+        force_english_ltr_on_editor(editor)
         
         # Clear existing
         page.keyboard.press("Control+A")
         page.keyboard.press("Backspace")
+        force_english_ltr_on_editor(editor)
         
         # Type naturally
         page.keyboard.type(content, delay=TYPE_DELAY)
@@ -329,40 +411,113 @@ def post_content(page: Page, content: str) -> bool:
 
 def scan_for_leads(page: Page):
     """Scans feed for leads and matches keywords."""
+    global _scan_empty_streak
     logger.info("Scanning LinkedIn feed for leads...")
     try:
-        # Wait for any post-like structure - extremely generic
+        if not ensure_feed_ready(page):
+            return 0
+
+        logger.info(f"Feed URL: {page.url[:120]}{'...' if len(page.url or '') > 120 else ''}")
+
+        # Let virtualized feed render; LinkedIn often needs scroll before cards exist in DOM
+        try:
+            page.wait_for_load_state("domcontentloaded", timeout=8000)
+        except Exception:
+            pass
+        scroll_feed_to_load_posts(page)
+
+        def nonempty_cards(candidates, min_chars: int = 15):
+            out = []
+            for el in candidates:
+                try:
+                    t = el.inner_text().strip()
+                    if len(t) >= min_chars:
+                        out.append(el)
+                except Exception:
+                    continue
+            return out
+
+        # Post-like structure (LinkedIn changes class names; keep several roots)
         post_selectors = [
-            'div.feed-shared-update-v2',
-            'div.feed-shared-update-v4',
+            "main article",
+            "div.scaffold-layout__main article",
+            "li.feed-shared-update-v2",
+            "div.feed-shared-update-v2",
+            "div.feed-shared-update-v4",
+            "div.feed-shared-update-v2__description-wrapper",
             '[data-urn*="urn:li:activity"]',
             '[data-id*="urn:li:activity"]',
-            '.search-content__result',
-            '.artdeco-card'
+            "div.scaffold-finite-scroll__content article",
+            ".feed-shared-update-v2",
+            "main [class*='feed-shared-update-v2']",
         ]
-        
+
         posts = []
         for sel in post_selectors:
             try:
                 found = page.query_selector_all(sel)
-                # Filter for elements that actually have some content
-                found = [f for f in found if len(f.inner_text().strip()) > 50]
+                found = nonempty_cards(found, min_chars=12)
                 if found:
                     posts = found
-                    logger.debug(f"✓ Found {len(found)} posts with selector: {sel}")
+                    logger.debug(f"✓ Found {len(found)} post cards with selector: {sel}")
                     break
-            except: continue
-            
+            except Exception:
+                continue
+
+        # Second pass: extra scroll + shorter text threshold (lazy-loaded / short previews)
         if not posts:
-            logger.warning("No posts found in feed yet. Waiting for scroll...")
-            take_debug_screenshot(page, "error_scan_no_posts")
-            # Try to log some helpful element names
+            time.sleep(1.5)
+            scroll_feed_to_load_posts(page, rounds=5)
+            for sel in post_selectors:
+                try:
+                    found = page.query_selector_all(sel)
+                    found = nonempty_cards(found, min_chars=6)
+                    if found:
+                        posts = found
+                        logger.debug(f"✓ Retry pass: {len(found)} card(s) via {sel}")
+                        break
+                except Exception:
+                    continue
+
+        # Third pass: raw counts often >0 while inner_text is short on wrapper nodes — try minimal threshold
+        if not posts:
+            for sel in post_selectors:
+                try:
+                    found = page.query_selector_all(sel)
+                    found = nonempty_cards(found, min_chars=3)
+                    if len(found) >= 2:
+                        posts = found
+                        logger.info(f"✓ Third pass: {len(found)} card(s) via {sel} (min_chars=3)")
+                        break
+                except Exception:
+                    continue
+
+        if not posts:
+            _scan_empty_streak += 1
+            logger.warning(
+                "No posts found in feed yet (login wall, slow load, or DOM change). "
+                "Ensure you are on /feed/ and logged in."
+            )
+            # Diagnostic: raw selector counts (helps when class names shift)
+            for sel in post_selectors:
+                try:
+                    raw = page.query_selector_all(sel)
+                    logger.info(f"[feed scan] {sel!r}: raw_count={len(raw)}")
+                except Exception as ex:
+                    logger.info(f"[feed scan] {sel!r}: error {ex}")
+            if _scan_empty_streak == 1 or _scan_empty_streak % 5 == 0:
+                take_debug_screenshot(page, "error_scan_no_posts")
             try:
-                tags = page.evaluate("() => Array.from(document.querySelectorAll('div[id^=\"ember\"]')).slice(0, 5).map(e => e.className)")
-                logger.debug(f"Sample ember div classes: {tags}")
-            except: pass
-            page.evaluate("window.scrollBy(0, 500)")
+                tags = page.evaluate(
+                    "() => Array.from(document.querySelectorAll('main [class*=\"feed\"]')).slice(0, 3).map(e => e.className)"
+                )
+                logger.debug(f"Sample feed-related classes: {tags}")
+            except Exception:
+                pass
+            scroll_feed_to_load_posts(page, rounds=2)
             return 0
+
+        _scan_empty_streak = 0
             
         new_leads = 0
         for post in posts[:15]:
@@ -375,10 +530,16 @@ def scan_for_leads(page: Page):
                     post_id = f"hash_{hash(txt)}"
                 
                 if post_id in processed_ids: continue
-                
-                content_elem = post.query_selector('.update-components-text')
-                if not content_elem: continue
+
+                content_elem = post.query_selector(
+                    ".update-components-text, .feed-shared-update-v2__description, "
+                    ".update-components-update-v2__commentary, span.break-words"
+                )
+                if not content_elem:
+                    content_elem = post
                 content = content_elem.inner_text().strip().lower()
+                if len(content) < 10:
+                    continue
                 
                 # Keyword check
                 if any(kw in content for kw in SALES_KEYWORDS):

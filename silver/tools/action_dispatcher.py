@@ -195,23 +195,40 @@ class ActionDispatcher:
                         
                         metadata["content"] = body
                         
-                        # Extract post_text from LinkedIn Post Draft section
+                        # Extract post_text — do NOT stop at first "---" (markdown rules in post body truncate)
                         post_match = re.search(
-                            r'## LinkedIn Post Draft\s*\n+(.+?)\n*---',
+                            r'## LinkedIn Post Draft\s*\n+([\s\S]+)',
                             body,
-                            re.DOTALL
+                            re.IGNORECASE
                         )
                         if post_match:
-                            metadata["post_text"] = post_match.group(1).strip()
+                            raw = post_match.group(1).strip()
+                            raw = re.sub(
+                                r'\n?---\s*\n+\*[^\n]+\*\s*$',
+                                '',
+                                raw,
+                                flags=re.DOTALL,
+                            )
+                            raw = re.sub(r'\n?---\s*$', '', raw)
+                            metadata["post_text"] = raw.strip()
                         
                         # Extract message from Message Content section
                         msg_match = re.search(
-                            r'## Message Content\s*\n+(.+?)\n*---',
+                            r'## Message Content\s*\n+(.+?)(?=\n---|\n## |\Z)',
                             body,
                             re.DOTALL
                         )
                         if msg_match:
                             metadata["message"] = msg_match.group(1).strip()
+                        # Gemini / orchestrator drafts often use "## Content"
+                        if not metadata.get("message"):
+                            content_match = re.search(
+                                r'## Content\s*\n+(.+?)(?=\n## |\n---|\Z)',
+                                body,
+                                re.DOTALL | re.IGNORECASE
+                            )
+                            if content_match:
+                                metadata["message"] = content_match.group(1).strip()
                     else:
                         metadata["content"] = content
                 else:
@@ -357,13 +374,31 @@ class ActionDispatcher:
 
                 log.info(f"[LINKEDIN] Trying {script_name}: {script_path.name}")
 
-                result = subprocess.run(
-                    [sys.executable, str(script_path), "--content", post_content],
-                    cwd=str(PROJECT_ROOT),
-                    capture_output=True,
-                    text=True,
-                    timeout=720  # 12 minute timeout
+                # Windows argv limit (~8k) + shell quoting — always pass a temp file, not --content
+                tmp_post = (
+                    PROJECT_ROOT
+                    / "gold"
+                    / "logs"
+                    / f"_linkedin_dispatch_{datetime.now().strftime('%Y%m%d_%H%M%S_%f')}.md"
                 )
+                tmp_post.write_text(
+                    "## LinkedIn Post Draft\n\n" + post_content + "\n",
+                    encoding="utf-8",
+                )
+                try:
+                    result = subprocess.run(
+                        [sys.executable, str(script_path), "--file", str(tmp_post)],
+                        cwd=str(PROJECT_ROOT),
+                        capture_output=True,
+                        text=True,
+                        timeout=900,
+                    )
+                finally:
+                    try:
+                        if tmp_post.exists():
+                            tmp_post.unlink()
+                    except Exception:
+                        pass
 
                 if result.returncode == 0:
                     log.info(f"[LINKEDIN] ✓ Post successful ({script_name})")
@@ -386,6 +421,23 @@ class ActionDispatcher:
     # WHATSAPP MESSAGE EXECUTION
     # =============================================================================
     
+    def _whatsapp_recipient_from_filename(self, filename: str) -> str:
+        """
+        Derive chat target from WHATSAPP_<contact>_<YYYYMMDD_HHMMSS>.md
+        or DRAFT_WHATSAPP_<...>_<orchestrator_ts>.md (contact is before last _date_time).
+        """
+        stem = Path(filename).stem
+        if stem.upper().startswith("DRAFT_"):
+            stem = stem[6:]
+        if not stem.upper().startswith("WHATSAPP_"):
+            return ""
+        rest = stem[10:]  # after WHATSAPP_
+        # Last _YYYYMMDD_HHMMSS is the watcher timestamp
+        m = re.match(r"^(.*)_(\d{8}_\d{6})$", rest)
+        if m:
+            return m.group(1).replace("_", " ").strip()
+        return rest.replace("_", " ").strip()
+
     def execute_whatsapp_message(self, filepath: Path, metadata: Dict[str, Any]) -> bool:
         """Execute WhatsApp message using whatsapp_sender.py."""
         log.info("=" * 70)
@@ -397,13 +449,10 @@ class ActionDispatcher:
                 log.error(f"WhatsApp sender script not found: {WHATSAPP_SENDER_SCRIPT}")
                 return False
             
-            # Extract recipient
-            to = metadata.get('from', '') or metadata.get('to', '')
+            # Extract recipient (frontmatter from orchestrator DRAFT; else filename)
+            to = (metadata.get("to") or metadata.get("from") or "").strip()
             if not to:
-                # Try to extract from filename
-                match = re.search(r'WHATSAPP_([^_]+)', filepath.name)
-                if match:
-                    to = match.group(1)
+                to = self._whatsapp_recipient_from_filename(filepath.name)
             
             # Extract message
             message = metadata.get('message', '')

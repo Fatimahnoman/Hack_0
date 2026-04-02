@@ -6,7 +6,12 @@ Just opens LinkedIn in browser to test if it works.
 
 import sys
 import time
+from pathlib import Path
+
 from playwright.sync_api import sync_playwright
+
+PROJECT_ROOT = Path(__file__).resolve().parent
+SESSION_LINKEDIN = PROJECT_ROOT / "session" / "linkedin"
 
 print("=" * 60)
 print("LINKEDIN BROWSER LAUNCH TEST")
@@ -17,7 +22,7 @@ try:
         print("[1] Launching browser...")
         
         context = p.chromium.launch_persistent_context(
-            user_data_dir=r"F:\heckathon\heckathon 0\session\linkedin",
+            user_data_dir=str(SESSION_LINKEDIN),
             headless=False,
             channel="chrome",
             args=[

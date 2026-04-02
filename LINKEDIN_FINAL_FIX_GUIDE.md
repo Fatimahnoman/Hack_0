@@ -1,4 +1,4 @@
-# ✅ LINKEDIN AUTO POST - FINAL PRODUCTION FIX
+﻿# ✅ LINKEDIN AUTO POST - FINAL PRODUCTION FIX
 
 ## 🎯 Problem Solved
 
@@ -25,14 +25,14 @@
 
 ### Step 1: Backup Old File (Optional)
 ```bash
-cd "F:\heckathon\heckathon 0\watchers"
+cd "F:\heckathon\heckathon-0\watchers"
 copy linkedin_auto_poster_fixed.py linkedin_auto_poster_fixed.py.backup
 ```
 
 ### Step 2: New Files Already Deployed
 New files are already created in:
-- `F:\heckathon\heckathon 0\watchers\linkedin_auto_poster_production.py`
-- `F:\heckathon\heckathon 0\watchers\linkedin_auto_poster_fixed.py`
+- `F:\heckathon\heckathon-0\watchers\linkedin_auto_poster_production.py`
+- `F:\heckathon\heckathon-0\watchers\linkedin_auto_poster_fixed.py`
 
 ### Step 3: Action Dispatcher Auto-Updated
 Action Dispatcher now automatically uses:
@@ -140,7 +140,7 @@ Saved to `debug_linkedin/`:
 
 ### Location
 ```
-F:\heckathon\heckathon 0\gold\logs\linkedin_DIAGNOSTIC_YYYYMMDD_HHMMSS.log
+F:\heckathon\heckathon-0\gold\logs\linkedin_DIAGNOSTIC_YYYYMMDD_HHMMSS.log
 ```
 
 ### What's Logged

@@ -1,4 +1,4 @@
-# AI Employee - FIXED Workflow Guide
+﻿# AI Employee - FIXED Workflow Guide
 
 ## Overview
 Complete fix for AI Employee automation with proper workflow enforcement.
@@ -192,7 +192,7 @@ Only messages containing these keywords will be processed.
 ## File Structure
 
 ```
-heckathon 0/
+heckathon-0/
 ├── Needs_Action/          # Watchers create files here
 ├── Pending_Approval/      # Gold Orchestrator creates drafts here
 │   └── Approved/          # Human moves approved drafts here

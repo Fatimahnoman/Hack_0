@@ -1,4 +1,4 @@
-# AI Employee - Quick Start Guide (FIXED)
+﻿# AI Employee - Quick Start Guide (FIXED)
 
 ## 🚀 Quick Start (3 Steps)
 
@@ -85,7 +85,7 @@ This will:
 ## 📁 Folder Structure
 
 ```
-heckathon 0/
+heckathon-0/
 ├── Needs_Action/          ← Watchers create files here
 ├── Pending_Approval/      ← AI creates drafts here
 │   ├── DRAFT_*.md        ← Review these

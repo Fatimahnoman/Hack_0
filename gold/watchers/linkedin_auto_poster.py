@@ -5,7 +5,7 @@ Production-ready LinkedIn auto poster with persistent session support.
 Integrated with Action Dispatcher for automatic posting when files move to Approved folder.
 
 FEATURES:
-✓ Persistent session: F:\heckathon\heckathon 0\session\linkedin
+✓ Persistent session: <project_root>/session/linkedin (see SESSION_PATH in this file)
 ✓ Slow, natural typing (anti-bot detection)
 ✓ Stable selectors with multiple fallbacks
 ✓ Comprehensive logging
@@ -16,6 +16,9 @@ USAGE:
   python gold/watchers/linkedin_auto_poster.py --content "Your post text"
   OR
   python gold/watchers/linkedin_auto_poster.py --file "path/to/approved_file.md"
+  OR
+  python gold/watchers/linkedin_auto_poster.py --watch
+  (--watch runs unified_linkedin_poster.py --watch: feed + leads -> gold/needs_action)
 
 INSTALL:
   pip install playwright
@@ -27,13 +30,14 @@ Date: 2026-03-31
 """
 
 import os
+import re
 import sys
 import time
 import shutil
 import logging
+import subprocess
 import argparse
 import random
-import re
 from datetime import datetime
 from pathlib import Path
 
@@ -76,15 +80,13 @@ for folder in [SESSION_PATH, DONE_FOLDER, FAILED_FOLDER, LOGS_FOLDER, DEBUG_FOLD
 # LinkedIn URLs
 LINKEDIN_URL = "https://www.linkedin.com"
 LINKEDIN_FEED_URL = "https://www.linkedin.com/feed/"
-LINKEDIN_MESSAGES_URL = "https://www.linkedin.com/messaging/"
 
 # Posting configuration
 MAX_RETRIES = 3
-TYPE_DELAY = 100  # ms per character (slow typing for anti-bot)
+TYPE_DELAY = 120  # ms per character (slow typing for anti-bot; higher = fewer React dropouts)
 FOCUS_WAIT = 1500  # ms
-POST_WAIT = 3000  # ms after typing
+POST_WAIT = 3500  # ms after typing (let LinkedIn enable Post button)
 RETRY_DELAYS = [10, 15, 20]  # seconds between retries
-CHECK_INTERVAL = 60  # seconds for watcher mode
 
 # Logging setup
 log_file = LOGS_FOLDER / f"linkedin_gold_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
@@ -98,10 +100,6 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
-
-# Track processed items (for watcher mode)
-processed_items = set()
-
 
 # =============================================================================
 # HELPER FUNCTIONS
@@ -119,11 +117,11 @@ def take_screenshot(page, name):
 
 
 def wait_for_linkedin_load(page, timeout=60000):
-    """Wait for LinkedIn feed to load."""
+    """Wait for LinkedIn feed — avoid networkidle (LinkedIn rarely goes idle; can break flows)."""
     logger.info("Waiting for LinkedIn to load...")
     try:
-        page.wait_for_load_state('networkidle', timeout=timeout)
-        time.sleep(3)  # Extra wait for React
+        page.wait_for_load_state("domcontentloaded", timeout=timeout)
+        time.sleep(2)
         logger.info("✓ LinkedIn loaded")
         return True
     except Exception as e:
@@ -222,23 +220,161 @@ def find_post_button(page):
     return None
 
 
-def get_priority(content: str) -> str:
-    """Determine priority based on keywords."""
-    text = content.lower()
-    if "urgent" in text:
-        return "high"
-    elif "invoice" in text or "payment" in text:
-        return "medium"
-    elif "sales" in text:
-        return "normal"
-    return "low"
+def dismiss_linkedin_overlays(page):
+    """Close popups that steal focus or dismiss the composer (Got it, cookies, etc.)."""
+    try:
+        done_btn = page.locator('button.share-box-footer__primary-btn:has-text("Done")').first
+        if done_btn.is_visible(timeout=1500):
+            logger.info("Closing 'Post settings' overlay...")
+            if not done_btn.is_enabled():
+                anyone_btn = page.locator('button:has-text("Anyone")').first
+                if anyone_btn.is_visible(timeout=1000):
+                    anyone_btn.click()
+                    time.sleep(0.8)
+            done_btn.click()
+            time.sleep(0.8)
+    except Exception:
+        pass
+    for label in ("Got it", "Not now", "Dismiss"):
+        try:
+            b = page.locator(f'button:has-text("{label}")').first
+            if b.is_visible(timeout=600):
+                b.click()
+                time.sleep(0.4)
+        except Exception:
+            pass
 
 
-def check_important_content(content: str) -> bool:
-    """Check if content contains important keywords."""
-    IMPORTANT_KEYWORDS = ["urgent", "invoice", "payment", "sales"]
-    text = content.lower()
-    return any(keyword in text for keyword in IMPORTANT_KEYWORDS)
+def safe_navigate_to_feed(page):
+    """
+    Avoid full page.reload when already on feed — reload often logs user out or
+    closes the compose modal mid-flow when sharing Chrome with the watcher (CDP).
+    """
+    u = page.url.lower()
+    if "linkedin.com" in u and "/feed" in u and "login" not in u and "checkpoint" not in u:
+        logger.info("Already on LinkedIn feed — skipping goto (prevents session/modal loss)")
+        try:
+            page.wait_for_load_state("domcontentloaded", timeout=10000)
+        except Exception:
+            pass
+        time.sleep(2)
+        return
+    logger.info(f"Navigating to {LINKEDIN_FEED_URL}...")
+    page.goto(LINKEDIN_FEED_URL, wait_until="domcontentloaded", timeout=60000)
+    time.sleep(2)
+
+
+def force_english_ltr_on_editor(compose_box):
+    """
+    LinkedIn sometimes inherits RTL / unicode-bidi on the editor — English looks mirrored.
+    Force LTR on the editor and a few ancestors.
+    """
+    try:
+        compose_box.evaluate(
+            """(el) => {
+                const apply = (node) => {
+                    if (!node) return;
+                    if (node.style) {
+                        node.style.direction = 'ltr';
+                        node.style.unicodeBidi = 'normal';
+                        node.style.textAlign = 'left';
+                    }
+                    if (node.setAttribute) {
+                        node.setAttribute('dir', 'ltr');
+                        node.setAttribute('lang', 'en');
+                    }
+                };
+                apply(el);
+                let p = el.parentElement;
+                for (let i = 0; i < 8 && p; i++) {
+                    apply(p);
+                    p = p.parentElement;
+                }
+            }"""
+        )
+    except Exception as e:
+        logger.debug(f"force_english_ltr_on_editor: {e}")
+
+
+def _normalize_for_keyboard(s: str) -> str:
+    """Reduce Unicode issues with Playwright key events (smart quotes, etc.)."""
+    return (
+        s.replace("\u2019", "'")
+        .replace("\u2018", "'")
+        .replace("\u201c", '"')
+        .replace("\u201d", '"')
+        .replace("\u2014", "--")
+        .replace("\u2013", "-")
+    )
+
+
+def paste_full_text_into_editor(compose_box, text: str) -> bool:
+    """
+    Insert entire post at once via DOM (avoids long keyboard.type stopping mid-text).
+    LinkedIn's editor accepts execCommand insertText / InputEvent.
+    """
+    try:
+        compose_box.evaluate(
+            """(el, txt) => {
+                el.focus();
+                try {
+                  el.innerHTML = '';
+                } catch (e) {}
+                if (document.execCommand && document.execCommand('insertText', false, txt)) {
+                  return 'exec';
+                }
+                el.textContent = txt;
+                el.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText', data: txt }));
+                return 'fallback';
+            }""",
+            text,
+        )
+        return True
+    except Exception as e:
+        logger.warning(f"paste_full_text_into_editor: {e}")
+        return False
+
+
+def type_text_in_composer(page, compose_box, text: str):
+    """
+    Prefer one-shot DOM insert for long/Unicode text; fall back to chunked keyboard if short.
+    """
+    compose_box.click()
+    time.sleep(0.5)
+    force_english_ltr_on_editor(compose_box)
+    page.keyboard.press("Control+A")
+    time.sleep(0.15)
+    page.keyboard.press("Backspace")
+    time.sleep(0.25)
+    force_english_ltr_on_editor(compose_box)
+
+    if paste_full_text_into_editor(compose_box, text):
+        time.sleep(1.5)
+        try:
+            got = (compose_box.inner_text(timeout=8000) or "").strip()
+            need = len(text.strip())
+            # Allow some UI loss vs source length
+            ok = need < 80 or len(got) >= max(need * 0.4, need - 300)
+            if ok:
+                logger.info(f"✓ Compose filled via DOM (~{len(got)} chars visible, source {need})")
+                return
+            logger.warning(
+                f"DOM insert looks short ({len(got)} vs {need} chars) — keyboard fallback"
+            )
+        except Exception as e:
+            logger.warning(f"Could not verify DOM insert: {e}")
+
+    # Fallback: chunked typing (ASCII-normalized)
+    norm = _normalize_for_keyboard(text)
+    delay = max(TYPE_DELAY, 80)
+    chunk_size = 120
+    for i in range(0, len(norm), chunk_size):
+        part = norm[i : i + chunk_size]
+        page.keyboard.type(part, delay=delay)
+        time.sleep(0.08)
+        u = page.url.lower()
+        if "login" in u or "checkpoint" in u:
+            raise RuntimeError("LinkedIn redirected to login/checkpoint during typing (session lost)")
 
 
 # =============================================================================
@@ -256,10 +392,11 @@ def post_to_linkedin(text):
 
     for attempt in range(MAX_RETRIES):
         logger.info(f"\nAttempt {attempt + 1}/{MAX_RETRIES}")
+        browser = None
+        used_cdp = False
 
         try:
             with sync_playwright() as p:
-                browser = None
                 context = None
 
                 # TRY 1: Connect to existing Chrome (Gold Tier Watcher on Port 9222)
@@ -270,7 +407,8 @@ def post_to_linkedin(text):
                         "http://127.0.0.1:9222",
                         timeout=10000
                     )
-                    logger.info("✓ Connected to existing Chrome")
+                    used_cdp = True
+                    logger.info("✓ Connected to existing Chrome (CDP — will NOT close browser when done)")
 
                     context = browser.contexts[0] if browser.contexts else None
 
@@ -313,27 +451,8 @@ def post_to_linkedin(text):
                 page.bring_to_front()
                 logger.info(f"Current page: {page.url}")
 
-                # Navigate to LinkedIn feed
-                logger.info(f"Navigating to {LINKEDIN_FEED_URL}...")
-
-                try:
-                    page.goto(LINKEDIN_FEED_URL, wait_until='domcontentloaded', timeout=60000)
-                    logger.info("✓ Navigation initiated")
-
-                    # Wait for network idle (but don't fail if it times out)
-                    try:
-                        page.wait_for_load_state('networkidle', timeout=30000)
-                        logger.info("✓ Network idle")
-                    except:
-                        logger.info("Network idle timeout, continuing...")
-
-                    # Wait for React app to initialize
-                    time.sleep(5)
-
-                except Exception as e:
-                    logger.warning(f"Navigation issue: {e}")
-                    # Continue anyway - page might still be usable
-
+                dismiss_linkedin_overlays(page)
+                safe_navigate_to_feed(page)
                 take_screenshot(page, "after_navigation")
 
                 # Check for login
@@ -355,10 +474,11 @@ def post_to_linkedin(text):
 
                 take_screenshot(page, "logged_in")
 
+                dismiss_linkedin_overlays(page)
+
                 # Click "Start a post"
                 logger.info("Opening compose box...")
 
-                start_btn = None
                 clicked = False
 
                 # Try multiple selectors for "Start a post"
@@ -432,22 +552,15 @@ def post_to_linkedin(text):
                     take_screenshot(page, "compose_box_not_found")
                     raise Exception("Compose box not found")
 
-                # Focus and clear
                 logger.info("Focusing compose box...")
                 compose_box.focus()
                 time.sleep(FOCUS_WAIT / 1000)
+                dismiss_linkedin_overlays(page)
 
-                logger.info("Clearing existing content...")
-                page.keyboard.press('Control+A')
-                time.sleep(0.3)
-                page.keyboard.press('Delete')
-                time.sleep(0.3)
-
-                # Type content SLOWLY
-                logger.info(f"Typing content ({len(text)} chars, {TYPE_DELAY}ms/char)...")
+                logger.info(f"Typing content ({len(text)} chars, ~{TYPE_DELAY}ms/char, keyboard API)...")
                 start_time = time.time()
 
-                compose_box.type(text, delay=TYPE_DELAY)
+                type_text_in_composer(page, compose_box, text)
 
                 elapsed = time.time() - start_time
                 logger.info(f"✓ Typing completed in {elapsed:.1f}s")
@@ -531,23 +644,25 @@ def post_to_linkedin(text):
                 logger.info("✓ LINKEDIN POST PUBLISHED SUCCESSFULLY!")
                 logger.info("=" * 60)
 
-                # Close browser (but keep session alive if using persistent context)
-                if browser and browser.is_connected():
+                # NEVER close Chrome when we attached via CDP — that disconnects the watcher
+                # and looks like "session out" / compose closing on the next run.
+                if browser and browser.is_connected() and not used_cdp:
                     try:
                         browser.close()
-                    except:
+                    except Exception:
                         pass
+                elif used_cdp:
+                    logger.info("Leaving Chrome running (CDP session preserved for LinkedIn watcher)")
 
                 return True
 
         except Exception as e:
             logger.error(f"✗ Attempt {attempt + 1} failed: {e}")
 
-            # Close browser on error
             try:
-                if browser and browser.is_connected():
+                if browser and browser.is_connected() and not used_cdp:
                     browser.close()
-            except:
+            except Exception:
                 pass
 
             # Retry logic
@@ -638,235 +753,6 @@ Original content preserved above.
         return False
 
 
-def create_needs_action_file(
-    item_type: str, sender: str, subject: str, content: str, timestamp: str
-) -> str:
-    """Create .md file in Needs_Action folder with YAML frontmatter."""
-    priority = get_priority(content)
-    file_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-
-    # Sanitize filename
-    safe_sender = re.sub(r"[^a-zA-Z0-9]", "_", sender[:20])
-    filename = f"LINKEDIN_{item_type.upper()}_{safe_sender}_{file_timestamp}.md"
-    filepath = Path(PROJECT_ROOT / "gold" / "needs_action" / filename)
-
-    # Ensure directory exists
-    filepath.parent.mkdir(parents=True, exist_ok=True)
-
-    yaml_content = f"""---
-type: linkedin_{item_type}
-from: {sender}
-subject: {subject}
-received: {timestamp}
-priority: {priority}
-status: pending
----
-
-## Content
-
-{content}
-
----
-*Imported by LinkedIn Watcher on {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}*
-"""
-
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write(yaml_content)
-
-    return filename
-
-
-# =============================================================================
-# WATCHER MODE - MONITOR LINKEDIN FOR MESSAGES/NOTIFICATIONS
-# =============================================================================
-
-def check_messages(page) -> int:
-    """Check LinkedIn messages for new important content."""
-    new_count = 0
-
-    try:
-        # Navigate to messages
-        page.goto(LINKEDIN_MESSAGES_URL, wait_until="domcontentloaded", timeout=30000)
-        time.sleep(3)  # Wait for content to load
-
-        # Look for conversation items
-        conversations = page.query_selector_all('div.conversation-card')
-
-        for conv in conversations:
-            try:
-                # Get sender name
-                sender_elem = conv.query_selector('span.entity-result__title-line')
-                if not sender_elem:
-                    continue
-                sender = sender_elem.inner_text().strip()
-
-                # Get message preview
-                msg_elem = conv.query_selector('span.t-14')
-                if not msg_elem:
-                    continue
-                message = msg_elem.inner_text().strip()
-
-                # Check for unread indicator
-                unread = conv.query_selector('span.notification-badge')
-                if not unread:
-                    continue
-
-                # Create unique ID
-                item_id = f"msg:{sender}:{message[:50]}"
-
-                if item_id in processed_items:
-                    continue
-
-                # Check for important keywords
-                if check_important_content(message):
-                    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                    filename = create_needs_action_file(
-                        "message", sender, f"LinkedIn Message from {sender}", message, timestamp
-                    )
-                    processed_items.add(item_id)
-
-                    print(f"\n[{timestamp}] New important message!")
-                    print(f"  -> Created: {filename}")
-                    print(f"     From: {sender}")
-                    print(f"     Priority: {get_priority(message)}")
-                    print(f"     Content: {message[:100]}...")
-                    new_count += 1
-                else:
-                    processed_items.add(item_id)
-
-            except Exception as e:
-                continue
-
-    except Exception as e:
-        print(f"[ERROR] Checking messages: {e}")
-
-    return new_count
-
-
-def check_notifications(page) -> int:
-    """Check LinkedIn notifications for important content."""
-    new_count = 0
-
-    try:
-        # Navigate to notifications
-        page.goto(f"{LINKEDIN_URL}/notifications/", wait_until="domcontentloaded", timeout=30000)
-        time.sleep(3)  # Wait for content to load
-
-        # Look for notification items
-        notifications = page.query_selector_all('li.notification-item')
-
-        for notif in notifications:
-            try:
-                # Get notification content
-                content_elem = notif.query_selector('span.update-components-text')
-                if not content_elem:
-                    continue
-                content = content_elem.inner_text().strip()
-
-                # Get sender if available
-                sender_elem = notif.query_selector('a.actor-name')
-                sender = sender_elem.inner_text().strip() if sender_elem else "Unknown"
-
-                # Create unique ID
-                item_id = f"notif:{sender}:{content[:50]}"
-
-                if item_id in processed_items:
-                    continue
-
-                # Check for important keywords
-                if check_important_content(content):
-                    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                    filename = create_needs_action_file(
-                        "notification", sender, f"LinkedIn Notification", content, timestamp
-                    )
-                    processed_items.add(item_id)
-
-                    print(f"\n[{timestamp}] New important notification!")
-                    print(f"  -> Created: {filename}")
-                    print(f"     From: {sender}")
-                    print(f"     Priority: {get_priority(content)}")
-                    print(f"     Content: {content[:100]}...")
-                    new_count += 1
-                else:
-                    processed_items.add(item_id)
-
-            except Exception as e:
-                continue
-
-    except Exception as e:
-        print(f"[ERROR] Checking notifications: {e}")
-
-    return new_count
-
-
-def monitor_linkedin():
-    """Monitor LinkedIn for new important messages and notifications (Watcher Mode)."""
-
-    with sync_playwright() as p:
-        # Launch browser with persistent context
-        print("[INFO] Launching browser with persistent session...")
-        print(f"[INFO] Session path: {SESSION_PATH}")
-
-        context = p.chromium.launch_persistent_context(
-            user_data_dir=str(SESSION_PATH),
-            headless=False,  # Show browser for login on first run
-            args=[
-                "--disable-blink-features=AutomationControlled",
-                "--no-sandbox",
-                "--disable-dev-shm-usage"
-            ]
-        )
-
-        page = context.pages[0]
-
-        print("[INFO] Navigating to LinkedIn...")
-        page.goto(LINKEDIN_URL)
-
-        # Wait for LinkedIn to load
-        try:
-            print("[INFO] Waiting for LinkedIn to load (login if first time)...")
-            page.wait_for_selector('div#global-nav', timeout=120000)
-            print("[INFO] LinkedIn loaded successfully!")
-        except PlaywrightTimeout:
-            print("[WARNING] LinkedIn did not load within timeout. Continuing anyway...")
-
-        print("-" * 60)
-        print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Monitoring started...")
-        print(f"Checking every {CHECK_INTERVAL} seconds")
-        print("Press Ctrl+C to stop")
-        print("-" * 60)
-
-        try:
-            while True:
-                try:
-                    # Check messages
-                    msg_count = check_messages(page)
-
-                    # Check notifications
-                    notif_count = check_notifications(page)
-
-                    total_new = msg_count + notif_count
-
-                    if total_new > 0:
-                        print(f"  -> {total_new} new important item(s) processed")
-                    else:
-                        print(f"  -> No new important items")
-
-                    # Wait before next check
-                    time.sleep(CHECK_INTERVAL)
-
-                except Exception as e:
-                    print(f"[ERROR] During monitoring: {e}")
-                    time.sleep(5)
-
-        except KeyboardInterrupt:
-            print("\n[INFO] Stopping LinkedIn watcher...")
-
-        finally:
-            context.close()
-            print("[INFO] Browser closed.")
-
-
 # =============================================================================
 # MAIN FUNCTION
 # =============================================================================
@@ -882,18 +768,20 @@ def main():
     logger.info("GOLD TIER LINKEDIN AUTO POSTER")
     logger.info("=" * 60)
 
-    # Watcher mode
     if args.watch:
-        logger.info("Running in WATCHER mode")
-        logger.info("Monitoring LinkedIn for important messages and notifications...")
+        unified = PROJECT_ROOT / "gold" / "watchers" / "unified_linkedin_poster.py"
+        if not unified.exists():
+            logger.error(f"Missing {unified}")
+            sys.exit(1)
         print("=" * 60)
-        print("LinkedIn Watcher - Gold Tier")
+        print("LinkedIn --watch → unified_linkedin_poster.py --watch")
+        print("  Feed + leads → gold/needs_action | gold/logs/linkedin_unified_*.log")
         print("=" * 60)
-        print(f"Session: {SESSION_PATH}")
-        print(f"Check interval: {CHECK_INTERVAL} seconds")
-        print("-" * 60)
-        monitor_linkedin()
-        return
+        rc = subprocess.call(
+            [sys.executable, str(unified), "--watch"],
+            cwd=str(PROJECT_ROOT),
+        )
+        raise SystemExit(rc)
 
     # Get content
     content = None
@@ -912,11 +800,24 @@ def main():
         try:
             file_content = filepath.read_text(encoding='utf-8')
 
-            # Extract post content
-            if '## LinkedIn Post Draft' in file_content:
-                parts = file_content.split('## LinkedIn Post Draft')
-                if len(parts) > 1:
-                    content = parts[1].strip().split('---')[0].strip()
+            # Extract post — never split on first '---' (truncates markdown / bullets in body)
+            if "## LinkedIn Post Draft" in file_content:
+                m = re.search(
+                    r"## LinkedIn Post Draft\s*\n+([\s\S]+)",
+                    file_content,
+                    re.IGNORECASE,
+                )
+                if m:
+                    content = m.group(1).strip()
+                    content = re.sub(
+                        r"\n?---\s*\n+\*[^\n]+\*\s*$",
+                        "",
+                        content,
+                        flags=re.DOTALL,
+                    )
+                    content = re.sub(r"\n?---\s*$", "", content).strip()
+                else:
+                    content = file_content
             else:
                 content = file_content
 

@@ -17,6 +17,7 @@ import sys
 import time
 import base64
 import logging
+import webbrowser
 from datetime import datetime
 from pathlib import Path
 
@@ -41,9 +42,11 @@ GOLD_DIR = PROJECT_ROOT / "gold"
 NEEDS_ACTION_FOLDER = GOLD_DIR / "needs_action"
 LOGS_FOLDER = GOLD_DIR / "logs"
 
-# Credentials
+# Credentials (OAuth client JSON from Google Cloud Console → project root)
 CREDENTIALS_FILE = PROJECT_ROOT / "credentials.json"
 TOKEN_FILE = PROJECT_ROOT / "token.json"
+# Fixed loopback port so browser + redirect work reliably (add http://127.0.0.1:8090/ to OAuth client if required)
+OAUTH_LOCAL_PORT = int(os.environ.get("GMAIL_OAUTH_PORT", "8090"))
 SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
 
 # Ensure folders exist
@@ -115,6 +118,10 @@ def get_priority(subject: str, snippet: str) -> str:
         return "medium"
     return "normal"
 
+def _yaml_one_line(s: str) -> str:
+    return (s or "").replace('"', '\\"').replace("\r", " ").replace("\n", " ").strip()
+
+
 def create_needs_action_file(email_data: dict, logger) -> Path:
     """CRITICAL: Create file in gold/needs_action/ folder"""
     priority = get_priority(email_data['subject'], email_data['snippet'])
@@ -126,9 +133,9 @@ def create_needs_action_file(email_data: dict, logger) -> Path:
     
     content = f"""---
 type: email
-from: {email_data['from']}
-to: 
-subject: {email_data['subject']}
+from: "{_yaml_one_line(email_data['from'])}"
+to: ""
+subject: "{_yaml_one_line(email_data['subject'])}"
 priority: {priority}
 status: pending
 created_at: {datetime.now().isoformat()}
@@ -160,44 +167,87 @@ message_id: {email_data['id']}
 # GMAIL API
 # =============================================================================
 
+def _save_token(creds) -> None:
+    TOKEN_FILE.write_text(creds.to_json(), encoding="utf-8")
+
+
 def get_gmail_service():
-    """Get Gmail API service."""
+    """
+    Gmail API using OAuth2: credentials.json (client) + token.json (saved session).
+    First run opens browser for Google login; later runs use token refresh.
+    """
     creds = None
-    
+
     if TOKEN_FILE.exists():
         try:
             creds = Credentials.from_authorized_user_file(str(TOKEN_FILE), SCOPES)
         except Exception as e:
-            logger.error(f"Token error: {e}")
+            logger.error(f"token.json read error: {e}")
             creds = None
-    
+
+    if creds and creds.expired and creds.refresh_token:
+        try:
+            creds.refresh(Request())
+            _save_token(creds)
+            logger.info("Gmail token refreshed")
+        except Exception as e:
+            logger.warning(f"Token refresh failed (re-auth needed): {e}")
+            creds = None
+
     if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            try:
-                creds.refresh(Request())
-                logger.info("Token refreshed")
-            except Exception as e:
-                logger.error(f"Refresh failed: {e}")
-                creds = None
-        
-        if not creds:
-            if not CREDENTIALS_FILE.exists():
-                logger.error("credentials.json not found!")
-                return None
-            
-            logger.info("Starting OAuth flow...")
+        if not CREDENTIALS_FILE.exists():
+            logger.error(
+                f"Missing {CREDENTIALS_FILE.name} in project root. "
+                "Download OAuth 2.0 Client ID (Desktop) JSON from Google Cloud Console."
+            )
+            return None
+
+        try:
+            logger.info(
+                f"OAuth: local server http://localhost:{OAUTH_LOCAL_PORT}/ "
+                "(browser should open for Google sign-in)"
+            )
             flow = InstalledAppFlow.from_client_secrets_file(str(CREDENTIALS_FILE), SCOPES)
-            creds = flow.run_local_server(port=0, open_browser=True)
-                
-            with open(str(TOKEN_FILE), 'w') as token:
-                    token.write(creds.to_json())
-                
-                logger.info("✓ OAuth completed")
-            except Exception as e:
-                logger.error(f"OAuth failed: {e}")
-                return None
-    
-    return build('gmail', 'v1', credentials=creds)
+            creds = flow.run_local_server(
+                host="localhost",
+                port=OAUTH_LOCAL_PORT,
+                open_browser=True,
+                success_message="<p>Gmail authorized. You can close this tab.</p>",
+            )
+            _save_token(creds)
+            logger.info(f"Saved OAuth session to {TOKEN_FILE.name}")
+        except OSError as e:
+            if "Address already in use" in str(e) or "Only one usage" in str(e):
+                logger.error(
+                    f"Port {OAUTH_LOCAL_PORT} busy. Set env GMAIL_OAUTH_PORT=8091 and retry, "
+                    "or close the app using that port."
+                )
+            else:
+                logger.error(f"OAuth server error: {e}")
+            return None
+        except Exception as e:
+            logger.error(f"OAuth failed: {e}")
+            # Help if browser did not open: show auth URL is printed by the library to console
+            logger.info(
+                "If the browser did not open, check this window for a Google authorization URL "
+                "and open it manually."
+            )
+            return None
+
+    try:
+        return build("gmail", "v1", credentials=creds, cache_discovery=False)
+    except Exception as e:
+        logger.error(f"Gmail API build failed: {e}")
+        return None
+
+
+def open_gmail_in_browser():
+    """Optional: open Gmail web UI (read-only convenience)."""
+    try:
+        webbrowser.open("https://mail.google.com/mail/u/0/#inbox")
+    except Exception as e:
+        logger.debug(f"Could not open browser: {e}")
+
 
 def check_emails(service, logger):
     """Check Gmail for unread emails with keywords."""
@@ -322,6 +372,9 @@ def main():
         return
     
     logger.info("✓ Gmail API connected")
+    if os.environ.get("GMAIL_OPEN_INBOX", "1") != "0":
+        logger.info("Opening Gmail inbox in default browser (set GMAIL_OPEN_INBOX=0 to skip)")
+        open_gmail_in_browser()
     logger.info("Starting monitoring loop...")
     
     consecutive_errors = 0

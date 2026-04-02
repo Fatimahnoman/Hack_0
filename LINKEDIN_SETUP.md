@@ -1,4 +1,4 @@
-# LinkedIn Watcher & Auto Poster - Silver Tier
+﻿# LinkedIn Watcher & Auto Poster - Silver Tier
 
 ## Quick Start
 
@@ -10,13 +10,13 @@ playwright install chromium
 
 ### Run LinkedIn Watcher (Monitors LinkedIn for messages/notifications)
 ```bash
-cd "F:\heckathon\heckathon 0"
+cd "F:\heckathon\heckathon-0"
 python watchers\linkedin_watcher_fixed.py
 ```
 
 ### Run Auto LinkedIn Poster (Creates drafts from sales leads)
 ```bash
-cd "F:\heckathon\heckathon 0"
+cd "F:\heckathon\heckathon-0"
 python tools\auto_linkedin_poster.py --scan
 ```
 
@@ -125,7 +125,7 @@ python tools\auto_linkedin_poster.py --post linkedin_post_20260307_090000.md
 ## File Structure
 
 ```
-F:\heckathon\heckathon 0\
+F:\heckathon\heckathon-0\
 ├── watchers/
 │   └── linkedin_watcher_fixed.py    # Fixed LinkedIn watcher
 ├── tools/
@@ -151,7 +151,7 @@ F:\heckathon\heckathon 0\
 
 ### Test with Sample File
 ```bash
-cd "F:\heckathon\heckathon 0"
+cd "F:\heckathon\heckathon-0"
 
 # Create test sales lead
 echo "---
@@ -218,10 +218,10 @@ Per `Company_Handbook.md`:
 ## Logs
 
 ### Watcher Log Location
-`F:\heckathon\heckathon 0\Logs\watcher.log`
+`F:\heckathon\heckathon-0\Logs\watcher.log`
 
 ### Poster Log Location
-`F:\heckathon\heckathon 0\Logs\linkedin_YYYY-MM-DD.log`
+`F:\heckathon\heckathon-0\Logs\linkedin_YYYY-MM-DD.log`
 
 ### Log Format
 ```

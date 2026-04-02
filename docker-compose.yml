@@ -1,3 +1,7 @@
+# Stable project name so containers stay heckathon0-db-1 / heckathon0-web-1
+# when the repo folder is renamed (e.g. heckathon-0 vs "heckathon 0").
+name: heckathon0
+
 services:
   db:
     image: postgres:16

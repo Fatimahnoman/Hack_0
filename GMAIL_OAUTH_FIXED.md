@@ -1,4 +1,4 @@
-# ✅ Gmail OAuth - FIXED!
+﻿# ✅ Gmail OAuth - FIXED!
 
 ## What Was Fixed
 
@@ -54,7 +54,7 @@ You'll see:
 ✓✓✓ SUCCESS! OAuth authorization complete! ✓✓✓
 ======================================================================
 
-Token saved to: F:\heckathon\heckathon 0\token.json
+Token saved to: F:\heckathon\heckathon-0\token.json
 Token expires: 2026-04-24 12:34:56
 Scopes: ['https://www.googleapis.com/auth/gmail.readonly']
 

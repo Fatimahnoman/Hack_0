@@ -32,7 +32,7 @@ python antigravity.py --once
 
 ## Project Structure
 ```
-F:\heckathon\heckathon 0\
+F:\heckathon\heckathon-0\
 ├── Inbox/              # New files
 ├── Needs_Action/       # Pending tasks
 ├── Done/               # Completed items

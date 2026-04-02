@@ -1,4 +1,4 @@
-# ✅ Gold Tier LinkedIn Auto-Post - Implementation Summary
+﻿# ✅ Gold Tier LinkedIn Auto-Post - Implementation Summary
 
 ## 🎯 Mission Complete
 
@@ -172,7 +172,7 @@ Check `gold/done/` and `Dashboard.md`
 ## 📁 File Structure
 
 ```
-F:\heckathon\heckathon 0\
+F:\heckathon\heckathon-0\
 ├── GOLD_TIER_LINKEDIN_AUTO_POST_COMPLETE.md  ← Full guide
 ├── GOLD_TIER_LINKEDIN_QUICK_REFERENCE.md     ← Quick reference
 ├── test_gold_tier_linkedin.py                ← Test suite

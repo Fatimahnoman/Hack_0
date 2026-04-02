@@ -1,4 +1,4 @@
-# Gold Tier Autonomous AI Employee - Implementation Guide
+﻿# Gold Tier Autonomous AI Employee - Implementation Guide
 
 ## ✅ Implementation Complete
 
@@ -9,7 +9,7 @@ All components have been implemented with the required fixes for Windows 11 stab
 ## 📁 Gold Tier Folder Architecture
 
 ```
-heckathon 0/
+heckathon-0/
 └── gold/
     ├── needs_action/          # Watchers drop raw task files (.md)
     ├── pending_approval/      # Orchestrator drops AI-generated drafts

@@ -1,4 +1,4 @@
-# Gold Tier: Autonomous Employee
+﻿# Gold Tier: Autonomous Employee
 
 Complete implementation of the Gold Tier requirements including full cross-domain integration, accounting system, social media integration, and autonomous task completion.
 
@@ -418,7 +418,7 @@ mkdir -p Logs
 ## Directory Structure
 
 ```
-heckathon 0/
+heckathon-0/
 ├── docker-compose.yml          # Docker configuration
 ├── mcp.json                    # MCP servers configuration
 ├── mcp_servers/

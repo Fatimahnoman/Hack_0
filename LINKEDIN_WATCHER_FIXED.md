@@ -1,4 +1,4 @@
-# LinkedIn Watcher + Auto Poster - Fixed v2
+﻿# LinkedIn Watcher + Auto Poster - Fixed v2
 
 ## ✅ COMPLETELY FIXED - Auto Typing & Submit Working
 
@@ -53,7 +53,7 @@ RETRY_DELAY = 5           # 5 seconds between retries
 ## 📁 Directory Structure
 
 ```
-heckathon 0/
+heckathon-0/
 ├── session/linkedin/          # Persistent browser session (saved login)
 ├── Needs_Action/              # Detected important messages/notifications
 ├── Plans/                     # Auto-generated post drafts
@@ -183,10 +183,10 @@ Posts follow Company Handbook guidelines:
 ======================================================================
 LinkedIn Watcher + Auto Poster - Silver Tier (Fixed v2)
 ======================================================================
-Session path: F:\heckathon\heckathon 0\session\linkedin
-Needs_Action: F:\heckathon\heckathon 0\Needs_Action
-Pending_Approval: F:\heckathon\heckathon 0\Pending_Approval
-Approved: F:\heckathon\heckathon 0\Pending_Approval\Approved
+Session path: F:\heckathon\heckathon-0\session\linkedin
+Needs_Action: F:\heckathon\heckathon-0\Needs_Action
+Pending_Approval: F:\heckathon\heckathon-0\Pending_Approval
+Approved: F:\heckathon\heckathon-0\Pending_Approval\Approved
 ----------------------------------------------------------------------
 Keywords monitored: urgent, invoice, payment, sales
 Check interval: 60 seconds

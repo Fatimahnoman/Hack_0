@@ -2,8 +2,9 @@
 REM ================================================================
 REM GOLD TIER - WITHOUT AI (NO API KEY NEEDED)
 REM ================================================================
-REM This starts all watchers WITHOUT Gold Orchestrator
-REM Perfect for LinkedIn auto-posting without API key
+REM This starts watchers WITHOUT Gold Orchestrator (legacy "no AI" layout).
+REM For HITL (needs_action -^> pending_approval) use start_gold_tier.bat instead:
+REM gold_orchestrator.py works without GEMINI_API_KEY (heuristic DRAFT_*.md fallback).
 REM ================================================================
 
 cd /d "%~dp0"

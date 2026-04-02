@@ -1,4 +1,4 @@
-# GOLD TIER - COMPLETE SETUP & USER GUIDE
+﻿# GOLD TIER - COMPLETE SETUP & USER GUIDE
 
 ## ✅ Fixed Issues
 
@@ -25,7 +25,7 @@
 ## 📁 Folder Structure
 
 ```
-heckathon 0/
+heckathon-0/
 ├── Needs_Action/          # New items from Gmail/WhatsApp
 ├── Pending_Approval/      # Items awaiting approval
 │   └── Approved/          # Approved items ready for action

@@ -88,6 +88,35 @@ def get_priority(text: str) -> str:
     return "low"
 
 
+def force_english_ltr_on_editor(target):
+    """LinkedIn compose can inherit RTL — English appears mirrored. Force LTR."""
+    try:
+        target.evaluate(
+            """(el) => {
+                const apply = (node) => {
+                    if (!node) return;
+                    if (node.style) {
+                        node.style.direction = 'ltr';
+                        node.style.unicodeBidi = 'normal';
+                        node.style.textAlign = 'left';
+                    }
+                    if (node.setAttribute) {
+                        node.setAttribute('dir', 'ltr');
+                        node.setAttribute('lang', 'en');
+                    }
+                };
+                apply(el);
+                let p = el.parentElement;
+                for (let i = 0; i < 8 && p; i++) {
+                    apply(p);
+                    p = p.parentElement;
+                }
+            }"""
+        )
+    except Exception as e:
+        logger.debug(f"force_english_ltr: {e}")
+
+
 def create_needs_action_file(data: dict) -> str:
     """Create .md file in Needs_Action folder with YAML frontmatter."""
     priority = get_priority(data.get("content", ""))
@@ -492,7 +521,7 @@ def post_to_linkedin(page, content: str) -> bool:
             logger.error("✗✗✗ Text input NOT found with ANY method!")
             # Save screenshot
             try:
-                page.screenshot(path="F:\\heckathon\\heckathon 0\\Logs\\debug_no_input.png")
+                page.screenshot(path=str(LOGS_FOLDER / "debug_no_input.png"))
                 logger.info("Debug screenshot saved")
             except:
                 pass
@@ -507,6 +536,7 @@ def post_to_linkedin(page, content: str) -> bool:
         logger.info("Clicking to focus...")
         text_input.click()
         time.sleep(1)
+        force_english_ltr_on_editor(text_input)
 
         # Clear existing content
         logger.info("Clearing existing content...")
@@ -514,6 +544,7 @@ def post_to_linkedin(page, content: str) -> bool:
         time.sleep(0.5)
         page.keyboard.press('Delete')
         time.sleep(0.5)
+        force_english_ltr_on_editor(text_input)
 
         # Type character by character - SLOW AND STEADY
         logger.info("Starting to type character by character...")
@@ -691,7 +722,7 @@ def post_to_linkedin(page, content: str) -> bool:
             logger.error("✗✗✗ Post button NOT clicked by ANY method!")
             # Save screenshot
             try:
-                page.screenshot(path="F:\\heckathon\\heckathon 0\\Logs\\debug_no_click.png")
+                page.screenshot(path=str(LOGS_FOLDER / "debug_no_click.png"))
                 logger.info("Debug screenshot saved")
             except:
                 pass

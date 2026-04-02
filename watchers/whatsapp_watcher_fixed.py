@@ -117,6 +117,12 @@ def get_priority(message: str) -> str:
         return "medium"
     return "normal"
 
+def _yaml_quote(s: str) -> str:
+    """Single-line safe value for YAML frontmatter (avoid broken multiline/colon issues)."""
+    t = (s or "").replace("\r", " ").replace("\n", " ").strip()
+    return t.replace('"', '\\"')
+
+
 def create_needs_action_file(contact: str, message: str) -> Path:
     """Create file in gold/needs_action/ folder"""
     priority = get_priority(message)
@@ -124,11 +130,11 @@ def create_needs_action_file(contact: str, message: str) -> Path:
     safe_contact = re.sub(r"[^a-zA-Z0-9]", "_", contact[:20]) or "Unknown"
     filename = f"WHATSAPP_{safe_contact}_{timestamp}.md"
     filepath = NEEDS_ACTION_FOLDER / filename
-    
+
+    # Full message only in body — not in YAML (multiline/special chars break frontmatter parsing)
     content = f"""---
 type: whatsapp_message
-from: {contact}
-message: {message}
+from: "{_yaml_quote(contact)}"
 priority: {priority}
 status: pending
 created_at: {datetime.now().isoformat()}

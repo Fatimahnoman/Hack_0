@@ -1,4 +1,4 @@
-# Gmail OAuth - Complete Fix Guide
+﻿# Gmail OAuth - Complete Fix Guide
 
 ## Current Issue
 Your OAuth 2.0 Client ID is returning 404 errors, which means:
@@ -43,7 +43,7 @@ Open: https://console.cloud.google.com/
 ### Step 6: Download Credentials
 1. Click **"DOWNLOAD JSON"**
 2. Save as `credentials.json`
-3. Replace: `F:\heckathon\heckathon 0\credentials.json`
+3. Replace: `F:\heckathon\heckathon-0\credentials.json`
 
 ### Step 7: Run Authentication
 ```bash

@@ -1,10 +1,10 @@
-# Gold Tier LinkedIn Auto Poster - Quick Reference
+﻿# Gold Tier LinkedIn Auto Poster - Quick Reference
 
 ## Overview
 This is the **production-ready** LinkedIn auto poster for Gold Tier, based on the working Silver Tier code.
 
 ## Features
-✓ **Persistent Session**: `F:\heckathon\heckathon 0\session\linkedin`
+✓ **Persistent Session**: `F:\heckathon\heckathon-0\session\linkedin`
 ✓ **Slow Typing**: 100ms per character (anti-bot detection)
 ✓ **Stable Selectors**: Multiple fallback selectors for reliability
 ✓ **Comprehensive Logging**: All actions logged to `gold/logs/`
@@ -142,7 +142,7 @@ The Action Dispatcher automatically calls this script when:
 
 **Persistent Session Path:**
 ```
-F:\heckathon\heckathon 0\session\linkedin
+F:\heckathon\heckathon-0\session\linkedin
 ```
 
 **First Run:**

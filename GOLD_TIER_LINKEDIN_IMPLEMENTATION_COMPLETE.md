@@ -1,4 +1,4 @@
-# Gold Tier LinkedIn Auto Poster - Implementation Complete
+﻿# Gold Tier LinkedIn Auto Poster - Implementation Complete
 
 ## ✅ Summary
 
@@ -9,7 +9,7 @@ The **Silver Tier working LinkedIn auto post code** has been successfully integr
 1. ✓ **Located Silver Tier working code**: `silver/watchers/linkedin_watcher.py`
 2. ✓ **Created Gold Tier LinkedIn Auto Poster**: `gold/watchers/linkedin_auto_poster.py`
 3. ✓ **Integrated with Action Dispatcher**: Automatic posting when files move to Approved folder
-4. ✓ **Persistent session**: Uses `F:\heckathon\heckathon 0\session\linkedin`
+4. ✓ **Persistent session**: Uses `F:\heckathon\heckathon-0\session\linkedin`
 5. ✓ **Slow typing + stable selectors**: 100ms/char + multiple fallback selectors
 6. ✓ **Comprehensive logging**: All actions logged to `gold/logs/`
 
@@ -18,7 +18,7 @@ The **Silver Tier working LinkedIn auto post code** has been successfully integr
 ## 📁 File Structure
 
 ```
-F:\heckathon\heckathon 0\
+F:\heckathon\heckathon-0\
 ├── gold/
 │   ├── watchers/
 │   │   └── linkedin_auto_poster.py          ← NEW: Gold Tier LinkedIn Auto Poster
@@ -100,7 +100,7 @@ LinkedIn Auto Poster.
 
 ### Persistent Session
 
-**Location:** `F:\heckathon\heckathon 0\session\linkedin`
+**Location:** `F:\heckathon\heckathon-0\session\linkedin`
 
 - First run: Manual login required
 - Subsequent runs: Auto-login using saved session

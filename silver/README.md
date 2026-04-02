@@ -1,4 +1,4 @@
-# Silver Tier - AI Employee Implementation
+﻿# Silver Tier - AI Employee Implementation
 
 Complete implementation of the Silver Tier with autonomous task processing, human-in-the-loop approval, and multi-platform execution.
 
@@ -419,7 +419,7 @@ docker-compose logs -f
 3. Trigger: At logon
 4. Action: Start a program
 5. Program: `start_ai_employee.bat`
-6. Start in: `F:\heckathon\heckathon 0`
+6. Start in: `F:\heckathon\heckathon-0`
 
 ## Security Notes
 

@@ -1,4 +1,4 @@
-# Watcher Status - FINAL RESOLUTION
+﻿# Watcher Status - FINAL RESOLUTION
 ========================================
 
 ## ✅ ISSUE RESOLVED - All Watchers Online
@@ -49,7 +49,7 @@
 Monitors `/Inbox` folder for new files.
 ```cmd
 # Already running via PM2
-# Drop any file in F:\heckathon\heckathon 0\Inbox
+# Drop any file in F:\heckathon\heckathon-0\Inbox
 # It will be copied to Needs_Action automatically
 ```
 

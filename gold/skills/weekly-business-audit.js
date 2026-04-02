@@ -12,10 +12,10 @@ const { promisify } = require('util');
 
 const execAsync = promisify(exec);
 
-// Configuration
-const SKILLS_DIR = path.join(__dirname, '../gold/skills');
-const BRIEFINGS_DIR = path.join(__dirname, '../gold/briefings');
-const LOGS_DIR = path.join(__dirname, '../Logs');
+// Configuration (this file lives in gold/skills/)
+const PROJECT_ROOT = path.join(__dirname, '../..');
+const BRIEFINGS_DIR = path.join(__dirname, '../briefings');
+const LOGS_DIR = path.join(PROJECT_ROOT, 'Logs');
 
 // Ensure directories exist
 [BRIEFINGS_DIR, LOGS_DIR].forEach(dir => {
