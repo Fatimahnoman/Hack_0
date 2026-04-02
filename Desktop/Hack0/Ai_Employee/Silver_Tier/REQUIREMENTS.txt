@@ -1,0 +1,7 @@
+# WhatsApp Watcher Requirements
+
+# Complete Version (Browser Automation)
+playwright>=1.40.0
+
+# Simple Version (File-based) - No additional requirements
+
