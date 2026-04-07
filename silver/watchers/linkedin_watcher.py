@@ -45,8 +45,10 @@ except OSError as e:
 
 # Configuration
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SILVER_DIR = os.path.join(PROJECT_ROOT, "silver")
 SESSION_PATH = os.path.join(PROJECT_ROOT, "session", "linkedin")
-NEEDS_ACTION_FOLDER = os.path.join(PROJECT_ROOT, "Needs_Action")
+NEEDS_ACTION_FOLDER = os.path.join(SILVER_DIR, "Needs_Action")
+LOGS_FOLDER = os.path.join(SILVER_DIR, "Logs")
 CHECK_INTERVAL = 60  # seconds
 LINKEDIN_URL = "https://www.linkedin.com"
 LINKEDIN_MESSAGES_URL = "https://www.linkedin.com/messaging/"
@@ -56,6 +58,11 @@ IMPORTANT_KEYWORDS = ["urgent", "invoice", "payment", "sales"]
 
 # Track processed notifications/messages
 processed_items = set()
+
+# Ensure directories exist
+os.makedirs(NEEDS_ACTION_FOLDER, exist_ok=True)
+os.makedirs(LOGS_FOLDER, exist_ok=True)
+os.makedirs(SESSION_PATH, exist_ok=True)
 
 
 def get_priority(content: str) -> str:

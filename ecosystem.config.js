@@ -16,8 +16,27 @@
 module.exports = {
   apps: [
     {
+      name: 'silver_orchestrator',
+      script: 'silver/orchestrator.py',
+      interpreter: 'python',
+      interpreter_args: '-u',
+      cwd: __dirname,
+      instances: 1,
+      autorestart: true,
+      watch: false,
+      max_memory_restart: '500M',
+      env: {
+        PYTHONUNBUFFERED: '1',
+      },
+      error_file: './logs/pm2/silver_orchestrator-error.log',
+      out_file: './logs/pm2/silver_orchestrator-out.log',
+      log_file: './logs/pm2/silver_orchestrator-combined.log',
+      time: true,
+      merge_logs: true,
+    },
+    {
       name: 'gmail_watcher',
-      script: 'watchers/gmail_watcher.py',
+      script: 'silver/watchers/gmail_watcher.py',
       interpreter: 'python',
       interpreter_args: '-u',  // Unbuffered output for real-time logs
       cwd: __dirname,
@@ -55,7 +74,7 @@ module.exports = {
     },
     {
       name: 'whatsapp_watcher_simple',
-      script: 'watchers/whatsapp_watcher_simple.py',
+      script: 'silver/watchers/whatsapp_watcher.py',
       interpreter: 'python',
       interpreter_args: '-u',
       cwd: __dirname,

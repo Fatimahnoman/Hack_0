@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(move *)"
+      "Bash(move *)",
+      "Bash(pip install *)",
+      "Bash(python *)"
     ]
   },
   "$version": 3

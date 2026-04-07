@@ -27,13 +27,21 @@ from pathlib import Path
 
 # Configuration
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-NEEDS_ACTION_FOLDER = os.path.join(PROJECT_ROOT, "Needs_Action")
-DONE_FOLDER = os.path.join(PROJECT_ROOT, "Done")
-PLANS_FOLDER = os.path.join(PROJECT_ROOT, "Plans")
-PENDING_APPROVAL_FOLDER = os.path.join(PROJECT_ROOT, "Pending_Approval")
-APPROVED_FOLDER = os.path.join(PENDING_APPROVAL_FOLDER, "Approved")
-COMPANY_HANDBOOK = os.path.join(PROJECT_ROOT, "Company_Handbook.md")
-ACTION_DISPATCHER_SCRIPT = os.path.join(PROJECT_ROOT, "silver", "tools", "action_dispatcher.py")
+SILVER_DIR = os.path.join(PROJECT_ROOT, "silver")
+NEEDS_ACTION_FOLDER = os.path.join(SILVER_DIR, "Needs_Action")
+DONE_FOLDER = os.path.join(SILVER_DIR, "Done")
+PLANS_FOLDER = os.path.join(SILVER_DIR, "Plans")
+PENDING_APPROVAL_FOLDER = os.path.join(SILVER_DIR, "Pending_Approval")
+APPROVED_FOLDER = os.path.join(SILVER_DIR, "Approved")  # Silver root level Approved folder
+COMPANY_HANDBOOK = os.path.join(SILVER_DIR, "Company_Handbook.md")
+ACTION_DISPATCHER_SCRIPT = os.path.join(SILVER_DIR, "tools", "action_dispatcher.py")
+
+# Ensure directories exist
+os.makedirs(NEEDS_ACTION_FOLDER, exist_ok=True)
+os.makedirs(DONE_FOLDER, exist_ok=True)
+os.makedirs(PLANS_FOLDER, exist_ok=True)
+os.makedirs(PENDING_APPROVAL_FOLDER, exist_ok=True)
+os.makedirs(APPROVED_FOLDER, exist_ok=True)
 
 # Task type keywords
 TASK_KEYWORDS = {

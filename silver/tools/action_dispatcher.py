@@ -1,18 +1,18 @@
 """
-Action Dispatcher - Gold Tier (FIXED & ROBUST)
+Action Dispatcher - Silver Tier (FIXED & ROBUST)
 ===============================================
 The "Hands" of the AI Employee system.
 
-Monitors gold/pending_approval/approved/ folder 24/7 and executes actions:
+Monitors silver/pending_approval/approved/ folder 24/7 and executes actions:
 - LinkedIn posts → Calls linkedin_auto_poster_fixed.py
 - Email drafts → Uses Gmail API to send
 - WhatsApp messages → Calls whatsapp_sender.py
-- Tweets → Uses Twitter MCP to post
+- Tweets → Uses Twitter MCP to send
 
 FEATURES:
 1. 3-stage retry loop for "Session Locked" errors
 2. Waits 10 seconds for lock release before retry
-3. Strict Gold Tier folder architecture compliance
+3. Strict Silver Tier folder architecture compliance
 4. Comprehensive logging and error handling
 
 Install: pip install watchdog
@@ -32,23 +32,23 @@ from pathlib import Path
 from typing import Optional, Dict, Any, Tuple
 
 # =============================================================================
-# CONFIGURATION - GOLD TIER FOLDER ARCHITECTURE
+# CONFIGURATION - SILVER TIER FOLDER ARCHITECTURE
 # =============================================================================
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
-GOLD_DIR = PROJECT_ROOT / "gold"
+SILVER_DIR = PROJECT_ROOT / "silver"
 
-# Gold Tier folders
-PENDING_APPROVAL_FOLDER = GOLD_DIR / "pending_approval"
-APPROVED_FOLDER = PENDING_APPROVAL_FOLDER / "approved"
-DONE_FOLDER = GOLD_DIR / "done"
-PLANS_FOLDER = GOLD_DIR / "plans"
-LOGS_FOLDER = GOLD_DIR / "logs"
+# Silver Tier folders
+PENDING_APPROVAL_FOLDER = SILVER_DIR / "Pending_Approval"
+APPROVED_FOLDER = SILVER_DIR / "Approved"  # Silver root level Approved folder
+DONE_FOLDER = SILVER_DIR / "Done"
+PLANS_FOLDER = SILVER_DIR / "Plans"
+LOGS_FOLDER = SILVER_DIR / "Logs"
 SESSION_LOCK_FILE = PROJECT_ROOT / "session" / "whatsapp.lock"
-DASHBOARD_FILE = PROJECT_ROOT / "Dashboard.md"
+DASHBOARD_FILE = SILVER_DIR / "Dashboard.md"
 
 # Tool paths
-LINKEDIN_POSTER_SCRIPT = PROJECT_ROOT / "gold" / "watchers" / "linkedin_auto_poster.py"  # Gold Tier simple & reliable
+LINKEDIN_POSTER_SCRIPT = SILVER_DIR / "watchers" / "linkedin_auto_poster.py"
 LINKEDIN_POSTER_SCRIPT_FALLBACK = PROJECT_ROOT / "watchers" / "linkedin_auto_poster_production.py"
 LINKEDIN_POSTER_SCRIPT_LEGACY = PROJECT_ROOT / "watchers" / "linkedin_auto_poster_fixed.py"
 WHATSAPP_SENDER_SCRIPT = PROJECT_ROOT / "watchers" / "whatsapp_sender.py"
@@ -126,7 +126,7 @@ def wait_for_session_unlock(timeout: int = 30) -> bool:
 
 class ActionDispatcher:
     """
-    Action Dispatcher - Executes approved actions from Gold Tier.
+    Action Dispatcher - Executes approved actions from Silver Tier.
     
     Monitors approved folder and executes actions based on file type.
     Implements robust retry logic for session contention.
@@ -376,9 +376,8 @@ class ActionDispatcher:
 
                 # Windows argv limit (~8k) + shell quoting — always pass a temp file, not --content
                 tmp_post = (
-                    PROJECT_ROOT
-                    / "gold"
-                    / "logs"
+                    SILVER_DIR
+                    / "Logs"
                     / f"_linkedin_dispatch_{datetime.now().strftime('%Y%m%d_%H%M%S_%f')}.md"
                 )
                 tmp_post.write_text(
@@ -490,178 +489,123 @@ class ActionDispatcher:
             return False
     
     # =============================================================================
-    # EMAIL EXECUTION
+    # EMAIL EXECUTION - Direct Gmail API (MIME + Base64)
     # =============================================================================
-    
+
     def execute_email_send(self, filepath: Path, metadata: Dict[str, Any]) -> bool:
-        """Execute email send using Gmail API."""
+        """Execute email send using direct Gmail API - no temp files."""
         log.info("=" * 70)
         log.info(f"[EMAIL] Sending email: {filepath.name}")
         log.info("=" * 70)
-        
+
         try:
+            import json
+            import base64
+            from email.mime.text import MIMEText
+            from email.mime.multipart import MIMEMultipart
+            from google.oauth2.credentials import Credentials
+            from google_auth_oauthlib.flow import InstalledAppFlow
+            from google.auth.transport.requests import Request
+            from googleapiclient.discovery import build
+
             # Extract email fields
-            to, subject, body, cc, bcc, from_email = self.extract_email_fields(metadata)
-            
-            log.info(f"[EMAIL] To: {to}")
-            log.info(f"[EMAIL] Subject: {subject}")
-            log.info(f"[EMAIL] From: {from_email}")
-            log.info(f"[EMAIL] Body length: {len(body)} characters")
-            
-            if not to:
-                log.error("[EMAIL] Missing recipient")
-                # Try to extract from content
+            to_addr = metadata.get("to", "")
+            subject = metadata.get("subject", "")
+            body = metadata.get("body", metadata.get("content", ""))
+
+            # Clean quotes from email fields
+            to_addr = to_addr.replace('"', '').strip()
+            subject = subject.replace('"', '').strip()
+
+            # Try to extract recipient from content if missing
+            if not to_addr:
                 email_match = re.search(r'[\w\.-]+@[\w\.-]+\.\w+', body)
                 if email_match:
-                    to = email_match.group(0)
-                    log.info(f"[EMAIL] Extracted recipient from content: {to}")
+                    to_addr = email_match.group(0)
+                    log.info(f"[EMAIL] Extracted recipient from content: {to_addr}")
                 else:
+                    log.error("[EMAIL] Missing recipient email")
                     return False
-            
-            # Create email sender script
-            email_sender = self._create_email_sender_script(to, subject, body, cc, bcc)
-            
-            log.info(f"[EMAIL] Sending via Gmail API...")
-            
-            result = subprocess.run(
-                [sys.executable, email_sender],
-                cwd=str(PROJECT_ROOT),
-                capture_output=True,
-                text=True,
-                timeout=180
-            )
-            
-            # Cleanup temp script
-            try:
-                os.remove(email_sender)
-            except:
-                pass
-            
-            if result.returncode == 0:
-                log.info(f"[EMAIL] ✓ Email sent successfully")
-                return True
-            else:
-                log.error(f"[EMAIL] Send failed: {result.stderr}")
+
+            log.info(f"[EMAIL] To: {to_addr}")
+            log.info(f"[EMAIL] Subject: {subject}")
+            log.info(f"[EMAIL] Body length: {len(body)} characters")
+
+            # Get Gmail service
+            service = self._get_gmail_service()
+            if not service:
+                log.error("[EMAIL] Failed to get Gmail service")
                 return False
-                
-        except subprocess.TimeoutExpired:
-            log.error("[EMAIL] Send timed out")
-            return False
+
+            # Step 1: Create MIME message with clean values
+            mime_message = MIMEText(body, 'plain', 'utf-8')
+            mime_message['to'] = to_addr  # Already cleaned above
+            mime_message['from'] = 'me'
+            mime_message['subject'] = subject  # Already cleaned above
+
+            # Step 2: Base64 URL-safe encode
+            raw_message = base64.urlsafe_b64encode(
+                mime_message.as_bytes()
+            ).decode('utf-8')
+
+            # Step 3: Send via Gmail API
+            log.info("[EMAIL] Sending via Gmail API...")
+            sent_message = service.users().messages().send(
+                userId='me',
+                body={'raw': raw_message}
+            ).execute()
+
+            log.info(f"[EMAIL] ✓ Email sent successfully! Message ID: {sent_message.get('id', 'unknown')}")
+            return True
+
         except Exception as e:
             log.error(f"[EMAIL] Error: {e}")
+            import traceback
+            log.error(traceback.format_exc())
             return False
-    
-    def _create_email_sender_script(self, to: str, subject: str, body: str, 
-                                     cc: str = '', bcc: str = '') -> str:
-        """Create temporary Python script to send email via Gmail API."""
-        # Escape special characters
-        body_escaped = body.replace('\\', '\\\\').replace('"', '\\"').replace('\n', '\\n')
-        
-        script_content = f'''"""Temporary Email Sender - Gmail API"""
-import os
-import sys
-import base64
-from pathlib import Path
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 
-try:
-    from google.oauth2.credentials import Credentials
-    from google_auth_oauthlib.flow import InstalledAppFlow
-    from google.auth.transport.requests import Request
-    from googleapiclient.discovery import build
-except ImportError as e:
-    print(f"Missing dependencies: {{e}}")
-    print("Run: pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client")
-    sys.exit(1)
-
-PROJECT_ROOT = Path(r"{PROJECT_ROOT}")
-CREDENTIALS_FILE = PROJECT_ROOT / "credentials.json"
-TOKEN_FILE = PROJECT_ROOT / "token.json"
-SCOPES = ['https://www.googleapis.com/auth/gmail.send']
-
-def get_gmail_service():
-    creds = None
-    if TOKEN_FILE.exists():
+    def _get_gmail_service(self):
+        """Get Gmail service using OAuth2 credentials."""
         try:
-            creds = Credentials.from_authorized_user_file(str(TOKEN_FILE), SCOPES)
-        except Exception as e:
-            print(f"Error loading token: {{e}}")
+            from google.oauth2.credentials import Credentials
+            from google.auth.transport.requests import Request
+            from googleapiclient.discovery import build
+
+            SCOPES = ['https://www.googleapis.com/auth/gmail.send']
             creds = None
 
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            try:
-                creds.refresh(Request())
-            except Exception as e:
-                print(f"Token refresh failed: {{e}}")
-                creds = None
+            if TOKEN_FILE.exists():
+                try:
+                    creds = Credentials.from_authorized_user_file(str(TOKEN_FILE), SCOPES)
+                except Exception as e:
+                    log.debug(f"Token load error: {e}")
+                    creds = None
 
-        if not creds:
-            if not CREDENTIALS_FILE.exists():
-                print("credentials.json not found!")
-                return None
-            try:
+            if creds and creds.expired and creds.refresh_token:
+                try:
+                    creds.refresh(Request())
+                    # Save refreshed token
+                    TOKEN_FILE.write_text(creds.to_json(), encoding="utf-8")
+                    log.info("[EMAIL] Token refreshed")
+                except Exception as e:
+                    log.warning(f"Token refresh failed: {e}")
+                    creds = None
+
+            if not creds:
+                if not CREDENTIALS_FILE.exists():
+                    log.error("[EMAIL] credentials.json not found")
+                    return None
+                log.info("[EMAIL] Re-authorizing via browser...")
+                from google_auth_oauthlib.flow import InstalledAppFlow
                 flow = InstalledAppFlow.from_client_secrets_file(str(CREDENTIALS_FILE), SCOPES)
                 creds = flow.run_local_server(port=0, open_browser=False)
-            except Exception as e:
-                print(f"OAuth flow failed: {{e}}")
-                return None
+                TOKEN_FILE.write_text(creds.to_json(), encoding="utf-8")
 
-            with open(str(TOKEN_FILE), 'w') as token:
-                token.write(creds.to_json())
+            return build('gmail', 'v1', credentials=creds)
 
-    return build('gmail', 'v1', credentials=creds)
-
-def create_message(sender, to, subject, message_text, cc='', bcc=''):
-    message = MIMEMultipart()
-    message['to'] = to
-    message['from'] = sender
-    message['subject'] = subject
-    if cc:
-        message['cc'] = cc
-    if bcc:
-        message['bcc'] = bcc
-
-    message.attach(MIMEText(message_text, 'plain', 'utf-8'))
-    raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode('utf-8')
-    return {{'raw': raw_message}}
-
-def send_email():
-    service = get_gmail_service()
-    if not service:
-        print("Failed to get Gmail service")
-        return False
-
-    try:
-        message = create_message(
-            sender='me',
-            to=r"{to}",
-            subject=r"{subject}",
-            message_text=r"{body_escaped}",
-            cc=r"{cc}",
-            bcc=r"{bcc}"
-        )
-        sent_message = service.users().messages().send(userId='me', body=message).execute()
-        print(f"Email sent! Message ID: {{sent_message['id']}}")
-        return True
-    except Exception as e:
-        print(f"Error sending email: {{e}}")
-        import traceback
-        traceback.print_exc()
-        return False
-
-if __name__ == "__main__":
-    success = send_email()
-    sys.exit(0 if success else 1)
-'''
-        
-        # Write temp script
-        temp_script = PROJECT_ROOT / "temp_email_sender.py"
-        with open(temp_script, 'w', encoding='utf-8') as f:
-            f.write(script_content)
-        
-        return str(temp_script)
+        except Exception as e:
+            log.error(f"[EMAIL] Gmail service error: {e}")
+            return None
     
     # =============================================================================
     # SOCIAL MEDIA EXECUTION
@@ -704,7 +648,7 @@ if __name__ == "__main__":
     # =============================================================================
     
     def move_to_done(self, filepath: Path, metadata: Dict[str, Any]) -> bool:
-        """Move processed file to gold/done/ folder with done_ prefix."""
+        """Move processed file to silver/Done/ folder with done_ prefix."""
         try:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             dst = DONE_FOLDER / f"done_{filepath.stem}_{timestamp}.md"
@@ -790,34 +734,28 @@ Original content preserved below:
     def process_file(self, filepath: Path) -> bool:
         """
         Process a single approved file with retry logic.
-        
+
         Flow:
         1. Read metadata
-        2. Delete source file (prevent duplicates)
-        3. Route to appropriate handler with retry
-        4. Move to done with success/fail status
+        2. Route to appropriate handler with retry
+        3. If SUCCESS → delete source + move to done
+        4. If FAIL → leave file in Approved/ for retry
         5. Update dashboard
         """
         log.info("=" * 70)
         log.info(f"[PROCESS] Starting: {filepath.name}")
         log.info("=" * 70)
-        
+
         # Read metadata
         metadata = self.read_file_metadata(filepath)
-        
-        # Permanent deletion to avoid duplicates (Hackathon requirement)
-        try:
-            filepath.unlink()
-            log.info(f"[DELETED] Source file: {filepath.name}")
-        except Exception as e:
-            log.warning(f"[WARNING] Could not delete source file: {e}")
+
         file_type = metadata.get('type', 'unknown').lower()
         full_content = metadata.get('full_content', '').lower()
-        
+
         log.info(f"[PROCESS] Type: {file_type}")
-        
+
         success = False
-        
+
         # Route to appropriate handler with retry logic
         if 'linkedin' in file_type or 'linkedin' in full_content:
             success = self.execute_with_retry(
@@ -825,28 +763,28 @@ Original content preserved below:
             )
             if success:
                 self.stats["linkedin_posts"] += 1
-                
+
         elif 'email' in file_type or 'email_draft' in file_type:
             success = self.execute_with_retry(
                 self.execute_email_send, filepath, metadata
             )
             if success:
                 self.stats["emails_sent"] += 1
-                
+
         elif 'whatsapp' in file_type or 'whatsapp' in filepath.name.lower():
             success = self.execute_with_retry(
                 self.execute_whatsapp_message, filepath, metadata
             )
             if success:
                 self.stats["whatsapp_messages"] += 1
-                
+
         elif 'tweet' in file_type or 'twitter' in file_type:
             success = self.execute_with_retry(
                 self.execute_tweet, filepath, metadata
             )
             if success:
                 self.stats["tweets_posted"] += 1
-                
+
         elif 'facebook' in file_type:
             success = self.execute_with_retry(
                 lambda fp, m: self.execute_social_post(fp, m, 'facebook'),
@@ -854,7 +792,7 @@ Original content preserved below:
             )
             if success:
                 self.stats["facebook_posts"] += 1
-                
+
         elif 'instagram' in file_type:
             success = self.execute_with_retry(
                 lambda fp, m: self.execute_social_post(fp, m, 'instagram'),
@@ -862,26 +800,34 @@ Original content preserved below:
             )
             if success:
                 self.stats["instagram_posts"] += 1
-                
+
         else:
-            log.warning(f"[PROCESS] Unknown type: {file_type} - moving to Done for review")
-            success = True  # Still move to Done for manual review
-        
-        # Unconditionally move to Done to satisfy Hackathon visually-cleared queue requirement
-        self.move_to_done(filepath, metadata)
+            log.warning(f"[PROCESS] Unknown type: {file_type} - skipping")
+            success = False
+
+        # STRICT VERIFICATION: Only delete and move to Done if SUCCEEDED
         if success:
+            # Delete source file to prevent duplicates
+            try:
+                filepath.unlink()
+                log.info(f"[DELETED] Source file: {filepath.name}")
+            except Exception as e:
+                log.warning(f"[WARNING] Could not delete source file: {e}")
+            self.move_to_done(filepath, metadata)
             self.stats["total_processed"] += 1
+            log.info(f"[PROCESS] ✓ SUCCESS: {filepath.name} moved to Done")
         else:
-            log.warning(f"[WARNING] Task {filepath.name} failed physically but was cleared to Done to prevent queue blocking.")
+            # FAILED action - file STAYS in approved/ for retry
             self.stats["errors"] += 1
-        
+            log.warning(f"[PROCESS] ✗ FAILED: {filepath.name} STAYS in approved/ (will retry)")
+
         # Update dashboard
         self.update_dashboard(f"{file_type} execution", success)
-        
+
         log.info("=" * 70)
-        log.info(f"[PROCESS] Completed: {filepath.name} - {'SUCCESS' if success else 'FAILED'}")
+        log.info(f"[PROCESS] Completed: {filepath.name} - {'SUCCESS ✓' if success else 'FAILED ✗'}")
         log.info("=" * 70)
-        
+
         return success
     
     def check_approved_folder(self):

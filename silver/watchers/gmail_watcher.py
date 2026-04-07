@@ -1,8 +1,8 @@
 """
-Gmail Watcher - Gold Tier (Fixed)
+Gmail Watcher - Silver Tier (Fixed)
 ==================================
 Monitors Gmail inbox for unread important emails.
-Creates files in gold/needs_action/ folder first.
+Creates files in silver/Needs_Action/ folder first.
 
 Install: pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
 Setup:
@@ -32,15 +32,15 @@ except ImportError as e:
     sys.exit(1)
 
 # =============================================================================
-# CONFIGURATION - GOLD TIER FOLDERS
+# CONFIGURATION - SILVER TIER FOLDERS
 # =============================================================================
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
-GOLD_DIR = PROJECT_ROOT / "gold"
+SILVER_DIR = PROJECT_ROOT / "silver"
 
-# CRITICAL: Gold Tier folder structure
-NEEDS_ACTION_FOLDER = GOLD_DIR / "needs_action"
-LOGS_FOLDER = GOLD_DIR / "logs"
+# CRITICAL: Silver Tier folder structure
+NEEDS_ACTION_FOLDER = SILVER_DIR / "Needs_Action"
+LOGS_FOLDER = SILVER_DIR / "Logs"
 
 # Credentials (OAuth client JSON from Google Cloud Console → project root)
 CREDENTIALS_FILE = PROJECT_ROOT / "credentials.json"
@@ -123,7 +123,7 @@ def _yaml_one_line(s: str) -> str:
 
 
 def create_needs_action_file(email_data: dict, logger) -> Path:
-    """CRITICAL: Create file in gold/needs_action/ folder"""
+    """CRITICAL: Create file in silver/Needs_Action/ folder"""
     priority = get_priority(email_data['subject'], email_data['snippet'])
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     
@@ -154,7 +154,7 @@ message_id: {email_data['id']}
 - **Received:** {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
 
 ---
-*Gmail Watcher - Gold Tier*
+*Gmail Watcher - Silver Tier*
 """
     
     with open(filepath, "w", encoding='utf-8') as f:
@@ -355,7 +355,7 @@ def check_emails(service, logger):
 
 def main():
     logger.info("=" * 70)
-    logger.info("GMAIL WATCHER - GOLD TIER")
+    logger.info("GMAIL WATCHER - SILVER TIER")
     logger.info("=" * 70)
     logger.info(f"Tasks folder: {NEEDS_ACTION_FOLDER}")
     logger.info(f"Check interval: {CHECK_INTERVAL}s")
@@ -372,7 +372,7 @@ def main():
         return
     
     logger.info("✓ Gmail API connected")
-    if os.environ.get("GMAIL_OPEN_INBOX", "1") != "0":
+    if os.environ.get("GMAIL_OPEN_INBOX", "0") != "0":
         logger.info("Opening Gmail inbox in default browser (set GMAIL_OPEN_INBOX=0 to skip)")
         open_gmail_in_browser()
     logger.info("Starting monitoring loop...")
